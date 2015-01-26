@@ -20,13 +20,17 @@ function Start()
 			tracked.transform.position.z - baseDistance);
 }
 
+private var myPos : Vector3;
+private var targetPos : Vector3;
+private var extraDistance : float;
+
 function Update()
 {
 	// Position of the camera
-	var myPos : Vector3 = gameObject.transform.position;
+	myPos = gameObject.transform.position;
 	
 	// Position that the camera moves towards
-	var targetPos : Vector3 = Vector3(
+	targetPos = Vector3(
 			tracked.transform.position.x,
 			tracked.transform.position.y,
 			tracked.transform.position.z - baseDistance);
@@ -35,7 +39,7 @@ function Update()
 	velocity = Vector3(targetPos.x - myPos.x, targetPos.y - myPos.y, targetPos.z - myPos.y) * acceleration;
 	
 	// Zoom out amount, depending on speed
-	var extraDistance : float = velocity.magnitude * zoomAmount;
+	extraDistance = velocity.magnitude * zoomAmount;
 	
 	// Set the new camera position by adding velocity
 	gameObject.transform.position = gameObject.transform.position + velocity;
