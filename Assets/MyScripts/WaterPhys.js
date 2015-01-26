@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+//Author Simon Eliasson
+
 @script RequireComponent(Rigidbody)
 
 var rigidBody : Rigidbody;

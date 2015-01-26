@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+//Author: Simon Eliasson
+
 @script RequireComponent(CharacterController)
 
 var acceleration : double = 0.1;

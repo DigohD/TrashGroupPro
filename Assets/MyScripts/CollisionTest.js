@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+//Author: Simon Eliasson
+
 @script RequireComponent(PhysController2D)
 
 public var Sparks1 : GameObject;
