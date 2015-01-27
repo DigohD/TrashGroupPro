@@ -12,6 +12,8 @@ public class DestroyByContact : MonoBehaviour {
 			Instantiate(explosion, transform.position, transform.rotation);
 			Destroy(this.gameObject);
 			Destroy (other.gameObject);
+
+
 		
 		}
 
