@@ -26,7 +26,9 @@ public class ExplosionMat : MonoBehaviour {
 			float minscale = Mathf.Min(transform.lossyScale.x, Mathf.Min(transform.lossyScale.y, transform.lossyScale.z));
 			renderer.sharedMaterial.SetFloat("_Radius", minscale/2 - 2);
 		}
-		if (time > 3)
+		if (time > 0.3)
+			Destroy (this.GetComponent<SphereCollider>());	
+		if (time > 1)
 						Destroy (this.gameObject);			
 	}
 }
