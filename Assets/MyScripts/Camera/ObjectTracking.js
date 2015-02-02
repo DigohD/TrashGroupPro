@@ -26,6 +26,7 @@ private var extraDistance : float;
 
 function FixedUpdate()
 {
+	if(tracked != null){
 	// Position of the camera
 	myPos = gameObject.transform.position;
 	
@@ -46,5 +47,6 @@ function FixedUpdate()
 	
 	// Set depth of Camera, adding extra distance
 	gameObject.transform.position.z = tracked.transform.position.z - baseDistance - extraDistance;
+	}
 	
 }
