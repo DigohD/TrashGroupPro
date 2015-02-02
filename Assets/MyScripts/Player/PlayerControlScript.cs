@@ -13,6 +13,7 @@ public class PlayerControlScript : MonoBehaviour {
 	private Vector3 screenPoint;
 	private Vector2 offset;
 	private float angle;
+	private float boost;
 
 
 	void Update() {
@@ -38,9 +39,12 @@ public class PlayerControlScript : MonoBehaviour {
 		else {
 			rotate = 0;
 		}*/
-
+		if (Input.GetKey ("space"))
+						boost = 2;
+				else
+						boost = 1;
 		movement = new Vector3(moveHorizontal , moveVertical, 0.0f); 
-		rigidbody.velocity = movement*stats.speed;
+		rigidbody.velocity = movement*stats.speed*boost;
 		//transform.Rotate(new Vector3(0,0,rotate*3)); //Uncomment to allow rotation by q&e
 
 		mouse = Input.mousePosition;
