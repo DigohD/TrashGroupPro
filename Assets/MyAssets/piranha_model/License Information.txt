@@ -1,0 +1,26 @@
+Hello Everyone!
+
+
+
+LICENSING
+
+Everything contained in this archive is distributed under CC-BY. Basically you can use this work anywhere and in any way you want. More information about license type can be found here: http://creativecommons.org/licenses/by/2.0/
+
+
+NOTES
+
+1 bit alpha. Mesh is double faced, so it should work fine. Anyway, let me know if you're having some problems.
+Also, feel free to tweak material, edit texture etc.
+
+
+CONTACT INFORMATION
+
+http://twitter/unitycat/
+
+letartbefree@hotmail.com
+
+
+
+-
+
+James White

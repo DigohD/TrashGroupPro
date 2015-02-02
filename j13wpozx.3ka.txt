@@ -1,0 +1,150 @@
+﻿Merge remote-tracking branch 'origin/PrototypeTestBranch' into Alpha-Branch
+
+Conflicts:
+	Assets/MyScripts/AttachTrash.cs.meta
+	Assets/MyScripts/Magnet.cs
+	Assets/MyScripts/Magnet.cs.meta
+	Assets/MyScripts/Movement/PlayerControlScript.cs
+	Assets/MyScripts/Movement/PlayerControlScript.cs.meta
+	Assets/MyScripts/Player/AttachTrash.cs.meta
+	Assets/MyScripts/Player/Magnet.cs
+	Assets/MyScripts/Player/Magnet.cs.meta
+	Assets/MyScripts/Player/PlayerControlScript.cs
+	Assets/MyScripts/Player/PlayerControlScript.cs.meta
+	Assets/MyScripts/PlayerControlScript.cs
+	Assets/MyScripts/PlayerControlScript.cs.meta
+	Assets/MyScripts/TrashConnection/AttachTrash.cs
+	Assets/MyScripts/TrashConnection/AttachTrash.cs.meta
+	Assets/MyScripts/TrashConnection/Magnet.cs
+	Assets/MyScripts/TrashConnection/Magnet.cs.meta
+	Assets/Standard Assets/Toon Shading/Toony-Lighted.mat
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Alpha-Branch
+# Your branch is behind 'origin/Alpha-Branch' by 10 commits, and can be fast-forwarded.
+#   (use "git pull" to update your local branch)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   Assets/MyAssets/Gas Bottle.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/NegativeX.png
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/NegativeX.png.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/NegativeY.png
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/NegativeY.png.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/NegativeZ.png
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/NegativeZ.png.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/New Cubemap.cubemap
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/New Cubemap.cubemap.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/PositiveX.png
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/PositiveX.png.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/PositiveY.png
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/PositiveY.png.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/PositiveZ.png
+#	new file:   Assets/MyAssets/Gas Bottle/Cubemap/PositiveZ.png.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Gas Bottle.prefab
+#	new file:   Assets/MyAssets/Gas Bottle/Gas Bottle.prefab.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Materials.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Materials/gas bottle.mat
+#	new file:   Assets/MyAssets/Gas Bottle/Materials/gas bottle.mat.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Model.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Model/Gas Bottle.FBX
+#	new file:   Assets/MyAssets/Gas Bottle/Model/Gas Bottle.FBX.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Model/Materials.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Model/Materials/Gasbottle.mat
+#	new file:   Assets/MyAssets/Gas Bottle/Model/Materials/Gasbottle.mat.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Textures.meta
+#	new file:   Assets/MyAssets/Gas Bottle/Textures/Gasbottle.tga
+#	new file:   Assets/MyAssets/Gas Bottle/Textures/Gasbottle.tga.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Explosion Ramp.psd
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Explosion Ramp.psd.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Explosion.mat
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Explosion.mat.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/ExplosionMat.cs
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/ExplosionMat.cs.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/NoiseTex.psd
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/NoiseTex.psd.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Pyroclastic Puff.prefab
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Pyroclastic Puff.prefab.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/README.txt
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/README.txt.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders/ExplosionHigh.shader
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders/ExplosionHigh.shader.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders/ExplosionLow.shader
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders/ExplosionLow.shader.meta
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders/ExplosionMed.shader
+#	new file:   Assets/MyAssets/PorglezompPyroclastics/Shaders/ExplosionMed.shader.meta
+#	renamed:    Assets/Prefab.meta -> Assets/MyAssets/Prefab.meta
+#	new file:   Assets/MyAssets/Prefab/Gas Bottle.prefab
+#	new file:   Assets/MyAssets/Prefab/Gas Bottle.prefab.meta
+#	new file:   Assets/MyAssets/Prefab/Trash.prefab
+#	renamed:    Assets/Prefab/Trash.prefab.meta -> Assets/MyAssets/Prefab/Trash.prefab.meta
+#	new file:   Assets/MyAssets/Tree_Textures.meta
+#	new file:   Assets/MyAssets/Tree_Textures/diffuse.png
+#	new file:   Assets/MyAssets/Tree_Textures/diffuse.png.meta
+#	new file:   Assets/MyAssets/Tree_Textures/normal_specular.png
+#	new file:   Assets/MyAssets/Tree_Textures/normal_specular.png.meta
+#	new file:   Assets/MyAssets/Tree_Textures/shadow.png
+#	new file:   Assets/MyAssets/Tree_Textures/shadow.png.meta
+#	new file:   Assets/MyAssets/Tree_Textures/translucency_gloss.png
+#	new file:   Assets/MyAssets/Tree_Textures/translucency_gloss.png.meta
+#	new file:   Assets/MyAssets/piranha_model.meta
+#	new file:   Assets/MyAssets/piranha_model/License Information.txt
+#	new file:   Assets/MyAssets/piranha_model/License Information.txt.meta
+#	new file:   Assets/MyAssets/piranha_model/Materials.meta
+#	new file:   Assets/MyAssets/piranha_model/Materials/pirahna_texture.mat
+#	new file:   Assets/MyAssets/piranha_model/Materials/pirahna_texture.mat.meta
+#	new file:   Assets/MyAssets/piranha_model/Materials/piranha_mtl.mat
+#	new file:   Assets/MyAssets/piranha_model/Materials/piranha_mtl.mat.meta
+#	new file:   Assets/MyAssets/piranha_model/Preview.png
+#	new file:   Assets/MyAssets/piranha_model/Preview.png.meta
+#	new file:   Assets/MyAssets/piranha_model/pirahna_texture.png
+#	new file:   Assets/MyAssets/piranha_model/pirahna_texture.png.meta
+#	new file:   Assets/MyAssets/piranha_model/piranha_mesh.mtl
+#	new file:   Assets/MyAssets/piranha_model/piranha_mesh.mtl.meta
+#	new file:   Assets/MyAssets/piranha_model/piranha_mesh.obj
+#	new file:   Assets/MyAssets/piranha_model/piranha_mesh.obj.meta
+#	new file:   Assets/MyScripts/DestroyByContact.cs
+#	new file:   Assets/MyScripts/DestroyByContact.cs.meta
+#	new file:   Assets/MyScripts/EnemyCollision.cs
+#	new file:   Assets/MyScripts/EnemyCollision.cs.meta
+#	new file:   Assets/MyScripts/EnemyStats.cs
+#	new file:   Assets/MyScripts/EnemyStats.cs.meta
+#	new file:   Assets/MyScripts/GameController.cs
+#	new file:   Assets/MyScripts/GameController.cs.meta
+#	modified:   Assets/MyScripts/Movement/PlayerControlScript.cs.meta
+#	new file:   Assets/MyScripts/Player.meta
+#	new file:   Assets/MyScripts/Player/AttachTrash.cs
+#	new file:   Assets/MyScripts/Player/AttachTrash.cs.meta
+#	new file:   Assets/MyScripts/Player/Magnet.cs
+#	new file:   Assets/MyScripts/Player/Magnet.cs.meta
+#	new file:   Assets/MyScripts/Player/PlayerControlScript.cs
+#	new file:   Assets/MyScripts/Player/PlayerControlScript.cs.meta
+#	new file:   Assets/MyScripts/Player/PlayerStats.cs
+#	new file:   Assets/MyScripts/Player/PlayerStats.cs.meta
+#	modified:   Assets/MyScripts/TrashConnection/AttachTrash.cs.meta
+#	modified:   Assets/MyScripts/TrashConnection/Magnet.cs.meta
+#	new file:   Assets/MyScripts/TrashStats.cs
+#	new file:   Assets/MyScripts/TrashStats.cs.meta
+#	new file:   Assets/MyScripts/TrashToTrashConnector.cs
+#	renamed:    Assets/TrashToTrashConnector.cs.meta -> Assets/MyScripts/TrashToTrashConnector.cs.meta
+#	deleted:    Assets/Prefab/Trash.prefab
+#	modified:   Assets/Standard Assets/Water (Basic)/Sources/Materials/Daylight Simple Water.mat
+#	modified:   Assets/Standard Assets/Water (Basic)/Sources/Materials/Nighttime Simple Water.mat
+#	modified:   Assets/TST.unity
+#	deleted:    Assets/TrashToTrashConnector.cs
+#	new file:   Assets/Tree.prefab
+#	new file:   Assets/Tree.prefab.meta
+#	modified:   ProjectSettings/TagManager.asset
+#
+
