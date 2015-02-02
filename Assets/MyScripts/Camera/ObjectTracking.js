@@ -24,7 +24,7 @@ private var myPos : Vector3;
 private var targetPos : Vector3;
 private var extraDistance : float;
 
-function Update()
+function FixedUpdate()
 {
 	// Position of the camera
 	myPos = gameObject.transform.position;
