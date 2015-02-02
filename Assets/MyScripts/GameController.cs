@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
 	public GameObject trash;
+	public GameObject battery;
 	public Vector3 spawnValues;
 	public int trashCount;
 	public float spawnWait;
@@ -34,7 +35,9 @@ public class GameController : MonoBehaviour {
 	{
 		Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x, spawnValues.x),Random.Range(-spawnValues.y, spawnValues.y),spawnValues.z);
 		Quaternion spawnRotation = Quaternion.identity;
-		Instantiate (trash, spawnPosition, spawnRotation);
-
+		if(Random.value*2<1)
+			Instantiate (trash, spawnPosition, spawnRotation);
+		else
+			Instantiate (battery, spawnPosition, spawnRotation);
 	}
 }
