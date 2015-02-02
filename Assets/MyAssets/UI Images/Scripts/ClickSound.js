@@ -4,10 +4,10 @@ var clickSound : AudioClip;
 
 function Start()
 {
-	xxxBtn.onClick.AddListener(YourDisposeFunction); 
-	playClickSound();
+	//xxxBtn.onClick.AddListener(YourDisposeFunction); 
+	//playClickSound();
 }
 
 function playClickSound(){
-	AudioSource.PlayClipAtPoint(clickSound, transform.position);
+	//AudioSource.PlayClipAtPoint(clickSound, transform.position);
 }
