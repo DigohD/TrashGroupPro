@@ -30,14 +30,24 @@ public class GameController : MonoBehaviour {
 		}
 		
 	}
-	
+	private Vector3 spawnPosition;
+	Collider[] spawnZone;
 	void SpawnTrash()
 	{
-		Vector3 spawnPosition = new Vector3 (Random.Range(-spawnValues.x, spawnValues.x),Random.Range(-spawnValues.y, spawnValues.y),spawnValues.z);
-		Quaternion spawnRotation = Quaternion.identity;
-		if(Random.value*2<1)
-			Instantiate (trash, spawnPosition, spawnRotation);
-		else
-			Instantiate (battery, spawnPosition, spawnRotation);
-	}
+		int i = 0;
+		while (true && i<=5) {						
+			spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), spawnValues.z);
+			spawnZone = Physics.OverlapSphere (spawnPosition, 2);//2 hardcoded for now, just to make sure stuff don't spawn onto eachother
+			i++;
+			if (spawnZone.Length == 0)
+				break;
+			}
+			if (i <= 5) {
+				Quaternion spawnRotation = Quaternion.identity;
+				if (Random.value * 2 < 1)
+					Instantiate (trash, spawnPosition, spawnRotation);
+				else
+				Instantiate (battery, spawnPosition, spawnRotation);
+			}
+		}
 }
