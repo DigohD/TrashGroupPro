@@ -5,6 +5,7 @@ public class PlayerControlScript : MonoBehaviour {
 
 	public PlayerStats stats;
 	public Camera cam;
+	public float rotation;
 
 	private float moveHorizontal;
 	private float moveVertical;
@@ -16,29 +17,28 @@ public class PlayerControlScript : MonoBehaviour {
 	private float boost;
 
 
-	void Update() {
-		if (Input.GetKey ("w"))
-						moveVertical = 1;
-				else if (Input.GetKey ("s"))
-						moveVertical = -1;
-				else {
-						moveVertical = 0;
-				}
-		if (Input.GetKey ("d"))
-						moveHorizontal = 1;
-				else if (Input.GetKey ("a"))
-						moveHorizontal = -1;
+	void FixedUpdate() {
+		if (Input.GetKey ("up"))
+			rigidbody.AddForce (Vector3.up*stats.speed, ForceMode.Force);//moveVertical = 1;
+				else if (Input.GetKey ("down"))
+			rigidbody.AddForce (-Vector3.up*stats.speed);
+				//else {
+				//		moveVertical = 0;
+				//}
+		if (Input.GetKey ("right"))
+			rigidbody.AddForce (Vector3.right*stats.speed);
+				else if (Input.GetKey ("left"))
+			rigidbody.AddForce (-Vector3.right*stats.speed);
 				else {
 						moveHorizontal = 0;
 				}
-		//uncomment to allow roation by q&e
-		/*if (Input.GetKey ("e"))
-			rotate = 1;
+
+		if (Input.GetKey ("e"))
+			rigidbody.AddTorque (0, 0, rotation * Time.deltaTime);
 		else if (Input.GetKey ("q"))
-			rotate = -1;
-		else {
-			rotate = 0;
-		}*/
+			rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime);;
+
+
 		if (Input.GetKey ("space"))
 						boost = 2;
 				else
@@ -47,11 +47,26 @@ public class PlayerControlScript : MonoBehaviour {
 		rigidbody.velocity = movement*stats.speed*boost;
 		//transform.Rotate(new Vector3(0,0,rotate*3)); //Uncomment to allow rotation by q&e
 
-		mouse = Input.mousePosition;
-		screenPoint = cam.WorldToScreenPoint(transform.localPosition);
-		offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
-		angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+
+
+		//new angle calc:
+
+	//	Vector2 target = mouse - transform.localRotation;
+		//float angle2 = Mathf.Atan2( target.y, target.x )* Mathf.Rad2Deg;
+
+
+		//yet another....
+
+		//transform.rotation = Quaternion.Euler(0, 0, angle);//rotation by transformation
+		//more "physics"
+		//Vector3 torqueVector = Vector3.Cross(screenPoint, Vector3.forward);
+		//torqueVector = Vector3.Project(torqueVector, transform.forward);
+		//print (angle2);
+		//if (angle2 > 180)
+		//				angle2 -= 360;
+		//rigidbody.AddTorque(transform.up * angle2*4);
 	
 	}
 
