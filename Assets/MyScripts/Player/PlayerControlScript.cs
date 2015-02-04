@@ -29,9 +29,9 @@ public class PlayerControlScript : MonoBehaviour {
 			rigidbody.AddForce (Vector3.right*stats.speed);
 				else if (Input.GetKey ("left"))
 			rigidbody.AddForce (-Vector3.right*stats.speed);
-				else {
-						moveHorizontal = 0;
-				}
+				//else {
+			//			moveHorizontal = 0;
+			//	}
 
 		if (Input.GetKey ("e"))
 			rigidbody.AddTorque (0, 0, rotation * Time.deltaTime);
@@ -43,8 +43,8 @@ public class PlayerControlScript : MonoBehaviour {
 						boost = 2;
 				else
 						boost = 1;
-		movement = new Vector3(moveHorizontal , moveVertical, 0.0f); 
-		rigidbody.velocity = movement*stats.speed*boost;
+		//movement = new Vector3(moveHorizontal , moveVertical, 0.0f); 
+		//rigidbody.velocity = movement*stats.speed*boost;
 		//transform.Rotate(new Vector3(0,0,rotate*3)); //Uncomment to allow rotation by q&e
 
 
