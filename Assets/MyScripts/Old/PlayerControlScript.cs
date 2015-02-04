@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerControlScript : MonoBehaviour {
-
+	//This script is no longer being used
 	public PlayerStats stats;
 	public Camera cam;
 	public float rotation;
@@ -36,7 +36,7 @@ public class PlayerControlScript : MonoBehaviour {
 		if (Input.GetKey ("e"))
 			rigidbody.AddTorque (0, 0, rotation * Time.deltaTime);
 		else if (Input.GetKey ("q"))
-			rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime);;
+			rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime);
 
 
 		if (Input.GetKey ("space"))
