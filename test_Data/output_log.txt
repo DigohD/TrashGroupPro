@@ -18,21 +18,24 @@ Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\M
 Loading C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.053 seconds
+- Completed reload, in  0.052 seconds
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\System.Core.dll (this message is harmless)
 WARNING: Shader Unsupported: 'Toon/Basic Outline' - Pass 'OUTLINE' shader state not supported
-Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Boo.Lang.dll (this message is harmless)
 ArgumentException: The prefab you want to instantiate is null.
   at UnityEngine.Object.CheckNullArgument (System.Object arg, System.String message) [0x00000] in <filename unknown>:0 
   at UnityEngine.Object.Instantiate (UnityEngine.Object original, Vector3 position, Quaternion rotation) [0x00000] in <filename unknown>:0 
   at GameController.SpawnTrash () [0x00000] in <filename unknown>:0 
   at GameController+<SpawnCont>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+GameController:Start()
  
 (Filename:  Line: -1)
 
+Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Boo.Lang.dll (this message is harmless)
 Refreshing!
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
@@ -45,23 +48,21 @@ Incoming host list query response from master server.
  
 (Filename:  Line: 2484)
 
-No Active Servers Found!
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Refreshing!
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Connected to master server at 67.225.180.24:23466
+Running as client. No player ID set yet.
  
 (Filename:  Line: 2484)
 
-Incoming host list query response from master server.
+Connected to 192.168.0.3:25002
+
  
 (Filename:  Line: 2484)
 
-No Active Servers Found!
+Set player ID to 1
+
+ 
+(Filename:  Line: 2484)
+
+1 Servers found!
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
