@@ -24,18 +24,15 @@ desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Input initialized.
 Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\System.Core.dll (this message is harmless)
 WARNING: Shader Unsupported: 'Toon/Basic Outline' - Pass 'OUTLINE' shader state not supported
+Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Boo.Lang.dll (this message is harmless)
 ArgumentException: The prefab you want to instantiate is null.
   at UnityEngine.Object.CheckNullArgument (System.Object arg, System.String message) [0x00000] in <filename unknown>:0 
   at UnityEngine.Object.Instantiate (UnityEngine.Object original, Vector3 position, Quaternion rotation) [0x00000] in <filename unknown>:0 
   at GameController.SpawnTrash () [0x00000] in <filename unknown>:0 
   at GameController+<SpawnCont>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
-UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-GameController:Start()
  
 (Filename:  Line: -1)
 
-Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Boo.Lang.dll (this message is harmless)
 Refreshing!
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
@@ -48,21 +45,205 @@ Incoming host list query response from master server.
  
 (Filename:  Line: 2484)
 
-Running as client. No player ID set yet.
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
  
 (Filename:  Line: 2484)
 
-Connected to 192.168.0.3:25002
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Refreshing!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Incoming host list query response from master server.
+ 
+(Filename:  Line: 2484)
+
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Running as server. Player ID is 0.
+ 
+(Filename:  Line: 2484)
+
+Server Initialized!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Spawning new player!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+Allocating view ID AllocatedID: 1.
 
  
 (Filename:  Line: 2484)
 
-Set player ID to 1
+Sent RPC call '__RPCNetworkInstantiate' to all connected clients
 
  
 (Filename:  Line: 2484)
 
-1 Servers found!
+Added RPC '__RPCNetworkInstantiate' to buffer.
+ 
+(Filename:  Line: 2484)
+
+Attempting to connect to master server at 67.225.180.24:23466
+ 
+(Filename:  Line: 2484)
+
+Connected to master server at 67.225.180.24:23466
+ 
+(Filename:  Line: 2484)
+
+Received identifier 0 from master server
+ 
+(Filename:  Line: 2484)
+
+Registration Successful
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
