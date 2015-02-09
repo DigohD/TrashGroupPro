@@ -49,14 +49,14 @@ function SpawnPlayer(){
 }
 
 function OnGUI() {
-	
-	if(Network.isClient || Network.isServer)
-		return;
-		
+
 	if(Network.isClient)
 		GUILayout.Label("Client");
 	if(Network.isServer)
 		GUILayout.Label("Server");
+	
+	if(Network.isClient || Network.isServer)
+		return;
 	
 	if(GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
 		StartServer();
