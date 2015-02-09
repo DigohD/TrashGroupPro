@@ -18,7 +18,7 @@ Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\M
 Loading C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.049 seconds
+- Completed reload, in  0.051 seconds
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -44,10 +44,6 @@ Connected to master server at 67.225.180.24:23466
 Incoming host list query response from master server.
  
 (Filename:  Line: 2484)
-
-No Active Servers Found!
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
 Running as server. Player ID is 0.
  
@@ -91,7 +87,11 @@ Registration Successful
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-New connection established (83.209.118.174:54099)
+No Active Servers Found!
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
+
+New connection established (83.209.118.174:56674)
  
 (Filename:  Line: 2484)
 
