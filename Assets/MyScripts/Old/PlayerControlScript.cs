@@ -18,6 +18,10 @@ public class PlayerControlScript : MonoBehaviour {
 
 
 	void FixedUpdate() {
+
+		if(!networkView.isMine)
+			return;
+
 		if (Input.GetKey ("up"))
 			rigidbody.AddForce (Vector3.up*stats.speed, ForceMode.Force);//moveVertical = 1;
 				else if (Input.GetKey ("down"))
