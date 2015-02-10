@@ -60,6 +60,7 @@ public class NetworkHandler : MonoBehaviour {
 
 	void SpawnPlayer(NetworkPlayer newPlayer){
 		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+		playerInstance.transform.rotation =  Quaternion.Euler(-90, 0, 0);
 
 		PlayerSetupServer(playerInstance);
 		
