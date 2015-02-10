@@ -47,7 +47,7 @@ public class TurretShooting : MonoBehaviour
 
     public void DisableEffects ()
     {
-        gunLine.enabled = false;
+        //gunLine.enabled = false;
         gunLight.enabled = false;
     }
 
@@ -65,15 +65,15 @@ public class TurretShooting : MonoBehaviour
 			alternate = true;
 		}
 		speed = 1;
-		GameObject laser =  Instantiate (laserShot, cannon.position, transform.rotation) as GameObject;
-		laser.rigidbody.velocity = cannon.forward * speed*10;
+		GameObject laser =  Instantiate (laserShot, cannon.position, cannon.transform.rotation) as GameObject;
+		laser.rigidbody.velocity = cannon.up * speed*10;
 
         timer = 0f;
 
         gunAudio.Play ();
 
-        /*gunLight.enabled = true;
-
+        gunLight.enabled = true;
+		/*
         gunParticles.Stop ();
         gunParticles.Play ();
 
