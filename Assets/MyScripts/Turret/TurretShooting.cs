@@ -63,7 +63,7 @@ public class TurretShooting : MonoBehaviour
         gunParticles.Play ();
 
         gunLine.enabled = true;
-        gunLine.SetPosition (0, transform.position  * 2);
+        gunLine.SetPosition (0, transform.position);
 
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
