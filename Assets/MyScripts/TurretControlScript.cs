@@ -15,6 +15,9 @@ public class TurretControlScript : MonoBehaviour {
 
 	public void Update(){//just rotate towards mouse..
 	
+		if(!networkView.isMine)
+			return;
+
 		//Mouse Position in the world. It's important to give it some distance from the camera. 
 		//If the screen point is calculated right from the exact position of the camera, then it will
 		//just return the exact same position as the camera, which is no good.
