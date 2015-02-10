@@ -13,9 +13,6 @@ public class TurretControlScript : MonoBehaviour {
 	private float step;
 
 
-
-
-
 	public void Update(){//just rotate towards mouse..
 	
 		//Mouse Position in the world. It's important to give it some distance from the camera. 
@@ -26,8 +23,7 @@ public class TurretControlScript : MonoBehaviour {
 		//Angle between mouse and this object
 		float angle = AngleBetweenPoints(transform.position, mouseWorldPosition);
 		
-		//Ta daa
-		print (angle);
+	
 		transform.rotation =  Quaternion.Euler (new Vector3(0f,0f,angle + 90));
 
 		transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
@@ -41,31 +37,6 @@ public class TurretControlScript : MonoBehaviour {
 		
 	}
 
-	//public void rotateTowardsUp(){
-	
-		//Vector3 mousePos = Input.mousePosition;
 
-
-		//transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.AngleAxis(90, Vector3.up), step);
-
-
-
-
-
-
-		//----step = speed * Time.deltaTime;//OK
-
-		//newDir = Vector3.RotateTowards (transform.localRotation.eulerAngles, new Vector3(0,1,0), -step, 0.0f);//??
-
-
-		//Debug.DrawRay(transform.position, newDir, Color.red);
-		//Quaternion rotation = Quaternion.LookRotation (transform.up);
-		//rotation.y = 0;
-		//---transform.rotation = Quaternion.RotateTowards (transform.rotation, Quaternion.AngleAxis(90, Vector3.up), step);
-		//transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-
-
-
-	//}
 
 }
