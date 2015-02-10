@@ -5,6 +5,7 @@ public class TurretShooting : MonoBehaviour
     public int damagePerShot = 20;
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
+	public GameObject laserShot;
 
 
     float timer;
@@ -20,7 +21,7 @@ public class TurretShooting : MonoBehaviour
 
     void Awake ()
     {
-        shootableMask = LayerMask.GetMask ("Shootable"); // use Layers to define shootable components
+        //shootableMask = LayerMask.GetMask ("Shootable"); // use Layers to define shootable components
         gunParticles = GetComponent<ParticleSystem> ();
         gunLine = GetComponent <LineRenderer> ();
         gunAudio = GetComponent<AudioSource> ();
@@ -50,14 +51,28 @@ public class TurretShooting : MonoBehaviour
         gunLight.enabled = false;
     }
 
-
+	private bool alternate = true;
+	private Transform cannon;
+	private float speed;
     void Shoot ()
     {
+		if (alternate){
+			cannon = transform.GetChild (2);
+			alternate = false;
+			}
+		else {
+			cannon = cannon = transform.GetChild (3);
+			alternate = true;
+		}
+		speed = 1;
+		GameObject laser =  Instantiate (laserShot, cannon.position, transform.rotation) as GameObject;
+		laser.rigidbody.velocity = cannon.forward * speed*10;
+
         timer = 0f;
 
         gunAudio.Play ();
 
-        gunLight.enabled = true;
+        /*gunLight.enabled = true;
 
         gunParticles.Stop ();
         gunParticles.Play ();
@@ -68,18 +83,8 @@ public class TurretShooting : MonoBehaviour
         shootRay.origin = transform.position;
         shootRay.direction = transform.forward;
 
-       // if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
-        //{
-           /* EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-            if(enemyHealth != null)
-            {
-                enemyHealth.TakeDamage (damagePerShot, shootHit.point);
-            }*/
-          //  gunLine.SetPosition (1, shootHit.point);
-        //}
-        //else
-        //{
-            gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
-        //}
+        gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+*/
+
     }
 }
