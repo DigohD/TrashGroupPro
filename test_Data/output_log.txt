@@ -18,7 +18,7 @@ Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\M
 Loading C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\DigohD\Documents\GitSecond\TrashGroupPro\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.053 seconds
+- Completed reload, in  0.058 seconds
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -28,11 +28,6 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at MPCamera.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
 Failed Network.Instantiate because we are not connected.
  
 (Filename:  Line: 2463)
@@ -113,761 +108,114 @@ Failed Network.Instantiate because we are not connected.
  
 (Filename:  Line: 2463)
 
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Failed Network.Instantiate because we are not connected.
- 
-(Filename:  Line: 2463)
-
-Running as server. Player ID is 0.
- 
-(Filename:  Line: 2484)
-
-Server Initialized!
+Refreshing!
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
-
-Allocating view ID AllocatedID: 1.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Attempting to connect to master server at 67.225.180.24:23466
- 
-(Filename:  Line: 2484)
 
 Connected to master server at 67.225.180.24:23466
  
 (Filename:  Line: 2484)
 
-Received identifier 0 from master server
+Incoming host list query response from master server.
  
 (Filename:  Line: 2484)
 
-Registration Successful
+Failed Network.Instantiate because we are not connected.
+ 
+(Filename:  Line: 2463)
+
+Failed Network.Instantiate because we are not connected.
+ 
+(Filename:  Line: 2463)
+
+Failed Network.Instantiate because we are not connected.
+ 
+(Filename:  Line: 2463)
+
+Failed Network.Instantiate because we are not connected.
+ 
+(Filename:  Line: 2463)
+
+Failed Network.Instantiate because we are not connected.
+ 
+(Filename:  Line: 2463)
+
+Running as client. No player ID set yet.
+ 
+(Filename:  Line: 2484)
+
+Failed Network.Instantiate because we are not connected.
+ 
+(Filename:  Line: 2463)
+
+Connected to 192.168.0.3:25002
+
+ 
+(Filename:  Line: 2484)
+
+CONNECTED!!!
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-Allocating view ID AllocatedID: 2.
+Allocating view ID AllocatedID: 150.
 
  
 (Filename:  Line: 2484)
 
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
+Set player ID to 1
 
  
 (Filename:  Line: 2484)
 
-Added RPC '__RPCNetworkInstantiate' to buffer.
+New scope index 0 is now in scope for AllocatedID: 150
  
 (Filename:  Line: 2484)
 
-Allocating view ID AllocatedID: 3.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 4.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 5.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 6.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 7.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 8.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 9.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 10.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 11.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 12.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 13.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 14.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 15.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-New connection established (192.168.0.3:64829)
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 0
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 0
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 0
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 1
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 2
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 3
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 4
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 5
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 6
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 7
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 8
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 9
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 10
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 11
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 12
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 13
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 14
- 
-(Filename:  Line: 2484)
-
-New scope index 0 is now in scope for AllocatedID: 15
- 
-(Filename:  Line: 2484)
-
-Sent initalization to player 1
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 16.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 17.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 18.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 19.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 20.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 21.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Sent host update to master server with identifier 0
- 
-(Filename:  Line: 2484)
-
-Received identifier 0 from master server
- 
-(Filename:  Line: 2484)
-
-Registration Successful
+1 Servers found!
  
 (Filename: C:/BuildAgent/work/d63dfc6385190b60/artifacts/StandalonePlayerGenerated/UnityEngineDebug.cpp Line: 49)
 
-Allocating view ID AllocatedID: 22.
+Allocating view ID AllocatedID: 151.
 
  
 (Filename:  Line: 2484)
 
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
+New scope index 0 is now in scope for AllocatedID: 151
+ 
+(Filename:  Line: 2484)
+
+Allocating view ID AllocatedID: 152.
 
  
 (Filename:  Line: 2484)
 
-Added RPC '__RPCNetworkInstantiate' to buffer.
+New scope index 0 is now in scope for AllocatedID: 152
  
 (Filename:  Line: 2484)
 
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 23.
+Allocating view ID AllocatedID: 153.
 
  
 (Filename:  Line: 2484)
 
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
+New scope index 0 is now in scope for AllocatedID: 153
+ 
+(Filename:  Line: 2484)
+
+Allocating view ID AllocatedID: 154.
 
  
 (Filename:  Line: 2484)
 
-Added RPC '__RPCNetworkInstantiate' to buffer.
+New scope index 0 is now in scope for AllocatedID: 154
  
 (Filename:  Line: 2484)
 
-Allocating view ID AllocatedID: 24.
-
+The server has disconnected from the client. Most likely the server has shut down.
  
-(Filename:  Line: 2484)
+(Filename:  Line: 745)
 
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
+Failed Network.Instantiate because we are not connected.
  
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 25.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 26.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 27.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 28.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 29.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 30.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 31.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 32.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 33.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 34.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
-
-Allocating view ID AllocatedID: 35.
-
- 
-(Filename:  Line: 2484)
-
-Sent RPC call '__RPCNetworkInstantiate' to all connected clients
-
- 
-(Filename:  Line: 2484)
-
-Added RPC '__RPCNetworkInstantiate' to buffer.
- 
-(Filename:  Line: 2484)
+(Filename:  Line: 2463)
 

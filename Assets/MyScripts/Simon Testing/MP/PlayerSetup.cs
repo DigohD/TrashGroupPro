@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerSetup : MonoBehaviour {
 
-
+	[RPC]
 	void PlayerSetupFunc(NetworkPlayer player){
 		if(player == Network.player){
 			enabled = true;

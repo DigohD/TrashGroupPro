@@ -10,6 +10,9 @@ public class InputScript : MonoBehaviour {
 	
 
 	void Update () {
+		if(!networkView.isMine)
+			return;
+
 		if (Input.GetKey ("w"))
 			ms.MoveUp ();
 		else if (Input.GetKey ("s"))
