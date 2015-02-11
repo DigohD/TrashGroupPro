@@ -9,11 +9,6 @@ public class TurretShooting : MonoBehaviour
 
 
     float timer;
-    Ray shootRay;
-    RaycastHit shootHit;
-    int shootableMask;
-    ParticleSystem gunParticles;
-    LineRenderer gunLine;
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
@@ -21,9 +16,7 @@ public class TurretShooting : MonoBehaviour
 
     void Awake ()
     {
-        //shootableMask = LayerMask.GetMask ("Shootable"); // use Layers to define shootable components
-        gunParticles = GetComponent<ParticleSystem> ();
-        gunLine = GetComponent <LineRenderer> ();
+     
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
     }
@@ -56,7 +49,10 @@ public class TurretShooting : MonoBehaviour
 	private float speed;
     void Shoot ()
     {
-		if (alternate){
+
+		PlayerStats stats = transform.GetComponentInParent<PlayerStats> ();
+
+		if (alternate){//alternate between the two cannons
 			cannon = transform.GetChild (2);
 			alternate = false;
 			}
@@ -67,7 +63,7 @@ public class TurretShooting : MonoBehaviour
 		speed = 1;
 		GameObject laser =  Instantiate (laserShot, cannon.position, cannon.transform.rotation) as GameObject;
 		laser.rigidbody.velocity = cannon.up * speed*10;
-
+		laser.GetComponent<shotHit> ().sender = stats.pName;
         timer = 0f;
 
         gunAudio.Play ();

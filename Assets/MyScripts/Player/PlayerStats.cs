@@ -8,13 +8,14 @@ public class PlayerStats : MonoBehaviour {
 	public float dmg;
 	public bool magnetOn = false;
 	public float health;
+	public string pName;
 
 	public List<GameObject> goList = new List<GameObject>();
 
 
 	
-	// Update is called once per frame
-	void start () {
+
+	void Start () {
 		speed = 3;
 		dmg = 2;
 		health = 100;
@@ -32,5 +33,14 @@ public class PlayerStats : MonoBehaviour {
 	}
 	public void magnetSwitch(){
 		magnetOn = !magnetOn;
+	}
+	public void takeDamage ( float incDmg ) {
+		health -= incDmg;
+		if (health <= 0) {
+			Destroy (this.gameObject);
+			print ("You suck");
+		
+		}
+			
 	}
 }
