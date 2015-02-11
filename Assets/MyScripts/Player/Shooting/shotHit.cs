@@ -7,11 +7,8 @@ public class shotHit : MonoBehaviour {
 	public float dmg;
 	// Use this for initialization
 
-	void Update(){
-		print ("penisnssis");
-	}
+
 	void OnTriggerEnter ( Collider other ) {
-		print ("hit");
 		dmg = 30;
 		if (other.tag == "Player") {
 			PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
