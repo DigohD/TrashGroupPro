@@ -14,7 +14,7 @@ public class TurretControlScript : MonoBehaviour {
 
 
 	public void Update(){//just rotate towards mouse..
-		if (networkView != null)						
+		if (networkView != null) // test purposes only						
 			if(!networkView.isMine)
 				return;
 
