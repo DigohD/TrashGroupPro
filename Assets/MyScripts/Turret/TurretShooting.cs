@@ -7,24 +7,23 @@ public class TurretShooting : MonoBehaviour
     public float range = 100f;
 	public GameObject laserShot;
 
-
     float timer;
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
 
-
     void Awake ()
     {
-     
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
     }
 
-
     void Update ()
     {
         timer += Time.deltaTime;
+
+		if(!networkView.isMine)
+			return;
 
 		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
         {
@@ -49,6 +48,8 @@ public class TurretShooting : MonoBehaviour
 	private float speed;
     void Shoot ()
     {
+		if(!networkView.isMine)
+			return;
 
 		PlayerStats stats = transform.GetComponentInParent<PlayerStats> ();
 
@@ -61,7 +62,7 @@ public class TurretShooting : MonoBehaviour
 			alternate = true;
 		}
 		speed = 1;
-		GameObject laser =  Instantiate (laserShot, cannon.position, cannon.transform.rotation) as GameObject;
+		GameObject laser =  Network.Instantiate (laserShot, cannon.position, cannon.transform.rotation, 0) as GameObject;
 		laser.rigidbody.velocity = cannon.up * speed*10;
 		laser.GetComponent<shotHit> ().sender = stats.pName;
         timer = 0f;

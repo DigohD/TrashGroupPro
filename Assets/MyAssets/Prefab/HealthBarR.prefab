@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21291674}
   m_Layer: 0
   m_Name: HealthBarR
-  m_TagString: Untagged
+  m_TagString: HealthBarR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ GameObject:
   - 212: {fileID: 21291676}
   m_Layer: 0
   m_Name: HealthBarG
-  m_TagString: Untagged
+  m_TagString: HealthBarG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
