@@ -972,7 +972,7 @@ NetworkView:
   m_GameObject: {fileID: 196414}
   m_Enabled: 1
   m_StateSynchronization: 1
-  m_Observed: {fileID: 5496396}
+  m_Observed: {fileID: 11496398}
   m_ViewID:
     m_ID: 0
     m_Type: 0
