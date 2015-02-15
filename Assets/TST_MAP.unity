@@ -12,7 +12,7 @@ SceneSettings:
     backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: .0832612589, g: .405204892, b: .566176474, a: 1}
   m_FogMode: 3
   m_FogDensity: .00499999989
@@ -503,8 +503,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 392386218}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 378.200012, y: 75.3000031, z: 151.699997}
-  m_LocalScale: {x: 30, y: 1, z: 30}
+  m_LocalPosition: {x: 773.900024, y: 75.3000031, z: 151.699997}
+  m_LocalScale: {x: 40, y: 1, z: 40}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
