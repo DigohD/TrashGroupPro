@@ -34,6 +34,9 @@ public class GameController : MonoBehaviour {
 	Collider[] spawnZone;
 	void SpawnTrash()
 	{
+		if(!Network.isMessageQueueRunning)
+			return;
+
 		int i = 0;
 		while (true && i<=5) {						
 			spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), spawnValues.z);

@@ -7,6 +7,12 @@ TagManager:
   - BodyPart
   - Hazard
   - Enemy
+<<<<<<< HEAD
+=======
+  - Gunshot
+  - HealthBarR
+  - HealthBarG
+>>>>>>> origin/Alpha-Branch
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

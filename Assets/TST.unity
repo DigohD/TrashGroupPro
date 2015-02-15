@@ -156,6 +156,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1453553837}
   m_RootOrder: 1
+<<<<<<< HEAD
 --- !u!1 &366432641
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +372,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   dmg: 1
+=======
+>>>>>>> origin/Alpha-Branch
 --- !u!1001 &590404056
 Prefab:
   m_ObjectHideFlags: 0
@@ -1014,6 +1017,7 @@ Transform:
   - {fileID: 142818900}
   - {fileID: 1844152959}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 5
 --- !u!1001 &1509261703
 Prefab:
@@ -1059,6 +1063,9 @@ Prefab:
   m_RootGameObject: {fileID: 1106402235}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+=======
+  m_RootOrder: 2
+>>>>>>> origin/Alpha-Branch
 --- !u!1 &1510487851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,10 +1225,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554cdc55eedcce04686a88d1baea4702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   tracked: {fileID: 2090906829}
   acceleration: .0500000007
   baseDistance: 10
   zoomAmount: 25
+=======
+  playerClass: {fileID: 187104, guid: 31700a0564ff12947a627b95c28ac68a, type: 2}
+>>>>>>> origin/Alpha-Branch
 --- !u!1 &1664174254
 GameObject:
   m_ObjectHideFlags: 0
