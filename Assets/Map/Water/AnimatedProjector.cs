@@ -11,9 +11,6 @@ public class AnimatedProjector : MonoBehaviour {
 	// The game object to follow
 	public GameObject player;
 
-	// The sea bed, or the ground
-	public GameObject seaBed;
-
 	private int frameIndex;
 	private Projector projector;
 
@@ -35,6 +32,7 @@ public class AnimatedProjector : MonoBehaviour {
 		projector.transform.position = new Vector3 (player.transform.position.x, 
 		                                            player.transform.position.y + baseHeight, 
 		                                            player.transform.position.z + 50);
+
 		// Set the farplane to so that the projector can reach the sea bed
 		projector.farClipPlane = projector.transform.position.y + 20;
 	}
