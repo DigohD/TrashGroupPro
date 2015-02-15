@@ -63,8 +63,8 @@ public class TurretShooting : MonoBehaviour
 		}
 		speed = 1;
 		GameObject laser =  (GameObject) Network.Instantiate (laserShot, cannon.position, cannon.transform.rotation, 0);
-		//laser.rigidbody.velocity = cannon.up * speed*10;
-		laser.GetComponent<shotHit> ().sender = stats.pName;
+		laser.rigidbody.velocity = cannon.up * speed*10;
+		//laser.GetComponent<shotHit> ().sender = stats.pName;
         timer = 0f;
 
         gunAudio.Play ();
