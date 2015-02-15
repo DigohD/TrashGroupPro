@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour {
 	
 
 	void Start () {
-		speed = 3;
+		speed = 6;
 		dmg = 2;
 		health = 100;
 
