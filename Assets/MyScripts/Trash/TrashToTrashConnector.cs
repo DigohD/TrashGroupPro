@@ -3,12 +3,10 @@ using System.Collections;
 
 public class TrashToTrashConnector : MonoBehaviour {
 
-
-
 	//public PlayerStats stats;
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Trash" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn) 
+		if (other.tag == "Trash" && this.tag == "BodyPart") 
 		{
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform.parent;

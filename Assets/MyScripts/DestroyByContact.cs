@@ -5,7 +5,7 @@ public class DestroyByContact : MonoBehaviour {
 
 	public GameObject explosion;
 
-	void OnTriggerExit(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player" || other.tag == "BodyPart") {
 

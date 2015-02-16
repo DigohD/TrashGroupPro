@@ -34,9 +34,6 @@ public class GameController : MonoBehaviour {
 	Collider[] spawnZone;
 	void SpawnTrash()
 	{
-		if(!Network.isMessageQueueRunning)
-			return;
-
 		int i = 0;
 		while (true && i<=5) {						
 			spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), spawnValues.z);
@@ -48,9 +45,9 @@ public class GameController : MonoBehaviour {
 			if (i <= 5) {
 				Quaternion spawnRotation = Quaternion.identity;
 				if (Random.value * 2 < 1)
-					Network.Instantiate (trash, spawnPosition, spawnRotation, 1);
+					Instantiate (trash, spawnPosition, spawnRotation);
 				else
-					Network.Instantiate (battery, spawnPosition, spawnRotation, 1);
+				Instantiate (battery, spawnPosition, spawnRotation);
 			}
 		}
 }

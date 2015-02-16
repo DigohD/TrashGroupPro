@@ -3,14 +3,14 @@ using System.Collections;
 
 public class Magnet : MonoBehaviour {
 
-	public PlayerStats stats;
-	//public bool isOn;
+
+	public bool isOn;
 	public GameObject position;
 	public float radius;
 
 
 	void FixedUpdate () {
-		if (stats.magnetOn) 
+		if (isOn) 
 		{
 			Collider[] magnetTrash = Physics.OverlapSphere (position.transform.position, radius);
 	
