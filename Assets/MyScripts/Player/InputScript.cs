@@ -29,11 +29,11 @@ public class InputScript : MonoBehaviour {
 		else if (Input.GetKey ("q"))
 			ms.RotateLeft ();
 
-		if (Input.GetMouseButtonDown (0))//fire all turrets when mouse button is pressed
+		/*if (Input.GetMouseButtonDown (0)){//fire all turrets when mouse button is pressed
 				if (stats.goList.Count > 0)
 						foreach (GameObject go in stats.goList)
 								go.GetComponent<TurretControlScript> ().fire ();
-
+		}*/
 
 		if (Input.GetKey ("left ctrl")&& magnetDelay >2){//disable on magneteffect as well as the ability to pile on new trash
 			print ("hollaa");

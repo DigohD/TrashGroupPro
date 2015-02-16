@@ -10,7 +10,7 @@ public class Magnet : MonoBehaviour {
 
 
 	void FixedUpdate () {
-		if (stats.magnetOn) 
+		if (networkView.isMine && stats.magnetOn) 
 		{
 			Collider[] magnetTrash = Physics.OverlapSphere (position.transform.position, radius);
 	

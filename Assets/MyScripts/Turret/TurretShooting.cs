@@ -25,7 +25,7 @@ public class TurretShooting : MonoBehaviour
 		if(!networkView.isMine)
 			return;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
+		if(Input.GetMouseButtonDown (0) && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
         {
             Shoot ();
         }

@@ -8,6 +8,7 @@ public class NetworkHandler : MonoBehaviour {
 	float refreshRequestLength = 3.0f;
 	HostData[] hostData;
 	public GameObject playerClass;
+	public GameObject gameControlClass;
 	
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
@@ -17,6 +18,7 @@ public class NetworkHandler : MonoBehaviour {
 	void OnServerInitialized(){
 		Debug.Log("Server Initialized!");
 		SpawnPlayer(Network.player);
+		createGameController();
 	}
 	
 	void OnMasterServerEvent(MasterServerEvent masterServerEvent){
@@ -57,6 +59,10 @@ public class NetworkHandler : MonoBehaviour {
 		NetworkView playerNetworkView = playerInstance.networkView;
 		playerNetworkView.RPC("PlayerSetupFunc", RPCMode.AllBuffered, newPlayer);
 	}*/
+
+	void createGameController(){
+		GameObject gameInstance = (GameObject) Network.Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+	}
 
 	void SpawnPlayer(NetworkPlayer newPlayer){
 		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
