@@ -41,10 +41,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trash: {fileID: 100000, guid: 058321f2c1e48d140b133a660251c5bb, type: 2}
   battery: {fileID: 125746, guid: 3e269c16d6d2c39428ae4e01ae260e15, type: 2}
-  spawnValues: {x: 10, y: 6, z: 0}
-  trashCount: 10
-  spawnWait: .100000001
+  posSpawnValues: {x: 95, y: 15, z: 2}
+  negSpawnValues: {x: 5, y: 3, z: 2}
+  trashCount: 21
+  spawnWait: 0
   waveWait: 2
+  initialSpawn: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
