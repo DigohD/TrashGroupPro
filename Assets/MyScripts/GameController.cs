@@ -5,14 +5,16 @@ public class GameController : MonoBehaviour {
 
 	public GameObject trash;
 	public GameObject battery;
-	public Vector3 spawnValues;
+	public Vector3 posSpawnValues;
+	public Vector3 negSpawnValues;
 	public int trashCount;
 	public float spawnWait;
 	//public float startWait;
 	public float waveWait;
+	public bool initialSpawning;
 	
 	void Start()
-	{
+	{	
 		StartCoroutine (SpawnCont ());
 	}
 
@@ -21,6 +23,14 @@ public class GameController : MonoBehaviour {
 		//yield return new WaitForSeconds (startWait);
 		while (true)
 		{
+			if(initialSpawning){
+				for (int i = 0; i < trashCount; i++)
+				{
+					SpawnTrash ();
+					yield return new WaitForSeconds (spawnWait);
+				}break;
+			}
+
 			for (int i = 0; i < trashCount; i++)
 			{
 				SpawnTrash ();
@@ -39,7 +49,7 @@ public class GameController : MonoBehaviour {
 
 		int i = 0;
 		while (true && i<=5) {						
-			spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), spawnValues.z);
+			spawnPosition = new Vector3 (Random.Range (negSpawnValues.x, posSpawnValues.x), Random.Range (negSpawnValues.y, posSpawnValues.y), posSpawnValues.z);
 			spawnZone = Physics.OverlapSphere (spawnPosition, 2);//2 hardcoded for now, just to make sure stuff don't spawn onto eachother
 			i++;
 			if (spawnZone.Length == 0)
