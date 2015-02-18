@@ -9,7 +9,7 @@ public class AttachTrash : MonoBehaviour {
 
 	void OnTriggerEnter( Collider other)
 	{
-		if (other.tag == "Trash" && stats.magnetOn) 
+		if (other.tag == "Trash" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
 		{
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform;
