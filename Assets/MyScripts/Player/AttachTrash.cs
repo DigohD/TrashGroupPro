@@ -6,7 +6,6 @@ public class AttachTrash : MonoBehaviour {
 
 	public PlayerStats stats;	
 
-
 	void OnTriggerEnter( Collider other)
 	{
 		if (other.tag == "Trash" && stats.magnetOn) 
@@ -16,7 +15,9 @@ public class AttachTrash : MonoBehaviour {
 			
 			TrashStats tStats = other.GetComponent<TrashStats>(); //Add attributes to player
 			stats.addAttributes(tStats.speed);
-			
+
+			other.rigidbody.Sleep();
+
 			//Set up the joint
 			FixedJoint joint;
 			joint = this.gameObject.AddComponent<FixedJoint>();

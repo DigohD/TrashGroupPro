@@ -84,7 +84,6 @@ public class NetworkHandler : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		
 		if(Network.isClient)
 			GUILayout.Label("Client");
 		if(Network.isServer)
@@ -108,7 +107,6 @@ public class NetworkHandler : MonoBehaviour {
 				}
 			}
 		}
-		
 	}
 	
 	void OnPlayerDisconnected(NetworkPlayer player){
