@@ -19,6 +19,7 @@ public class NetworkHandler : MonoBehaviour {
 	void OnServerInitialized(){
 		Debug.Log("Server Initialized!");
 		//serverUI.transform.GetChild("Waiting");
+		startGame();
 	}
 
 	void startGame(){
