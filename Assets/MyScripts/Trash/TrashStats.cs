@@ -11,12 +11,6 @@ public class TrashStats : MonoBehaviour {
 
 	void start ()
 	{
-		if(Network.isClient){
-			enabled = false;
-		}else if(Network.isServer){
-			enabled = true;
-		}
-
 		//health = 10;
 		//speed = 1;
 	}
