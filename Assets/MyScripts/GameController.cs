@@ -11,10 +11,10 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	//public float startWait;
 	public float waveWait;
-	public bool initialSpawn;
+	public bool initialSpawning;
 	
 	void Start()
-	{
+	{	
 		StartCoroutine (SpawnCont ());
 	}
 
@@ -22,14 +22,15 @@ public class GameController : MonoBehaviour {
 	{
 		//yield return new WaitForSeconds (startWait);
 		while (true)
-		{	
-			if(initialSpawn){
+		{
+			if(initialSpawning){
 				for (int i = 0; i < trashCount; i++)
 				{
 					SpawnTrash ();
 					yield return new WaitForSeconds (spawnWait);
 				}break;
 			}
+
 			for (int i = 0; i < trashCount; i++)
 			{
 				SpawnTrash ();
