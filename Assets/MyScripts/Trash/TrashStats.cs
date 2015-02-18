@@ -31,7 +31,16 @@ public class TrashStats : MonoBehaviour {
 		ownerID = newOwnerID;
 		networkView.RPC("rpcTaken", RPCMode.Others, 0, newOwnerID);
 	}
+
+	public void takeDamage ( float incDmg ) {
+		health -= incDmg;
+		if (health <= 0) {
+		
+			Network.Destroy (this.gameObject);
 	
+		}
+		
+	}
 	[RPC]
 	void rpcTaken(int wasted, string newOwnerID){
 		isTaken = true;

@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sender: 
-  dmg: 30
+  dmg: 20
 --- !u!148 &14809668
 NetworkView:
   m_ObjectHideFlags: 1

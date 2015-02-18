@@ -9,16 +9,21 @@ public class shotHit : MonoBehaviour {
 
 
 	void OnTriggerEnter ( Collider other ) {
-		dmg = 30;
+
 		if (other.tag == "Player") {
-			PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
-			if(!(sender.Length < 3) && EnemyStats.ID != null && !EnemyStats.ID.Equals(this.sender)){
-				Debug.Log(this.sender + " hit: " + EnemyStats.ID);
-				EnemyStats.takeDamage(dmg);
-				//Destroy(other.gameObject);
-				Destroy(this.gameObject);
-			}
-		}
+						PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
+						if (!(sender.Length < 3) && EnemyStats.ID != null && !EnemyStats.ID.Equals (this.sender)) {
+								Debug.Log (this.sender + " hit: " + EnemyStats.ID);
+								EnemyStats.takeDamage (dmg);
+								Destroy (this.gameObject);
+						}
+				} else if (other.tag == "BodyPart") {
+				TrashStats tStats = other.GetComponent<TrashStats> ();
+				if (!(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals (this.sender)) {
+					tStats.takeDamage (dmg);
+					Destroy (this.gameObject);
+				}
+				}
 	}
 
 	public void setSender(string newSender){
