@@ -9,8 +9,7 @@ public class NetworkHandler : MonoBehaviour {
 	HostData[] hostData;
 	public GameObject playerClass;
 	public GameObject gameControlClass;
-	private int playerCount = 1;
-
+	
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
 		MasterServer.RegisterHost(server_ID, "Trash Heap MP", "Test for server code");
@@ -67,23 +66,17 @@ public class NetworkHandler : MonoBehaviour {
 
 	void SpawnPlayer(NetworkPlayer newPlayer){
 		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(10f, 3f, 2f), Quaternion.identity, 0);
+		playerInstance.transform.rotation =  Quaternion.Euler(-90, 0, 0);
 
 		PlayerStats ps = (PlayerStats) playerInstance.GetComponent("PlayerStats");
 		ps.setID(newPlayer.ipAddress);
-
-		playerInstance.transform.rotation =  Quaternion.Euler(-90, 0, 0);
 
 		PlayerSetupServer(playerInstance);
 		
 		//NetworkView playerNetworkView = playerInstance.networkView;
 		//playerNetworkView.RPC("PlayerSetupFunc", RPCMode.AllBuffered, newPlayer);
 	}
-
-	[RPC]
-	void updatePlayerCount(){
-
-	}
-
+	
 	void PlayerSetupServer(GameObject player){
 		if (player.networkView.isMine)
 		{

@@ -10,7 +10,7 @@ public class TrashStats : MonoBehaviour {
 	public float boost;
 	public bool isTaken;
 
-	private string ownerID;
+	public string ownerID;
 
 	void start ()
 	{
@@ -27,10 +27,11 @@ public class TrashStats : MonoBehaviour {
 
 	public void setTaken(string newOwnerID){
 		isTaken = true;
+		networkView.RPC("rpcTaken", RPCMode.Others, 0);
 		ownerID = newOwnerID;
 		networkView.RPC("rpcTaken", RPCMode.Others, 0, newOwnerID);
 	}
-
+	
 	[RPC]
 	void rpcTaken(int wasted, string newOwnerID){
 		isTaken = true;
