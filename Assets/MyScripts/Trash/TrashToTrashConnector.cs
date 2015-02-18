@@ -14,6 +14,9 @@ public class TrashToTrashConnector : MonoBehaviour {
 			NetworkViewID id = Network.AllocateViewID();
 			
 			other.networkView.viewID = id;
+
+			networkView.RPC("synchTTID", RPCMode.Others, id);
+
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform.parent;
 
@@ -28,5 +31,10 @@ public class TrashToTrashConnector : MonoBehaviour {
 			joint.connectedBody = other.rigidbody;
 			other.tag = "BodyPart";
 		}
+	}
+
+	[RPC]
+	void synchTTID(NetworkViewID id){
+		gameObject.networkView.viewID = id;
 	}
 }

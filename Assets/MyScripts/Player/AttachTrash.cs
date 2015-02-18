@@ -11,10 +11,10 @@ public class AttachTrash : MonoBehaviour {
 	{
 		if (other.tag == "Trash" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
 		{
-		
 			NetworkViewID id = Network.AllocateViewID();
-			
 			other.networkView.viewID = id;
+
+			networkView.RPC("synchID", RPCMode.Others, id);
 
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform;
@@ -28,7 +28,11 @@ public class AttachTrash : MonoBehaviour {
 			joint.connectedBody = other.rigidbody;
 			other.tag = "BodyPart";
 		}
+	}
 
+	[RPC]
+	void synchID(NetworkViewID id){
+		gameObject.networkView.viewID = id;
 	}
 	                                  
 }
