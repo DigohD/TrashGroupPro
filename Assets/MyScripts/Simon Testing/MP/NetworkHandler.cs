@@ -34,11 +34,6 @@ public class NetworkHandler : MonoBehaviour {
 			setPhase(7);
 	}
 
-	void startGame(){
-		SpawnPlayer(Network.player, userName);
-		createGameController();
-	}
-
 	void OnMasterServerEvent(MasterServerEvent masterServerEvent){
 		if(masterServerEvent == MasterServerEvent.RegistrationSucceeded){
 			Debug.Log("Registration Successful");
@@ -216,6 +211,7 @@ public class NetworkHandler : MonoBehaviour {
 		}else if(phase == 7){
 			if(Network.isServer)
 				networkView.RPC("rpcSpawnPlayers", RPCMode.All, 0);
+			createGameController();
 			phase = 8;
 		}
 	}
