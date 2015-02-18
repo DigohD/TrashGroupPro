@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6575748}
   - 148: {fileID: 14809668}
   - 114: {fileID: 11470590}
+  - 114: {fileID: 11477354}
   m_Layer: 0
   m_Name: laserShot2
   m_TagString: Gunshot
@@ -127,6 +128,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+--- !u!114 &11477354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e39791283601247889d9f514ca5ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sender: 
+  dmg: 30
 --- !u!148 &14809668
 NetworkView:
   m_ObjectHideFlags: 1

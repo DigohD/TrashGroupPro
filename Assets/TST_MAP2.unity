@@ -1064,7 +1064,6 @@ GameObject:
   - 92: {fileID: 307628839}
   - 124: {fileID: 307628838}
   - 81: {fileID: 307628837}
-  - 114: {fileID: 307628836}
   - 114: {fileID: 307628835}
   - 114: {fileID: 307628834}
   - 114: {fileID: 307628833}
@@ -1088,6 +1087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerClass: {fileID: 137890, guid: 070bd7cec36521d40a9444d2c6a97d81, type: 2}
   gameControlClass: {fileID: 119536, guid: 6971654f059d47a4bbe8539e0edd8a87, type: 2}
+  serverUI: {fileID: 0}
 --- !u!114 &307628834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,17 +1111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracked: {fileID: 0}
---- !u!114 &307628836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 307628832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 554cdc55eedcce04686a88d1baea4702, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  roof: {fileID: 0}
+  roofOffset: 0
 --- !u!81 &307628837
 AudioListener:
   m_ObjectHideFlags: 0
