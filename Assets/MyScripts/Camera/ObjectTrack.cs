@@ -6,11 +6,11 @@ public class ObjectTrack : MonoBehaviour {
 	// The game object to follow
 	public GameObject tracked;
 	// The follow "speed", less acceleration leads to elastic follow movement
-	float acceleration = 0.05f;
+	float acceleration = 0.1f;
 	// The distance from the camera to the object
-	float baseDistance = 10f;
+	float baseDistance = 3f;
 	// The amount the camera zooms out due to speed of the object
-	float zoomAmount = 25f;
+	float zoomAmount = 10f;
 	
 	private Vector3 velocity = new Vector3(0, 0, 0);
 	
@@ -46,7 +46,7 @@ public class ObjectTrack : MonoBehaviour {
 			extraDistance = velocity.magnitude * zoomAmount;
 			
 			// Set the new camera position by adding velocity
-			gameObject.transform.position = (gameObject.transform.position + velocity);
+			gameObject.transform.position = (targetPos + velocity);
 
 			// Set depth of Camera, adding extra distance
 			gameObject.transform.position = new Vector3(

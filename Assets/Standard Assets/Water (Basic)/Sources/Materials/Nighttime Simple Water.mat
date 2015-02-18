@@ -76,12 +76,12 @@ Material:
         second: 1
       data:
         first:
-          name: _WaveScale
-        second: .0702830181
-      data:
-        first:
           name: _Highlight
         second: 33.2075462
+      data:
+        first:
+          name: _WaveScale
+        second: .0702830181
       data:
         first:
           name: _bScale
