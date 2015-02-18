@@ -1111,8 +1111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracked: {fileID: 0}
+  baseDistance: 10
   roof: {fileID: 1707025783}
-  roofOffset: 0
+  floor: {fileID: 1512771342}
+  offset: 2
 --- !u!81 &307628837
 AudioListener:
   m_ObjectHideFlags: 0
