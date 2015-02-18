@@ -48,6 +48,13 @@ public class PlayerStats : MonoBehaviour {
 	public void takeDamage ( float incDmg ) {
 		health -= incDmg;
 		if (health <= 0) {
+			Camera cam = GetComponent<Camera>();
+			if(networkView.isMine){
+				Destroy(cam);
+			}
+			else{
+				Destroy(cam);
+			}
 			Destroy (this.gameObject);
 			print ("You suck");
 		
