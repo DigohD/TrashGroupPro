@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerSetup : MonoBehaviour {
+public class PlayerSetup2 : MonoBehaviour {
 
 	[RPC]
 	void PlayerSetupFunc(NetworkPlayer player){
