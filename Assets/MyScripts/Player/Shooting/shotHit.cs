@@ -15,13 +15,13 @@ public class shotHit : MonoBehaviour {
 			if (!(sender.Length < 3) && !(EnemyStats.ID.Length < 3) && !EnemyStats.ID.Equals (this.sender)) {
 								Debug.Log (this.sender + " hit: " + EnemyStats.ID);
 								EnemyStats.takeDamage (dmg);
-								Destroy (this.gameObject);
+								Network.Destroy (this.gameObject);
 						}
 				} else if (other.tag == "BodyPart") {
 				TrashStats tStats = other.GetComponent<TrashStats> ();
 				if (!(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals (this.sender)) {
 					tStats.takeDamage (dmg);
-					Destroy (this.gameObject);
+					Network.Destroy (this.gameObject);
 				}
 				}
 	}
