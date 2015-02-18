@@ -18,7 +18,7 @@ public class NetworkHandler : MonoBehaviour {
 	string userName = "";
 	int phase = 0;
 
-	bool connected, playerSpawned;
+	bool connected, playerSpawned, singleTesting;
 
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
@@ -28,7 +28,10 @@ public class NetworkHandler : MonoBehaviour {
 	void OnServerInitialized(){
 		print("Server Initialized!");
 		connected = false;
-		setPhase(1);
+		if(!singleTesting)
+			setPhase(1);
+		else
+			setPhase(7);
 	}
 
 	void startGame(){
@@ -119,14 +122,20 @@ public class NetworkHandler : MonoBehaviour {
 			return;
 
 
-		userName = GUI.TextField(new Rect (25f, 105f, 150f, 25f), userName, 25);
+		userName = GUI.TextField(new Rect (25f, 145f, 150f, 25f), userName, 25);
 
 		if(!userName.Equals("") && GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
+			singleTesting = false;
 			StartServer();
 		}
 		
 		if(!userName.Equals("") && GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
 			StartCoroutine(RefreshHostList());
+		}
+
+		if(!userName.Equals("") && GUI.Button(new Rect(25f, 105f, 150f, 30f), "Single Player Testing")){
+			singleTesting = true;
+			StartServer();
 		}
 		
 		if(hostData != null){
@@ -165,9 +174,9 @@ public class NetworkHandler : MonoBehaviour {
 
 	void Update () {
 		if(phase == 1){
-			//if(connected)
+			if(connected)
 				setPhase(2);
-			//else
+			else
 				ui.setWaiting();
 		}else if(phase == 2){
 			ui.setGetReady();
