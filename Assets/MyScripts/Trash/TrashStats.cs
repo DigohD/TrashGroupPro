@@ -22,4 +22,14 @@ public class TrashStats : MonoBehaviour {
 		if (health == 0)//This will be implemented better in the future
 						Destroy (this);
 	}
+
+	public void setTaken(){
+		isTaken = true;
+		networkView.RPC("rpcTaken", RPCMode.Others, 0);
+	}
+
+	[RPC]
+	void rpcTaken(int wasted){
+		isTaken = true;
+	}
 }
