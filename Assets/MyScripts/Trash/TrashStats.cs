@@ -8,9 +8,11 @@ public class TrashStats : MonoBehaviour {
 	//public float scale;
 	public float speed;
 	public float boost;
+	public bool isTaken;
 
 	void start ()
 	{
+		isTaken = false;
 		//health = 10;
 		//speed = 1;
 	}
