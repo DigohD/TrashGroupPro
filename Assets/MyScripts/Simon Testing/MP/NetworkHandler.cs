@@ -9,7 +9,8 @@ public class NetworkHandler : MonoBehaviour {
 	HostData[] hostData;
 	public GameObject playerClass;
 	public GameObject gameControlClass;
-	
+	public GameObject serverUI;
+
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
 		MasterServer.RegisterHost(server_ID, "Trash Heap MP", "Test for server code");
@@ -17,10 +18,14 @@ public class NetworkHandler : MonoBehaviour {
 	
 	void OnServerInitialized(){
 		Debug.Log("Server Initialized!");
+		serverUI.transform.GetChild("Waiting");
+	}
+
+	void startGame(){
 		SpawnPlayer(Network.player);
 		createGameController();
 	}
-	
+
 	void OnMasterServerEvent(MasterServerEvent masterServerEvent){
 		if(masterServerEvent == MasterServerEvent.RegistrationSucceeded){
 			Debug.Log("Registration Successful");
