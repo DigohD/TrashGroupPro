@@ -12,10 +12,10 @@ public class TrashToTrashConnector : MonoBehaviour {
 		   && transform.parent.GetComponent<NetworkView>().isMine) 
 		{
 			NetworkViewID id = Network.AllocateViewID();
-			
+			NetworkViewID oldID = other.networkView.viewID;
 			other.networkView.viewID = id;
 
-			networkView.RPC("synchTTID", RPCMode.Others, id);
+			networkView.RPC("synchTTID", RPCMode.Others, oldID, id);
 
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform.parent;
@@ -34,7 +34,9 @@ public class TrashToTrashConnector : MonoBehaviour {
 	}
 
 	[RPC]
-	void synchTTID(NetworkViewID id){
-		gameObject.networkView.viewID = id;
+	void synchTTID(NetworkViewID oldID, NetworkViewID id){
+		NetworkView view = NetworkView.Find(oldID);
+		view.viewID = id;
+		Debug.Log("AttachTrash SynchID CAlled!");
 	}
 }
