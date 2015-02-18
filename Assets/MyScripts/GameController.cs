@@ -5,11 +5,13 @@ public class GameController : MonoBehaviour {
 
 	public GameObject trash;
 	public GameObject battery;
-	public Vector3 spawnValues;
+	public Vector3 posSpawnValues;
+	public Vector3 negSpawnValues;
 	public int trashCount;
 	public float spawnWait;
 	//public float startWait;
 	public float waveWait;
+	public bool initialSpawn;
 	
 	void Start()
 	{
@@ -20,7 +22,14 @@ public class GameController : MonoBehaviour {
 	{
 		//yield return new WaitForSeconds (startWait);
 		while (true)
-		{
+		{	
+			if(initialSpawn){
+				for (int i = 0; i < trashCount; i++)
+				{
+					SpawnTrash ();
+					yield return new WaitForSeconds (spawnWait);
+				}break;
+			}
 			for (int i = 0; i < trashCount; i++)
 			{
 				SpawnTrash ();
@@ -39,7 +48,7 @@ public class GameController : MonoBehaviour {
 
 		int i = 0;
 		while (true && i<=5) {						
-			spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), Random.Range (-spawnValues.y, spawnValues.y), spawnValues.z);
+			spawnPosition = new Vector3 (Random.Range (negSpawnValues.x, posSpawnValues.x), Random.Range (negSpawnValues.y, posSpawnValues.y), posSpawnValues.z);
 			spawnZone = Physics.OverlapSphere (spawnPosition, 2);//2 hardcoded for now, just to make sure stuff don't spawn onto eachother
 			i++;
 			if (spawnZone.Length == 0)
@@ -47,10 +56,14 @@ public class GameController : MonoBehaviour {
 			}
 			if (i <= 5) {
 				Quaternion spawnRotation = Quaternion.identity;
-				if (Random.value * 2 < 1)
-					Instantiate (trash, spawnPosition, spawnRotation);
-				else
-					Instantiate (battery, spawnPosition, spawnRotation);
+				if (Random.value * 2 < 1){
+					GameObject t = (GameObject) Network.Instantiate (trash, spawnPosition, spawnRotation, 0);
+					t.name="Trash";
+				}
+				else{
+					GameObject t = (GameObject) Network.Instantiate (battery, spawnPosition, spawnRotation, 0);
+					t.name="Trash Battery";
+				}
 			}
 		}
 }

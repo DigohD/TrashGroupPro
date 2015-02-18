@@ -8,15 +8,11 @@ public class TrashStats : MonoBehaviour {
 	//public float scale;
 	public float speed;
 	public float boost;
+	public bool isTaken;
 
 	void start ()
 	{
-		if(Network.isClient){
-			enabled = false;
-		}else if(Network.isServer){
-			enabled = true;
-		}
-
+		isTaken = false;
 		//health = 10;
 		//speed = 1;
 	}
@@ -25,5 +21,15 @@ public class TrashStats : MonoBehaviour {
 	void Update () {
 		if (health == 0)//This will be implemented better in the future
 						Destroy (this);
+	}
+
+	public void setTaken(){
+		isTaken = true;
+		networkView.RPC("rpcTaken", RPCMode.Others, 0);
+	}
+
+	[RPC]
+	void rpcTaken(int wasted){
+		isTaken = true;
 	}
 }
