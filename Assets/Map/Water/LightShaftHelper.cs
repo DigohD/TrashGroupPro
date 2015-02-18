@@ -23,7 +23,7 @@ public class LightShaftHelper : MonoBehaviour {
 	{
 		transform.position = new Vector3(camera.transform.position.x,
 		                                 transform.position.y,
-		                                 transform.position.z);
+		                                 (camera.transform.position.z + 1.5f));
 
 	}
 }
