@@ -56,7 +56,7 @@ public class TurretShooting : MonoBehaviour
 		if (alternate){//alternate between the two cannons
 			cannon = transform.GetChild (2);
 			alternate = false;
-			}
+		}
 		else {
 			cannon = cannon = transform.GetChild (3);
 			alternate = true;
@@ -64,7 +64,8 @@ public class TurretShooting : MonoBehaviour
 		speed = 1;
 		GameObject laser =  (GameObject) Network.Instantiate (laserShot, cannon.position, cannon.transform.rotation, 0);
 		laser.rigidbody.velocity = cannon.up * speed*10;
-		laser.GetComponent<shotHit> ().sender = stats.ID;
+		shotHit sh = (shotHit) laser.GetComponent("shotHit");
+		sh.setSender(stats.ID);
         timer = 0f;
 
         gunAudio.Play ();

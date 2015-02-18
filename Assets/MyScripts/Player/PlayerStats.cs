@@ -22,12 +22,12 @@ public class PlayerStats : MonoBehaviour {
 
 	public void setID(string newID){
 		ID = newID;
-		networkView.RPC("setPNetworkID", RPCMode.OthersBuffered, newID);
+		networkView.RPC("setPNetworkID", RPCMode.AllBuffered, newID);
 	}
 	
 	[RPC]
 	void setPNetworkID(string newID){
-		Debug.Log("Set New ID" + newID);
+		//Debug.Log("Set New ID" + newID);
 		ID = newID;
 	}
 

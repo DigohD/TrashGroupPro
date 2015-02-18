@@ -13,19 +13,21 @@ public class NetworkHandler : MonoBehaviour {
 
 	public ArrayList clientList = new ArrayList();
 
+	string userName = "";
+
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
 		MasterServer.RegisterHost(server_ID, "Trash Heap MP", "Test for server code");
 	}
 	
 	void OnServerInitialized(){
-		Debug.Log("Server Initialized!");
+		print("Server Initialized!");
 		//serverUI.transform.GetChild("Waiting");
 		startGame();
 	}
 
 	void startGame(){
-		SpawnPlayer(Network.player);
+		SpawnPlayer(Network.player, userName);
 		createGameController();
 	}
 
@@ -72,12 +74,12 @@ public class NetworkHandler : MonoBehaviour {
 		GameObject gameInstance = (GameObject) Network.Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
 	}
 
-	void SpawnPlayer(NetworkPlayer newPlayer){
+	void SpawnPlayer(NetworkPlayer newPlayer, string newUserName){
 		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(10f, 3f, 2f), Quaternion.identity, 0);
 		playerInstance.transform.rotation =  Quaternion.Euler(-90, 0, 0);
 
 		PlayerStats ps = (PlayerStats) playerInstance.GetComponent("PlayerStats");
-		ps.setID(newPlayer.ipAddress);
+		ps.setID(newUserName);
 
 		PlayerSetupServer(playerInstance);
 		
@@ -93,7 +95,9 @@ public class NetworkHandler : MonoBehaviour {
 			ot.tracked = player;
 		}
 	}
-	
+
+
+
 	void OnGUI() {
 		
 		if(Network.isClient)
@@ -103,23 +107,25 @@ public class NetworkHandler : MonoBehaviour {
 		
 		if(Network.isClient || Network.isServer)
 			return;
-		
-		if(GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
+
+
+		userName = GUI.TextField(new Rect (25f, 105f, 150f, 25f), userName, 25);
+
+		if(!userName.Equals("") && GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
 			StartServer();
 		}
 		
-		if(GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
+		if(!userName.Equals("") && GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
 			StartCoroutine(RefreshHostList());
 		}
 		
 		if(hostData != null){
 			for(var i = 0; i < hostData.Length; i++){
-				if(GUI.Button(new Rect(Screen.width/2, 65f * i, 300f, 30f), hostData[i].gameName)){
+				if(!userName.Equals("") && GUI.Button(new Rect(Screen.width/2, 65f * i, 300f, 30f), hostData[i].gameName)){
 					Network.Connect(hostData[i]);
 				}
 			}
 		}
-		
 	}
 	
 	void OnPlayerDisconnected(NetworkPlayer player){
@@ -132,8 +138,7 @@ public class NetworkHandler : MonoBehaviour {
 	}
 
 	void OnConnectedToServer(){
-		Debug.Log("CONNECTED!!!");
-		SpawnPlayer(Network.player);
+		SpawnPlayer(Network.player, userName);
 	}
 	
 	void OnApplicationQuit(){

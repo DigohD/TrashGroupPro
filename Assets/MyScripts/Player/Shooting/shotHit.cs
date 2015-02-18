@@ -14,7 +14,7 @@ public class shotHit : MonoBehaviour {
 			PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
 			Debug.Log(EnemyStats.ID);
 			Debug.Log(this.sender);
-			if(EnemyStats.ID != this.sender){
+			if(!EnemyStats.ID.Equals(this.sender)){
 				EnemyStats.takeDamage(dmg);
 				//Destroy(other.gameObject);
 				Destroy(this.gameObject);
@@ -23,6 +23,14 @@ public class shotHit : MonoBehaviour {
 		}
 	}
 
+	public void setSender(string newSender){
+		networkView.RPC ("rpcSetSender", RPCMode.All, newSender);
+	}
+
+	[RPC]
+	void rpcSetSender(string newSender){
+		sender = newSender;
+	}
 
 
 }
