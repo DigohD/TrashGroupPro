@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracked: {fileID: 0}
-  roof: {fileID: 0}
+  roof: {fileID: 1707025783}
   roofOffset: 0
 --- !u!81 &307628837
 AudioListener:

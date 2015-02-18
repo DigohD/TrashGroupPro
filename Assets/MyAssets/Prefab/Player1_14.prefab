@@ -682,8 +682,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11437888}
-  trash: {fileID: 100000, guid: 058321f2c1e48d140b133a660251c5bb, type: 2}
-  trashBattery: {fileID: 125746, guid: 3e269c16d6d2c39428ae4e01ae260e15, type: 2}
 --- !u!114 &11437888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -698,8 +696,10 @@ MonoBehaviour:
   speed: 10
   dmg: 2
   magnetOn: 0
-  health: 0
+  health: 100
   pName: Player1
+  ID: 
+  explosion: {fileID: 100000, guid: 3349198dfac824d7190d4cd04d2a7305, type: 2}
   goList:
   - {fileID: 137894}
 --- !u!114 &11437890

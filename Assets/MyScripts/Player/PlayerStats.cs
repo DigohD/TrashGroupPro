@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour {
 	public float health;
 	public string pName;
 	public string ID;
+	public GameObject explosion;
 
 	public List<GameObject> goList = new List<GameObject>();
 
@@ -19,7 +20,7 @@ public class PlayerStats : MonoBehaviour {
 	void Start () {
 		speed = 3;
 		dmg = 2;
-		health = 100;
+		//health = 100;
 
 	}
 
@@ -56,6 +57,7 @@ public class PlayerStats : MonoBehaviour {
 				Destroy(cam);
 			}
 			Destroy (this.gameObject);
+			Instantiate(explosion, transform.position, transform.rotation);
 			print ("You suck");
 		
 		}
