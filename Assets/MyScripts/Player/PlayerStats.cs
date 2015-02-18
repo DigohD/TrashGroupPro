@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour {
 			else{
 				Destroy(cam);
 			}
-			Destroy (this.gameObject);
+			Network.Destroy (this.gameObject);
 			Instantiate(explosion, transform.position, transform.rotation);
 			print ("You suck");
 		
