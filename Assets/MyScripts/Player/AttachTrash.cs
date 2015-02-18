@@ -11,6 +11,11 @@ public class AttachTrash : MonoBehaviour {
 	{
 		if (other.tag == "Trash" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
 		{
+		
+			NetworkViewID id = Network.AllocateViewID();
+			
+			other.networkView.viewID = id;
+
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform;
 			

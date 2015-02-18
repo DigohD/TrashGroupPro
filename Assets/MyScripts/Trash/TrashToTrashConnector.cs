@@ -11,6 +11,9 @@ public class TrashToTrashConnector : MonoBehaviour {
 		if(other.tag == "Trash" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
 		   && transform.parent.GetComponent<NetworkView>().isMine) 
 		{
+			NetworkViewID id = Network.AllocateViewID();
+			
+			other.networkView.viewID = id;
 			//Set the piece of thrash as a child to the player gameobject
 			other.transform.parent = this.transform.parent;
 
