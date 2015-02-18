@@ -48,9 +48,9 @@ public class GameController : MonoBehaviour {
 			if (i <= 5) {
 				Quaternion spawnRotation = Quaternion.identity;
 				if (Random.value * 2 < 1)
-					Instantiate (trash, spawnPosition, spawnRotation);
+					Network.Instantiate (trash, spawnPosition, spawnRotation, 0);
 				else
-					Instantiate (battery, spawnPosition, spawnRotation);
+					Network.Instantiate (battery, spawnPosition, spawnRotation, 0);
 			}
 		}
 }
