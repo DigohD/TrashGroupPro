@@ -12,7 +12,8 @@ public class shotHit : MonoBehaviour {
 		dmg = 30;
 		if (other.tag == "Player") {
 			PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
-
+			Debug.Log(EnemyStats.ID);
+			Debug.Log(this.sender);
 			if(EnemyStats.ID != this.sender){
 				EnemyStats.takeDamage(dmg);
 				//Destroy(other.gameObject);
