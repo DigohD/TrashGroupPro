@@ -11,6 +11,8 @@ public class NetworkHandler : MonoBehaviour {
 	public GameObject gameControlClass;
 	public GameObject serverUI;
 
+	public ArrayList clientList = new ArrayList();
+
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
 		MasterServer.RegisterHost(server_ID, "Trash Heap MP", "Test for server code");
@@ -126,7 +128,7 @@ public class NetworkHandler : MonoBehaviour {
 	}
 	
 	void OnPlayerConnected(NetworkPlayer player){
-		//SpawnPlayer(player);
+
 	}
 
 	void OnConnectedToServer(){
@@ -143,7 +145,7 @@ public class NetworkHandler : MonoBehaviour {
 			Network.Disconnect(200);
 		}
 	}
-	
+
 	void Update () {
 		
 	}
