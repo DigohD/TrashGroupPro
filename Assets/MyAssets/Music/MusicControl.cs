@@ -39,7 +39,7 @@ public class MusicControl : MonoBehaviour {
 					shortest = dist;
 			}
 
-		if(shortest < 30){
+		if(shortest < 15){
 			goAmb = false;
 			goBattle = true;
 		}else{
