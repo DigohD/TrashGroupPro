@@ -50,17 +50,17 @@ public class MusicControl : MonoBehaviour {
 		}
 
 		if(goAmb && ambient.volume < volume){
-			ambient.volume = ambient.volume + 0.0008f;
+			ambient.volume = ambient.volume + 0.0003f;
 		}
 		if(goAmb && battle.volume > 0f){
-			battle.volume = battle.volume - 0.0008f;
+			battle.volume = battle.volume - 0.0003f;
 		}
 
 		if(goBattle && ambient.volume > 0f){
-			ambient.volume = ambient.volume - 0.0008f;
+			ambient.volume = ambient.volume - 0.0003f;
 		}
 		if(goBattle && battle.volume < volume){
-			battle.volume = battle.volume + 0.0008f;
+			battle.volume = battle.volume + 0.0003f;
 		}
 
 	}
