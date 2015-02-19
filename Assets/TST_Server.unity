@@ -18120,7 +18120,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: b92e498c90aa4874491809a8bb3cd89a, type: 3}
   - {fileID: 2800000, guid: 594b69d88f6995d419b957dbabfaf69b, type: 3}
   baseHeight: 50
-  player: {fileID: 307628832}
+  player: {fileID: 371745660}
 --- !u!119 &1345539296
 Projector:
   m_ObjectHideFlags: 0
@@ -21771,7 +21771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diffuseColor: {r: .0549019612, g: .854901969, b: .925490201, a: .337254912}
-  camera: {fileID: 307628840}
+  camera: {fileID: 371745667}
 --- !u!23 &1703561633
 Renderer:
   m_ObjectHideFlags: 0
