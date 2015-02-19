@@ -6,12 +6,14 @@ public class MusicControl : MonoBehaviour {
 	public AudioSource ambient, battle;
 	public bool goAmb, goBattle;
 
+	private float volume = 0.1f;
+
 	GameObject[] players;
 
 	// Use this for initialization
 	void Start () {
 		battle.volume = 0;
-		ambient.volume = 0.5f;
+		ambient.volume = volume;
 	}
 	
 	// Update is called once per frame
@@ -47,18 +49,18 @@ public class MusicControl : MonoBehaviour {
 			goBattle = false;
 		}
 
-		if(goAmb && ambient.volume < 0.5f){
-			ambient.volume = ambient.volume + 0.01f;
+		if(goAmb && ambient.volume < volume){
+			ambient.volume = ambient.volume + 0.0008f;
 		}
 		if(goAmb && battle.volume > 0f){
-			battle.volume = battle.volume - 0.01f;
+			battle.volume = battle.volume - 0.0008f;
 		}
 
 		if(goBattle && ambient.volume > 0f){
-			ambient.volume = ambient.volume - 0.01f;
+			ambient.volume = ambient.volume - 0.0008f;
 		}
-		if(goBattle && battle.volume < 0.5f){
-			battle.volume = battle.volume + 0.01f;
+		if(goBattle && battle.volume < volume){
+			battle.volume = battle.volume + 0.0008f;
 		}
 
 	}
