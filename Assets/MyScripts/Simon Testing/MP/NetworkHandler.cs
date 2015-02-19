@@ -119,16 +119,16 @@ public class NetworkHandler : MonoBehaviour {
 
 		userName = GUI.TextField(new Rect (25f, 145f, 150f, 25f), userName, 25);
 
-		if(!userName.Equals("") && GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
+		if(userName.Length > 4 && GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
 			singleTesting = false;
 			StartServer();
 		}
 		
-		if(!userName.Equals("") && GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
+		if(userName.Length > 4 && GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
 			StartCoroutine(RefreshHostList());
 		}
 
-		if(!userName.Equals("") && GUI.Button(new Rect(25f, 105f, 150f, 30f), "Single Player Testing")){
+		if(GUI.Button(new Rect(25f, 105f, 150f, 30f), "Single Player Testing")){
 			singleTesting = true;
 			StartServer();
 		}
@@ -209,9 +209,10 @@ public class NetworkHandler : MonoBehaviour {
 				StartCoroutine(deleteGo());
 			}
 		}else if(phase == 7){
-			if(Network.isServer)
+			if(Network.isServer){
 				networkView.RPC("rpcSpawnPlayers", RPCMode.All, 0);
-			createGameController();
+				createGameController();
+			}
 			phase = 8;
 		}
 	}
