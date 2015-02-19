@@ -302,4 +302,6 @@ public class NetworkHandler : MonoBehaviour {
 	void rpcSetPhase(int newPhase){
 		phase = newPhase;
 	}
+
+
 }

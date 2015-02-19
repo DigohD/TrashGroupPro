@@ -32,7 +32,7 @@ public class TurretShooting : MonoBehaviour
 
         if(timer >= timeBetweenBullets * effectsDisplayTime)
         {
-            DisableEffects ();
+			networkView.RPC ("rpcDisableGunEffects", RPCMode.All, 0);
         }
     }
 
@@ -68,9 +68,9 @@ public class TurretShooting : MonoBehaviour
 		sh.setSender(stats.ID);
         timer = 0f;
 
-        gunAudio.Play ();
+		networkView.RPC("rpcShootTurretEffects", RPCMode.All, 0);
 
-        gunLight.enabled = true;
+
 		/*
         gunParticles.Stop ();
         gunParticles.Play ();
@@ -83,6 +83,17 @@ public class TurretShooting : MonoBehaviour
 
         gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 */
-
     }
+
+	[RPC]
+	void rpcShootTurretEffects(int wasted){
+		gunAudio.Play ();
+		
+		gunLight.enabled = true;
+	}
+
+	[RPC]
+	void rpcDisableGunEffects(int wasted){
+		DisableEffects();
+	}
 }
