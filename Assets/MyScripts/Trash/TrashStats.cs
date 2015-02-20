@@ -9,20 +9,20 @@ public class TrashStats : MonoBehaviour {
 	public float speed;
 	public float boost;
 	public bool isTaken;
-
+	public string type;
+	AudioSource barrelAudio;
 	public string ownerID;
 
-	void start ()
+	void Start ()
 	{
-		isTaken = false;
-		//health = 10;
-		//speed = 1;
+		if(type.Equals("Barrel")){
+			barrelAudio = GetComponent<AudioSource> ();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (health == 0)//This will be implemented better in the future
-						Destroy (this);
+
 	}
 
 	public void setTaken(string newOwnerID){
@@ -34,6 +34,9 @@ public class TrashStats : MonoBehaviour {
 
 	public void takeDamage ( float incDmg ) {
 		health -= incDmg;
+		if(type.Equals("Barrel"))
+			barrelAudio.Play ();
+
 		if (health <= 0) {
 		
 			Network.Destroy (this.gameObject);

@@ -12,17 +12,23 @@ public class shotHit : MonoBehaviour {
 
 		if (other.tag == "Player") {
 						PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
-			if (!(sender.Length < 3) && !(EnemyStats.ID.Length < 3) && !EnemyStats.ID.Equals (this.sender)) {
+						if (!(sender.Length < 3) && !(EnemyStats.ID.Length < 3) && !EnemyStats.ID.Equals (this.sender)) {
 								Debug.Log (this.sender + " hit: " + EnemyStats.ID);
 								EnemyStats.takeDamage (dmg);
 								Network.Destroy (this.gameObject);
 						}
 				} else if (other.tag == "BodyPart") {
-				TrashStats tStats = other.GetComponent<TrashStats> ();
-				if (!(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals (this.sender)) {
-					tStats.takeDamage (dmg);
-					Network.Destroy (this.gameObject);
-				}
+						TrashStats tStats = other.GetComponent<TrashStats> ();
+						if (!(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals (this.sender)) {
+								tStats.takeDamage (dmg);
+								Network.Destroy (this.gameObject);
+						}
+				} else if (other.tag == "Trash") { // for offline testing
+						TrashStats tStats = other.GetComponent<TrashStats> ();
+						
+								tStats.takeDamage (dmg);
+								Network.Destroy (this.gameObject);
+						
 				}
 	}
 
