@@ -8,9 +8,11 @@ public class TrashToTrashConnector : MonoBehaviour {
 	//public PlayerStats stats;
 	void OnTriggerEnter (Collider other)
 	{
+
 		if(other.tag == "Trash" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
 		   && transform.parent.GetComponent<NetworkView>().isMine) 
 		{
+
 			TrashStats tStats = other.GetComponent<TrashStats>(); 
 		if(!tStats.isTaken){
 			NetworkViewID id = Network.AllocateViewID();

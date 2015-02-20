@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject trash;
 	public GameObject battery;
+	public GameObject barrelYellow;
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
 	public int trashCount;
@@ -57,9 +58,9 @@ public class GameController : MonoBehaviour {
 			}
 			if (i <= 5) {
 				Quaternion spawnRotation = Quaternion.identity;
-				if (Random.value * 2 < 1){
-					GameObject t = (GameObject) Network.Instantiate (trash, spawnPosition, spawnRotation, 0);
-					t.name="Trash";
+				if (Random.value * 1 < 1){
+					GameObject t = (GameObject) Network.Instantiate (barrelYellow, spawnPosition, spawnRotation, 0);
+					t.name="Barrel Yellow";
 				}
 				else{
 					GameObject t = (GameObject) Network.Instantiate (battery, spawnPosition, spawnRotation, 0);
