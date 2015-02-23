@@ -45,6 +45,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 	public void takeDamage ( float incDmg ) {
 		health -= incDmg;
+		this.gameObject.GetComponent<HealthBarScript> ().isHit ();
 		if (health <= 0) {
 			Camera cam = GetComponent<Camera>();
 			if(networkView.isMine){

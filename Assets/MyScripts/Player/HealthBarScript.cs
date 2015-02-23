@@ -9,7 +9,7 @@ public class HealthBarScript : MonoBehaviour {
 	private GameObject healthBar;
 	private GameObject healthBar2;
 
-	private float healthPercent = 0.7f;
+	private float healthPercent = 1f;
 
 	void Start () {
 		healthBar = (GameObject) Instantiate(healthBarR, gameObject.transform.position, Quaternion.identity);
@@ -21,19 +21,22 @@ public class HealthBarScript : MonoBehaviour {
 			}
 		}
 
-		stats = (PlayerStats) gameObject.GetComponent("PlayerStats");
 
 		healthBar.transform.position = gameObject.transform.position + new Vector3(0f, 1.3f, -1f);
 		healthBar.transform.localScale = new Vector3(10f, 1f, 1f);
 		healthBar2.transform.localScale = new Vector3(healthPercent, 1f, 1f);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		healthBar.transform.position = gameObject.transform.position + new Vector3(0f, 1.3f, -1f);
 
 		healthBar.transform.localScale = new Vector3(10f, 1f, 1f);
 		healthBar2.transform.localScale = new Vector3(healthPercent, 1f, 1f);
+	}
+
+	public void isHit(){
+		healthPercent = stats.health/100;
 	}
 
 	void OnDestroy(){

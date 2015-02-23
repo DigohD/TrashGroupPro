@@ -12,18 +12,17 @@ public class TrashStats : MonoBehaviour {
 	public string type;
 	AudioSource barrelAudio;
 	public string ownerID;
+	public GameObject explosion;
+	public float maxHealth;
 
 	void Start ()
 	{
 		if(type.Equals("Barrel")){
 			barrelAudio = GetComponent<AudioSource> ();
 		}
+		maxHealth = health;
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
 
 	public void setTaken(string newOwnerID){
 		isTaken = true;
@@ -34,13 +33,14 @@ public class TrashStats : MonoBehaviour {
 
 	public void takeDamage ( float incDmg ) {
 		health -= incDmg;
+		gameObject.GetComponent<DamageBarrel> ().barrelHit ();
 		if(type.Equals("Barrel"))
 			barrelAudio.Play ();
 
 		if (health <= 0) {
 		
 			Network.Destroy (this.gameObject);
-	
+			Instantiate(explosion, transform.position, transform.rotation);	
 		}
 		
 	}
