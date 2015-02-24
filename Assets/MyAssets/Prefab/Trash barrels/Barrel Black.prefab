@@ -47,6 +47,7 @@ GameObject:
   - 95: {fileID: 9522990}
   - 64: {fileID: 6422988}
   - 82: {fileID: 8222988}
+  - 114: {fileID: 11419224}
   m_Layer: 0
   m_Name: Barrel Black
   m_TagString: Trash
@@ -329,6 +330,19 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11419224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f448bcd2304d3847a9f7b92fcc8d851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokenBarrel: {fileID: 4300000, guid: c880fa6a1e42b4a4f93042488204599b, type: 3}
+  barrel: {fileID: 122990}
 --- !u!114 &11422988
 MonoBehaviour:
   m_ObjectHideFlags: 1
