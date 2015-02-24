@@ -15,7 +15,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: .0158953425, g: .399831533, b: .720588207, a: 1}
   m_FogMode: 3
-  m_FogDensity: .0599999987
+  m_FogDensity: .0500000007
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
@@ -4826,7 +4826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tracked: {fileID: 0}
-  baseDistance: 10
+  baseDistance: 7
   roof: {fileID: 1707025783}
   floor: {fileID: 1512771342}
   offset: 2
@@ -5425,7 +5425,7 @@ Prefab:
       objectReference: {fileID: 1707025783}
     - target: {fileID: 11485272, guid: 1e2341e7fa7d4244f981d377ab123b90, type: 2}
       propertyPath: baseDistance
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e2341e7fa7d4244f981d377ab123b90, type: 2}
