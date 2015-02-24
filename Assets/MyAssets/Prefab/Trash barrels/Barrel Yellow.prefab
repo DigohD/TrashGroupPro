@@ -165,7 +165,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148976}
   serializedVersion: 2
-  m_Mass: .100000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -354,8 +354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a483b7bb701114bbcbf42789bc9838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
-  speed: 5
+  health: 100
+  speed: 4
   boost: 0
   isTaken: 0
   type: Barrel

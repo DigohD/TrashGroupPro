@@ -15,8 +15,8 @@ public class PlayerStats : MonoBehaviour {
 	public List<GameObject> goList = new List<GameObject>();
 
 	void Start () {
-		speed = 3;
-		dmg = 2;
+		//speed = 3;
+		//dmg = 2;
 		//health = 100;
 	}
 

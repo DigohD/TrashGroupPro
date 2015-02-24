@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9ce751f5a8b6247a302bb5fa624c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 9.99999975e-05
+  speed: 1
   dmg: 2
   magnetOn: 0
   health: 100
