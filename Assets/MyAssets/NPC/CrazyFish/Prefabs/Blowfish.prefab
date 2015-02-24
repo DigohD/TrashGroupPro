@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400010}
   - 111: {fileID: 11100000}
+  - 54: {fileID: 5418938}
   m_Layer: 0
   m_Name: Blowfish
   m_TagString: Untagged
@@ -197,7 +198,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 36.9099998, y: 14.6999998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400008}
@@ -206,6 +207,21 @@ Transform:
 --- !u!1002 &400011
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!54 &5418938
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!111 &11100000
 Animation:
   m_ObjectHideFlags: 1
@@ -238,7 +254,7 @@ SkinnedMeshRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7adb38c0c04a24846b07434b1fe1c478, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 9665ad2170ab03640b2ea98509b66021, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
@@ -257,9 +273,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: -.0522589684, y: .945722342, z: .0697445869}
+    m_Extent: {x: 2.84455967, y: 3.01661038, z: 2.82753801}
+  m_DirtyAABB: 0
 --- !u!1002 &13700001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -293,9 +309,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: 0, y: 1.07890201, z: .00847411156}
+    m_Extent: {x: 2.98777294, y: 2.82531357, z: 2.95568705}
+  m_DirtyAABB: 0
 --- !u!1002 &13700003
 EditorExtensionImpl:
   serializedVersion: 6
