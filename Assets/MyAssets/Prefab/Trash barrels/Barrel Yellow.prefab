@@ -360,7 +360,7 @@ MonoBehaviour:
   isTaken: 0
   type: Barrel
   ownerID: 
-  explosion: {fileID: 0}
+  explosion: {fileID: 100000, guid: 3349198dfac824d7190d4cd04d2a7305, type: 2}
   maxHealth: 0
 --- !u!114 &11448978
 MonoBehaviour:
