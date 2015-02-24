@@ -42,6 +42,8 @@ MonoBehaviour:
   trash: {fileID: 100000, guid: 058321f2c1e48d140b133a660251c5bb, type: 2}
   battery: {fileID: 125746, guid: 3e269c16d6d2c39428ae4e01ae260e15, type: 2}
   barrelYellow: {fileID: 148976, guid: 2deb0f51fd97d7a4b96fbd7b024b9afc, type: 2}
+  barrelGreen: {fileID: 134262, guid: c121c2ea1ad2e9a4d908b4d6c0ce2d66, type: 2}
+  barrelBlack: {fileID: 122988, guid: 3137a69d42d66b3489b846311c3cc2c4, type: 2}
   posSpawnValues: {x: 95, y: 5, z: 2}
   negSpawnValues: {x: 15, y: 3, z: 2}
   trashCount: 26

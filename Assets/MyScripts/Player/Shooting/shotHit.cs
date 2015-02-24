@@ -29,9 +29,13 @@ public class shotHit : MonoBehaviour {
 								tStats.takeDamage (dmg);
 								Network.Destroy (this.gameObject);
 						
-				}
+				}else if (other.tag == "Untagged") { // for terrain
+					
+					Network.Destroy (this.gameObject);
+			
+		}
 	}
-
+	
 	public void setSender(string newSender){
 		networkView.RPC ("rpcSetSender", RPCMode.All, newSender);
 	}
