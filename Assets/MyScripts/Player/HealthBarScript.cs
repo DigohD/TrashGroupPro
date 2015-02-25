@@ -5,7 +5,7 @@ public class HealthBarScript : MonoBehaviour {
 
 	public GameObject healthBarR;
 
-	private PlayerStats stats;
+	public PlayerStats stats;
 	private GameObject healthBar;
 	private GameObject healthBar2;
 
