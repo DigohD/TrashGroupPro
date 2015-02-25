@@ -5,14 +5,17 @@ public class NPCMovement : MonoBehaviour {
 
 
 	GameObject[] players;
-	Rigidbody rigidBody;              						// Reference to the nav mesh agent.
-	float speed = 4f;										// NPC movement speed
-	float rotationSpeed = 8f;								// NPC rotation speed
+	GameObject playerToChase;
+	Rigidbody npc;              							// Reference to the nav mesh agent.
+	//float rotationSpeed = 2f;								// NPC rotation speed
 
+	public bool travelDirectionIsX = true;					// Some NPCs travel on the X axis, others on the Z axis (aka Whale)
+	public bool teleportWaypointCycle = false;				// When cycling waypoints (reaching the end), teleport to the 1st one
 	public float patrolSpeed = 2f;                          // The NPC patrol speed.
 	public float chaseSpeed = 5f;                           // The NPC chase speed.
-	public float chaseWaitTime = 5f;                        // The amount of time to wait when the last sighting is reached.
-	public float patrolWaitTime = 1f;                       // The amount of time to wait when the patrol way point is reached.
+	public bool chase = true;
+	public float chaseWaitTime = 8f;                        // The amount of time to wait when the last sighting is reached.
+	public int minChaseDistance = 10;						// The distance before the NPC chases after the (nearest) player
 	public Transform[] patrolWayPoints;                     // An array of transforms for the patrol route.
 
 
@@ -21,13 +24,12 @@ public class NPCMovement : MonoBehaviour {
 
 
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
-	private float patrolTimer;                              // A timer for the patrolWaitTime.
 	private int wayPointIndex = 0;                          // A counter for the way point array.
 	
 	
 	void Awake ()
 	{
-		rigidBody = GetComponent <Rigidbody> ();
+		npc = GetComponent <Rigidbody> ();
 
 		//TODO Move getplayer here after switching to spawning NPC
 
@@ -37,6 +39,35 @@ public class NPCMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 
+		players = GameObject.FindGameObjectsWithTag ("Player");
+
+
+		if(players.Length > 0)
+		{
+			for(int i = 0; i < players.Length; i++){
+				
+				float distanceToPlayer = (players[i].transform.position - patrolWayPoints[wayPointIndex].transform.position).sqrMagnitude;
+				
+				if(distanceToPlayer < minChaseDistance)
+				{
+					playerToChase = players[i];
+					chaseTimer = 3f;
+					break;
+				}
+				
+			}
+		}
+		
+		
+		if(	chaseTimer > 0 && chase)	
+		{
+			Chasing();
+		}
+		else
+		{
+			Patrolling ();
+		}
+
 
 	}
 
@@ -44,43 +75,23 @@ public class NPCMovement : MonoBehaviour {
 	void Update ()
 	{
 
-		/*// If the player is in sight and is alive...
-		if(enemySight.playerInSight && playerHealth.health > 0f)
-			// ... shoot.
-			Shooting();
-		
-		// If the player has been sighted and isn't dead...
-		else if(enemySight.personalLastSighting != lastPlayerSighting.resetPosition && playerHealth.health > 0f)
-			// ... chase.
-			Chasing();
-		
-		// Otherwise...
-		else
-			// ... patrol.
-			Patrolling();
-	
-
-		/*
-		// Set up the references.
-		players = GameObject.FindGameObjectsWithTag ("Player");
-
-		if(players.Length > 0)
-		for(int i = 0; i < players.Length; i++){
-			if(players[i].networkView.isMine)
-				nav.SetDestination (players[i].transform.position);
-		}
-
-	*/
-
-			Patrolling ();
 
 	} 
+
+
+	void Chasing()
+	{
+		chaseTimer -= Time.deltaTime;
+
+		MoveTowards (playerToChase.transform, chaseSpeed);
+
+	}
 
 
 	void Patrolling()
 	{
 
-		float sqrMgn = (rigidBody.position - patrolWayPoints [wayPointIndex].position).sqrMagnitude;
+		float sqrMgn = (npc.position - patrolWayPoints [wayPointIndex].position).sqrMagnitude;
 
 		//Reached a waypoint, increment waypoint index 
 		if (sqrMgn < 1) 
@@ -89,23 +100,43 @@ public class NPCMovement : MonoBehaviour {
 
 		}
 
+		if (teleportWaypointCycle && wayPointIndex == 0) 
+		{
+			npc.transform.position = patrolWayPoints [wayPointIndex].transform.position;
+				
+		}else
+		{
+			MoveTowards (patrolWayPoints [wayPointIndex], patrolSpeed);
+		}
 
-		MoveTowards (patrolWayPoints [wayPointIndex]);
 
 	}
 
 	//Move towards target position with the rigid body's specified speed
-	void MoveTowards(Transform targetTransform)
+	void MoveTowards(Transform targetTransform, float speed)
 	{
 		//Move in direction
-		direction = (targetTransform.position - rigidBody.position).normalized;
-		rigidBody.MovePosition(rigidBody.position + direction * Time.deltaTime  * speed);
+		direction = (targetTransform.position - npc.position).normalized;
+		npc.MovePosition(npc.position + direction * Time.deltaTime  * speed);
 
 		//Rotate towards direction over time
-		lookRotation = Quaternion.LookRotation(direction);
+		//Z is considered forward in LookRotation. However, in our game X is forward, so we rotate about the y axis to switch the x and the z
 
-		//print (lookRotation);
-		rigidBody.rotation = Quaternion.Slerp(rigidBody.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+		if (travelDirectionIsX) 
+		{
+			Quaternion r = Quaternion.AngleAxis(90,Vector3.up);
+			direction = r * direction;
+
+		}else
+		{
+			Quaternion r = Quaternion.AngleAxis(180,Vector3.up);
+			direction = r * direction;
+		}
+
+
+		//direction.Set (direction.z, direction.y, (-1)*direction.x);
+		lookRotation = Quaternion.LookRotation(direction, Vector3.up);
+		npc.rotation = Quaternion.Slerp(npc.rotation, lookRotation, Time.deltaTime);
 
 
 	}
