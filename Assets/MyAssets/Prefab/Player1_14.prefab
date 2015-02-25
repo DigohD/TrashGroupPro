@@ -696,7 +696,7 @@ MonoBehaviour:
   speed: 1
   dmg: 2
   magnetOn: 0
-  health: 100
+  health: 300
   pName: Player1
   ID: 
   explosion: {fileID: 100000, guid: 3349198dfac824d7190d4cd04d2a7305, type: 2}

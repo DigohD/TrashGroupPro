@@ -10,9 +10,11 @@ public class HealthBarScript : MonoBehaviour {
 	private GameObject healthBar2;
 
 	private float healthPercent = 1f;
+	private float maxHealth;
 
 	void Start () {
 		healthBar = (GameObject) Instantiate(healthBarR, gameObject.transform.position, Quaternion.identity);
+		maxHealth = stats.health;
 
 		foreach (Transform child in healthBar.transform)
 		{
@@ -36,7 +38,7 @@ public class HealthBarScript : MonoBehaviour {
 	}
 
 	public void isHit(){
-		healthPercent = stats.health/100;
+		healthPercent = stats.health/maxHealth;
 	}
 
 	void OnDestroy(){
