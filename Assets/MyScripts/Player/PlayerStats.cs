@@ -44,6 +44,11 @@ public class PlayerStats : MonoBehaviour {
 		magnetOn = !magnetOn;
 	}
 	public void takeDamage ( float incDmg ) {
+		networkView.RPC ("rpcPlayerTakeDamage", RPCMode.All, incDmg);
+	}
+
+	[RPC]
+	void rpcPlayerTakeDamage(float incDmg){
 		health -= incDmg;
 		this.gameObject.GetComponent<HealthBarScript> ().isHit ();
 		if (health <= 0) {
@@ -57,8 +62,7 @@ public class PlayerStats : MonoBehaviour {
 			Network.Destroy (this.gameObject);
 			Instantiate(explosion, transform.position, transform.rotation);
 			print ("You suck");
-		
-		}
 			
+		}
 	}
 }

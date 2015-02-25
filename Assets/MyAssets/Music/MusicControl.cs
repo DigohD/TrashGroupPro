@@ -27,9 +27,6 @@ public class MusicControl : MonoBehaviour {
 					myPlayer = players[i];
 			}
 
-		if(myPlayer == null)
-			Debug.Log("Player Not Found!!!");
-
 		float shortest = 10000;
 		float dist = 100000;
 		if(players.Length > 0)
