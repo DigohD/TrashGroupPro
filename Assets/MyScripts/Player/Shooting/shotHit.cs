@@ -35,10 +35,18 @@ public class shotHit : MonoBehaviour {
 						networkView.RPC ("rpcExpendedShot", RPCMode.All, 0);
 						networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
 						
+				}else if (other.tag == "Enemy") { // for offline testing
+						EnemyStats eStats = other.GetComponent<EnemyStats> ();
+						
+						if(!damageDealt)
+							eStats.takeDamage (dmg);
+						networkView.RPC ("rpcExpendedShot", RPCMode.All, 0);
+						networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
+						
 				}else if (other.tag == "Untagged") { // for terrain
 						networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
 			
-		}
+				}
 	}
 	
 	public void setSender(string newSender){
