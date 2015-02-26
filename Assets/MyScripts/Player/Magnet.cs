@@ -7,7 +7,17 @@ public class Magnet : MonoBehaviour {
 	//public bool isOn;
 	public GameObject position;
 	public float radius;
+	public GameObject particles;
+	public ParticleSystem ps;
 
+	public void turnOn(){
+		ps.Play ();
+		print ("turnon");
+	}
+	public void turnOff(){
+		ps.Stop ();
+		ps.Clear ();
+	}
 
 	void FixedUpdate () {
 		if (networkView.isMine && stats.magnetOn) 

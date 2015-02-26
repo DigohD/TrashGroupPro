@@ -6605,7 +6605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eab4a4c9fbe0c488fc626e217674a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerClass: {fileID: 137890, guid: 070bd7cec36521d40a9444d2c6a97d81, type: 2}
+  playerClass: {fileID: 168010, guid: 69dcfd68649da944bb56fb803ee4dbf4, type: 2}
   gameControlClass: {fileID: 119536, guid: 6971654f059d47a4bbe8539e0edd8a87, type: 2}
   aGetReady: {fileID: 465284548}
   aC1: {fileID: 465284547}
@@ -18622,6 +18622,10 @@ Prefab:
       propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11441314, guid: 6b13aa866c3302c4199c2b2a8a8f5672, type: 2}
+      propertyPath: playerClass
+      value: 
+      objectReference: {fileID: 168010, guid: 69dcfd68649da944bb56fb803ee4dbf4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b13aa866c3302c4199c2b2a8a8f5672, type: 2}
   m_RootGameObject: {fileID: 465284539}
