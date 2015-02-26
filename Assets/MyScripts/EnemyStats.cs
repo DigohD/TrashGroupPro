@@ -20,6 +20,7 @@ public class EnemyStats : MonoBehaviour {
 			Vector3 pos = this.gameObject.transform.position;
 
 			Destroy (this.gameObject);
+			if(drop != null);
 			GameObject t = (GameObject) Network.Instantiate (drop, pos, drop.transform.rotation, 0);
 		}
 	}
