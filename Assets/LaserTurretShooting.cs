@@ -1,61 +1,62 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class TurretShooting : MonoBehaviour
-{
-    public int damagePerShot = 20;
-    public float timeBetweenBullets = 0.15f;
-    public float range = 100f;
+public class LaserTurretShooting : MonoBehaviour {
+	
+	public float timeBetweenBullets = 0.15f;
 	public GameObject laserShot;
-
+	public WildTurretControlScript turret;
+	public TurretStats stats;
+	
+	float timer;
+	AudioSource gunAudio;
+	Light gunLight;
+	float effectsDisplayTime = 0.2f;
 	private bool hasShot;
-    float timer;
-    AudioSource gunAudio;
-    Light gunLight;
-    float effectsDisplayTime = 0.2f;
-
-    void Awake ()
-    {
-        gunAudio = GetComponent<AudioSource> ();
-        gunLight = GetComponent<Light> ();
-    }
-
-    void Update ()
-    {
-        timer += Time.deltaTime;
-
+	
+	void Awake ()
+	{
+		gunAudio = GetComponent<AudioSource> ();
+		gunLight = GetComponent<Light> ();
+	}
+	
+	void Update ()
+	{
+		timer += Time.deltaTime;
+		
 		if(!networkView.isMine)
 			return;
-
-		if(Input.GetMouseButton (0) && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
-        {
-            Shoot ();
+		
+		if(Input.GetMouseButton (0) && timer >= stats.timeBetweenBullets && Time.timeScale != 0 && turret.active) // leave it for now, move it into inputscript laters
+		{
+			Shoot ();
 			hasShot = true;
-        }
-
-        if(timer >= timeBetweenBullets * effectsDisplayTime && hasShot)
-        {
+		}
+		
+		if(timer >= stats.timeBetweenBullets * effectsDisplayTime && hasShot)
+		{
 			networkView.RPC ("rpcDisableGunEffects", RPCMode.All, 0);
 			hasShot = false;
-        }
-    }
-
-
-    public void DisableEffects ()
-    {
-        //gunLine.enabled = false;
-        gunLight.enabled = false;
-    }
-
+		}
+	}
+	
+	
+	public void DisableEffects ()
+	{
+		//gunLine.enabled = false;
+		gunLight.enabled = false;
+	}
+	
 	private bool alternate = true;
 	private Transform cannon;
 	private float speed;
-    void Shoot ()
-    {
+	void Shoot ()
+	{
 		if(!networkView.isMine)
 			return;
-
+		
 		PlayerStats stats = transform.GetComponentInParent<PlayerStats> ();
-
+		
 		if (alternate){//alternate between the two cannons
 			cannon = transform.GetChild (2);
 			alternate = false;
@@ -69,11 +70,12 @@ public class TurretShooting : MonoBehaviour
 		laser.rigidbody.velocity = cannon.up * speed*10;
 		shotHit sh = (shotHit) laser.GetComponent("shotHit");
 		sh.setSender(stats.ID);
-        timer = 0f;
-
+		sh.dmg = stats.dmg;
+		timer = 0f;
+		
 		networkView.RPC("rpcShootTurretEffects", RPCMode.All, 0);
-
-
+		
+		
 		/*
         gunParticles.Stop ();
         gunParticles.Play ();
@@ -86,15 +88,15 @@ public class TurretShooting : MonoBehaviour
 
         gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 */
-    }
-
+	}
+	
 	[RPC]
 	void rpcShootTurretEffects(int wasted){
 		gunAudio.Play ();
 		
 		gunLight.enabled = true;
 	}
-
+	
 	[RPC]
 	void rpcDisableGunEffects(int wasted){
 		DisableEffects();
