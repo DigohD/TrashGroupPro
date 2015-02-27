@@ -7,7 +7,17 @@ public class Magnet : MonoBehaviour {
 	//public bool isOn;
 	public GameObject position;
 	public float radius;
+	public GameObject particles;
+	public ParticleSystem ps;
 
+	public void turnOn(){
+		ps.Play ();
+		print ("turnon");
+	}
+	public void turnOff(){
+		ps.Stop ();
+		ps.Clear ();
+	}
 
 	void FixedUpdate () {
 		if (networkView.isMine && stats.magnetOn) 
@@ -26,7 +36,16 @@ public class Magnet : MonoBehaviour {
 
 					//		magnetTrash [i].rigidbody.velocity = new Vector3 (0, 0, 0);
 					}
-			}
+				else if (magnetTrash [i].tag == "PassiveTurret" ) {
+					if(!magnetTrash[i].GetComponent<TurretStats>().isTaken){
+
+						float dist = Vector3.Distance(position.transform.position, magnetTrash[i].transform.position);
+						float vel = radius/ dist;				//make speed proportional to how far away the trash is
+						magnetTrash[i].transform.position = Vector3.MoveTowards(magnetTrash[i].transform.position, position.transform.position, vel * Time.deltaTime);
+			
+					}
+				}
 		}
 	}
+}
 }

@@ -7,6 +7,7 @@ public class TurretShooting : MonoBehaviour
     public float range = 100f;
 	public GameObject laserShot;
 
+	private bool hasShot;
     float timer;
     AudioSource gunAudio;
     Light gunLight;
@@ -25,14 +26,16 @@ public class TurretShooting : MonoBehaviour
 		if(!networkView.isMine)
 			return;
 
-		if(Input.GetMouseButtonDown (0) && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
+		if(Input.GetMouseButton (0) && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
         {
             Shoot ();
+			hasShot = true;
         }
 
-        if(timer >= timeBetweenBullets * effectsDisplayTime)
+        if(timer >= timeBetweenBullets * effectsDisplayTime && hasShot)
         {
 			networkView.RPC ("rpcDisableGunEffects", RPCMode.All, 0);
+			hasShot = false;
         }
     }
 

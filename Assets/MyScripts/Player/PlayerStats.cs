@@ -42,6 +42,10 @@ public class PlayerStats : MonoBehaviour {
 	}
 	public void magnetSwitch(){
 		magnetOn = !magnetOn;
+		if (magnetOn)
+			gameObject.GetComponent<Magnet> ().turnOn ();
+		else
+			gameObject.GetComponent<Magnet> ().turnOff ();
 	}
 	public void takeDamage ( float incDmg ) {
 		networkView.RPC ("rpcPlayerTakeDamage", RPCMode.All, incDmg);

@@ -32,6 +32,30 @@ public class AttachTrash : MonoBehaviour {
 			other.tag = "BodyPart";
 		}
 		}
+		if (other.tag == "PassiveTurret" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
+		{
+			TurretStats tStats = other.GetComponent<TurretStats>(); //Add attributes to player
+			if(!tStats.isTaken){
+				NetworkViewID id = Network.AllocateViewID();
+				NetworkViewID oldID = other.networkView.viewID;
+				other.networkView.viewID = id;
+				
+				networkView.RPC("synchID", RPCMode.Others, oldID, id);
+				
+				//Set the piece of thrash as a child to the player gameobject
+				other.transform.parent = this.transform;
+				
+				
+				stats.addAttributes(tStats.speed);
+				tStats.setTaken(stats.ID);
+				//Set up the joint
+				FixedJoint joint;
+				joint = this.gameObject.AddComponent<FixedJoint>();
+				joint.connectedBody = other.rigidbody;
+				other.tag = "BodyPart";
+				other.GetComponentInChildren<WildTurretControlScript>().active = true;
+			}
+		}
 	}
 
 	[RPC]
