@@ -6,7 +6,7 @@ public class InputScript : MonoBehaviour {
 	public MovementScript ms;
 	public PlayerStats stats;
 
-	private float magnetDelay = 3;
+	private float magnetDelay = 1;
 	
 
 	void Update () {
@@ -35,7 +35,7 @@ public class InputScript : MonoBehaviour {
 								go.GetComponent<TurretControlScript> ().fire ();
 		}*/
 
-		if (Input.GetKey ("left ctrl")&& magnetDelay >2){//disable on magneteffect as well as the ability to pile on new trash
+		if (Input.GetKey ("left ctrl")&& magnetDelay >1){//disable on magneteffect as well as the ability to pile on new trash
 			print ("hollaa");
 			stats.magnetSwitch ();
 			magnetDelay = 0;
