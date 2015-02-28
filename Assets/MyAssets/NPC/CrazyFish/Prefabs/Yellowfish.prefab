@@ -9,6 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 111: {fileID: 11100000}
+  - 54: {fileID: 5471302}
+  - 114: {fileID: 11428504}
+  - 136: {fileID: 13628504}
   m_Layer: 0
   m_Name: Yellowfish
   m_TagString: Untagged
@@ -135,8 +138,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10.5100002, y: 13.5699997, z: 2}
+  m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -239,6 +242,21 @@ Transform:
 --- !u!1002 &400013
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!54 &5471302
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 56
+  m_CollisionDetection: 0
 --- !u!111 &11100000
 Animation:
   m_ObjectHideFlags: 1
@@ -258,6 +276,40 @@ Animation:
 --- !u!1002 &11100001
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!114 &11428504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef3b19ccd34c45e38b6b963320f5055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportWaypointCycle: 0
+  patrolSpeed: 1
+  chaseSpeed: 4
+  playerSighted: 1
+  doesItChasePlayers: 1
+  chaseWaitTime: 8
+  minChaseDistance: 5
+  patrolWayPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!136 &13628504
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -290,9 +342,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: .0560404062, y: -.053640604, z: .0467621088}
+    m_Extent: {x: 1.93563747, y: 1.14877248, z: 1.39903486}
+  m_DirtyAABB: 0
 --- !u!1002 &13700001
 EditorExtensionImpl:
   serializedVersion: 6

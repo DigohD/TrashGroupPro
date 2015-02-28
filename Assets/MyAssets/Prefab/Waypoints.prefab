@@ -24,9 +24,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 464652}
   m_Layer: 0
-  m_Name: NPC1_Waypoint_1
+  m_Name: NPC_whale_Waypoint_2
   m_TagString: Untagged
-  m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -39,9 +39,39 @@ GameObject:
   m_Component:
   - 4: {fileID: 464654}
   m_Layer: 0
-  m_Name: NPC1_Waypoint_2
+  m_Name: NPC_blowfish_Waypoint_2
   m_TagString: Untagged
   m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &173708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 473708}
+  m_Layer: 0
+  m_Name: NPC_blowfish_Waypoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: -1500306622, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &173710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 473710}
+  m_Layer: 0
+  m_Name: NPC_whale_Waypoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -55,8 +85,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 464652}
+  - {fileID: 473708}
   - {fileID: 464654}
+  - {fileID: 473710}
+  - {fileID: 464652}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &464652
@@ -66,11 +98,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40, y: 8.82999992, z: 2}
+  m_LocalPosition: {x: 80, y: 8.82999992, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 464650}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!4 &464654
 Transform:
   m_ObjectHideFlags: 1
@@ -83,6 +115,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 464650}
   m_RootOrder: 1
+--- !u!4 &473708
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40, y: 9, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 464650}
+  m_RootOrder: 0
+--- !u!4 &473710
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80, y: 10, z: 80}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 464650}
+  m_RootOrder: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

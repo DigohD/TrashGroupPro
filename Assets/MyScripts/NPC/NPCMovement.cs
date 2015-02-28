@@ -9,11 +9,12 @@ public class NPCMovement : MonoBehaviour {
 	Rigidbody npc;              							// Reference to the nav mesh agent.
 	//float rotationSpeed = 2f;								// NPC rotation speed
 
-	public bool travelDirectionIsX = true;					// Some NPCs travel on the X axis, others on the Z axis (aka Whale)
 	public bool teleportWaypointCycle = false;				// When cycling waypoints (reaching the end), teleport to the 1st one
 	public float patrolSpeed = 2f;                          // The NPC patrol speed.
 	public float chaseSpeed = 5f;                           // The NPC chase speed.
-	public bool chase = true;
+	public bool playerSighted = true;                      // The NPC chase speed.
+
+	public bool doesItChasePlayers = true;
 	public float chaseWaitTime = 8f;                        // The amount of time to wait when the last sighting is reached.
 	public int minChaseDistance = 10;						// The distance before the NPC chases after the (nearest) player
 	public Transform[] patrolWayPoints;                     // An array of transforms for the patrol route.
@@ -23,7 +24,7 @@ public class NPCMovement : MonoBehaviour {
 	private Quaternion lookRotation;						// The rotation angle the NPC is spinning in
 
 
-	private float chaseTimer;                               // A timer for the chaseWaitTime.
+	private float chaseTimer = 3f;                          // A timer for the chaseWaitTime.
 	private int wayPointIndex = 0;                          // A counter for the way point array.
 	
 	
@@ -39,27 +40,10 @@ public class NPCMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 
-		players = GameObject.FindGameObjectsWithTag ("Player");
 
+		checkForNearbyPlayers ();
 
-		if(players.Length > 0)
-		{
-			for(int i = 0; i < players.Length; i++){
-				
-				float distanceToPlayer = (players[i].transform.position - patrolWayPoints[wayPointIndex].transform.position).sqrMagnitude;
-				
-				if(distanceToPlayer < minChaseDistance)
-				{
-					playerToChase = players[i];
-					chaseTimer = 3f;
-					break;
-				}
-				
-			}
-		}
-		
-		
-		if(	chaseTimer > 0 && chase)	
+		if(	chaseTimer > 0 && doesItChasePlayers)	
 		{
 			Chasing();
 		}
@@ -71,6 +55,28 @@ public class NPCMovement : MonoBehaviour {
 
 	}
 
+	void checkForNearbyPlayers()
+	{
+		players = GameObject.FindGameObjectsWithTag ("Player");
+		
+		
+		if(players.Length > 0)
+		{
+			for(int i = 0; i < players.Length; i++){
+				
+				float distanceToPlayer = (players[i].transform.position - patrolWayPoints[wayPointIndex].transform.position).sqrMagnitude;
+				
+				if(distanceToPlayer < minChaseDistance)
+				{
+					playerToChase = players[i];
+					chaseTimer = 3f;	
+					break;
+				}
+				
+			}
+		}
+
+	}
 
 	void Update ()
 	{
@@ -117,27 +123,26 @@ public class NPCMovement : MonoBehaviour {
 	{
 		//Move in direction
 		direction = (targetTransform.position - npc.position).normalized;
-		npc.MovePosition(npc.position + direction * Time.deltaTime  * speed);
+		npc.MovePosition(npc.position + direction * Time.deltaTime * speed);
 
 		//Rotate towards direction over time
-		//Z is considered forward in LookRotation. However, in our game X is forward, so we rotate about the y axis to switch the x and the z
+		float angleZ = AngleBetweenPoints(npc.position, targetTransform.position);
+		float angleX = 0f;
 
-		if (travelDirectionIsX) 
+		//If The Z rotation is 'upside down' then flip X and Z
+		if (angleZ > 90) 
 		{
-			Quaternion r = Quaternion.AngleAxis(90,Vector3.up);
-			direction = r * direction;
-
-		}else
-		{
-			Quaternion r = Quaternion.AngleAxis(180,Vector3.up);
-			direction = r * direction;
+			angleX = 180;
+			angleZ = -angleZ;
 		}
-
-
-		//direction.Set (direction.z, direction.y, (-1)*direction.x);
-		lookRotation = Quaternion.LookRotation(direction, Vector3.up);
-		npc.rotation = Quaternion.Slerp(npc.rotation, lookRotation, Time.deltaTime);
+		npc.rotation = Quaternion.Slerp(npc.rotation, Quaternion.Euler (new Vector3(angleX,0f,angleZ)), Time.deltaTime  * speed);
 
 
 	}
+
+
+	float AngleBetweenPoints(Vector2 a, Vector2 b) {
+		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+	}
+
 }
