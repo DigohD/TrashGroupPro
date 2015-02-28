@@ -77,14 +77,14 @@ public class NetworkHandler : MonoBehaviour {
 		GameObject gameInstance = (GameObject) Network.Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
 	}
 
-	void initSpawnPlayer(){
+	void initSpawnPlayer(int posX, int posY){
 		if(!playerSpawned)
-			SpawnPlayer(Network.player, userName);
+			SpawnPlayer(Network.player, userName, posX, posY);
 	}
 
-	void SpawnPlayer(NetworkPlayer newPlayer, string newUserName){
+	void SpawnPlayer(NetworkPlayer newPlayer, string newUserName, int posX, int posY){
 		playerSpawned = true;
-		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(10f, 3f, 2f), Quaternion.identity, 0);
+		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(posX, posY, 2f), Quaternion.identity, 0);
 		playerInstance.transform.rotation =  Quaternion.Euler(-90, 0, 0);
 
 		PlayerStats ps = (PlayerStats) playerInstance.GetComponent("PlayerStats");
@@ -210,7 +210,8 @@ public class NetworkHandler : MonoBehaviour {
 			}
 		}else if(phase == 7){
 			if(Network.isServer){
-				networkView.RPC("rpcSpawnPlayers", RPCMode.All, 0);
+				networkView.RPC("rpcSpawnPlayers", RPCMode.Others, 6, 7);
+				initSpawnPlayer(6, 3);
 				createGameController();
 			}
 			phase = 8;
@@ -294,8 +295,8 @@ public class NetworkHandler : MonoBehaviour {
 	}
 
 	[RPC]
-	void rpcSpawnPlayers(int wasted){
-		initSpawnPlayer();
+	void rpcSpawnPlayers(int posX, int posY){
+		initSpawnPlayer(posX, posY);
 	}
 
 	[RPC]
