@@ -24,9 +24,6 @@ public class LaserTurretShooting : MonoBehaviour {
 	{
 		timer += Time.deltaTime;
 		
-		if(!networkView.isMine)
-			return;
-		
 		if(Input.GetMouseButton (0) && timer >= stats.timeBetweenBullets && Time.timeScale != 0 && turret.active) // leave it for now, move it into inputscript laters
 		{
 			Shoot ();
