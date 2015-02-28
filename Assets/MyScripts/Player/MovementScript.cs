@@ -9,26 +9,32 @@ public class MovementScript : MonoBehaviour {
 	public float maxSpeed;
 
 	public void MoveUp(){
-		if (rigidbody.velocity.magnitude < maxSpeed)
-			rigidbody.AddForce (Vector3.up*stats.speed, ForceMode.Force);
+		if(networkView.isMine)
+			if (rigidbody.velocity.magnitude < maxSpeed)
+				rigidbody.AddForce (Vector3.up*stats.speed, ForceMode.Force);
 	}
 	public void MoveDown(){
-		if (rigidbody.velocity.magnitude < maxSpeed)
-			rigidbody.AddForce (-Vector3.up*stats.speed);
+		if(networkView.isMine)
+			if (rigidbody.velocity.magnitude < maxSpeed)
+				rigidbody.AddForce (-Vector3.up*stats.speed);
 	}
 	public void MoveRight(){
-		if (rigidbody.velocity.magnitude < maxSpeed)
-			rigidbody.AddForce (Vector3.right*stats.speed);
+		if(networkView.isMine)
+			if(rigidbody.velocity.magnitude < maxSpeed)
+				rigidbody.AddForce (Vector3.right*stats.speed);
 	}
 	public void MoveLeft(){
-		if (rigidbody.velocity.magnitude < maxSpeed)
-			rigidbody.AddForce (-Vector3.right*stats.speed);
+		if(networkView.isMine)
+			if (rigidbody.velocity.magnitude < maxSpeed)
+				rigidbody.AddForce (-Vector3.right*stats.speed);
 	}
 	public void RotateRight(){
-		rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime);
+		if(networkView.isMine)
+			rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime);
 	}
 	public void RotateLeft(){
-		rigidbody.AddTorque (0, 0, rotation * Time.deltaTime);
+		if(networkView.isMine)
+			rigidbody.AddTorque (0, 0, rotation * Time.deltaTime);
 	}
 
 }
