@@ -6,6 +6,7 @@ public class HealthBarScript : MonoBehaviour {
 	public GameObject healthBarR;
 
 	public PlayerStats stats;
+	public GameObject mid;
 	private GameObject healthBar;
 	private GameObject healthBar2;
 
@@ -13,7 +14,7 @@ public class HealthBarScript : MonoBehaviour {
 	private float maxHealth;
 
 	void Start () {
-		healthBar = (GameObject) Instantiate(healthBarR, gameObject.transform.position, Quaternion.identity);
+		healthBar = (GameObject) Instantiate(healthBarR, mid.transform.position, Quaternion.identity);
 		maxHealth = stats.health;
 
 		foreach (Transform child in healthBar.transform)
@@ -24,14 +25,14 @@ public class HealthBarScript : MonoBehaviour {
 		}
 
 
-		healthBar.transform.position = gameObject.transform.position + new Vector3(0f, 1.3f, -1f);
+		healthBar.transform.position = mid.transform.position + new Vector3(0f, 1.3f, -1f);
 		healthBar.transform.localScale = new Vector3(10f, 1f, 1f);
 		healthBar2.transform.localScale = new Vector3(healthPercent, 1f, 1f);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		healthBar.transform.position = gameObject.transform.position + new Vector3(0f, 1.3f, -1f);
+		healthBar.transform.position = mid.transform.position + new Vector3(0f, 1.3f, -1f);
 
 		healthBar.transform.localScale = new Vector3(10f, 1f, 1f);
 		healthBar2.transform.localScale = new Vector3(healthPercent, 1f, 1f);
