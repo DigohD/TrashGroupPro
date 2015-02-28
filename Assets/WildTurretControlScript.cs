@@ -10,13 +10,17 @@ public class WildTurretControlScript : MonoBehaviour {
 	private float step;
 	public bool active;
 	
-	
 	public void Update(){//just rotate towards mouse..
-		if (networkView != null) // test purposes only						
-			if(!networkView.isMine)
+		/*if (networkView != null) // test purposes only						
+			if(!networkView.isMine){
+				if(active)
+					Debug.Log("NetworkView is not mine, but Turret is active!");
 				return;
-		if(active){
+			}*/
+		if(networkView == null)
+			return;
 
+		if(active && networkView.isMine){
 			//Mouse Position in the world. It's important to give it some distance from the camera. 
 			//If the screen point is calculated right from the exact position of the camera, then it will
 			//just return the exact same position as the camera, which is no good.
@@ -30,6 +34,11 @@ public class WildTurretControlScript : MonoBehaviour {
 		
 			transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 		}	
+	}
+
+	public void activate(){
+		Debug.Log("TURRET SCRIPT NOT ACTIVATED");
+		active = true;
 	}
 	
 	float AngleBetweenPoints(Vector2 a, Vector2 b) {

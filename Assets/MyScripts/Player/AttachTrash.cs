@@ -9,7 +9,9 @@ public class AttachTrash : MonoBehaviour {
 
 	void OnTriggerEnter( Collider other)
 	{
-		if (other.tag == "Trash" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
+		if(other == null)
+			return;
+		if (other.tag == "Trash" && stats.magnetOn && networkView.isMine) 
 		{
 			TrashStats tStats = other.GetComponent<TrashStats>(); //Add attributes to player
 			if(!tStats.isTaken){
@@ -32,7 +34,7 @@ public class AttachTrash : MonoBehaviour {
 				tStats.setToBodyPart();
 			}
 		}
-		if (other.tag == "PassiveTurret" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
+		else if (other.tag == "PassiveTurret" && stats.magnetOn && networkView.isMine) 
 		{
 			TurretStats tStats = other.GetComponent<TurretStats>(); //Add attributes to player
 			if(!tStats.isTaken){
@@ -53,7 +55,7 @@ public class AttachTrash : MonoBehaviour {
 				joint = this.gameObject.AddComponent<FixedJoint>();
 				joint.connectedBody = other.rigidbody;
 				tStats.setToBodyPart();
-				other.GetComponentInChildren<WildTurretControlScript>().active = true;
+				other.GetComponentInChildren<WildTurretControlScript>().activate();
 			}
 		}
 	}

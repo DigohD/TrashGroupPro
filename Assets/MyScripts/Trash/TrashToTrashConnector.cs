@@ -8,9 +8,11 @@ public class TrashToTrashConnector : MonoBehaviour {
 	//public PlayerStats stats;
 	void OnTriggerEnter (Collider other)
 	{
+		if(!networkView.isMine)
+			return;
 
 		if(other.tag == "Trash" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
-		   && transform.parent.GetComponent<NetworkView>().isMine) 
+		   && networkView.isMine) 
 		{
 
 			TrashStats tStats = other.GetComponent<TrashStats>(); 
@@ -35,13 +37,12 @@ public class TrashToTrashConnector : MonoBehaviour {
 				FixedJoint joint;
 				joint = this.gameObject.AddComponent<FixedJoint> ();
 				joint.connectedBody = other.rigidbody;
-				other.tag = "BodyPart";
+				tStats.setToBodyPart();
 			}
 		}
-		if(other.tag == "PassiveTurret" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
-		   && transform.parent.GetComponent<NetworkView>().isMine) 
+		else if(other.tag == "PassiveTurret" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
+		        && networkView.isMine) 
 		{
-			
 			TurretStats tStats = other.GetComponent<TurretStats>(); 
 			if(!tStats.isTaken){
 				NetworkViewID id = Network.AllocateViewID();
@@ -65,7 +66,8 @@ public class TrashToTrashConnector : MonoBehaviour {
 				joint = this.gameObject.AddComponent<FixedJoint> ();
 				joint.connectedBody = other.rigidbody;
 				other.tag = "BodyPart";
-				other.GetComponentInChildren<WildTurretControlScript>().active = true;
+				tStats.setToBodyPart();
+				other.GetComponentInChildren<WildTurretControlScript>().activate();
 			}
 		}
 	}
