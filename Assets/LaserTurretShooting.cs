@@ -49,9 +49,9 @@ public class LaserTurretShooting : MonoBehaviour {
 	private float speed;
 	void Shoot ()
 	{
-		if(!networkView.isMine)
+		if(!turret.active)
 			return;
-		
+
 		PlayerStats stats = transform.GetComponentInParent<PlayerStats> ();
 		
 		if (alternate){//alternate between the two cannons
