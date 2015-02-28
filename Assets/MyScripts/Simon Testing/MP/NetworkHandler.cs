@@ -210,7 +210,8 @@ public class NetworkHandler : MonoBehaviour {
 			}
 		}else if(phase == 7){
 			if(Network.isServer){
-				networkView.RPC("rpcSpawnPlayers", RPCMode.Others, 6, 7);
+				// Player 2 coords X: 96 Y: 14
+				networkView.RPC("rpcSpawnPlayers", RPCMode.Others, 96, 14);
 				initSpawnPlayer(6, 3);
 				createGameController();
 			}
