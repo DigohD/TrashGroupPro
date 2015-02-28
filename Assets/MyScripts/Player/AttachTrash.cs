@@ -13,24 +13,24 @@ public class AttachTrash : MonoBehaviour {
 		{
 			TrashStats tStats = other.GetComponent<TrashStats>(); //Add attributes to player
 			if(!tStats.isTaken){
-			NetworkViewID id = Network.AllocateViewID();
-			NetworkViewID oldID = other.networkView.viewID;
-			other.networkView.viewID = id;
+				NetworkViewID id = Network.AllocateViewID();
+				NetworkViewID oldID = other.networkView.viewID;
+				other.networkView.viewID = id;
 
-			networkView.RPC("synchID", RPCMode.Others, oldID, id);
+				networkView.RPC("synchID", RPCMode.Others, oldID, id);
 
-			//Set the piece of thrash as a child to the player gameobject
-			other.transform.parent = this.transform;
-			
-			
-			stats.addAttributes(tStats.speed);
-			tStats.setTaken(stats.ID);
-			//Set up the joint
-			FixedJoint joint;
-			joint = this.gameObject.AddComponent<FixedJoint>();
-			joint.connectedBody = other.rigidbody;
-			other.tag = "BodyPart";
-		}
+				//Set the piece of thrash as a child to the player gameobject
+				other.transform.parent = this.transform;
+				
+				
+				stats.addAttributes(tStats.speed);
+				tStats.setTaken(stats.ID);
+				//Set up the joint
+				FixedJoint joint;
+				joint = this.gameObject.AddComponent<FixedJoint>();
+				joint.connectedBody = other.rigidbody;
+				tStats.setToBodyPart();
+			}
 		}
 		if (other.tag == "PassiveTurret" && stats.magnetOn && transform.GetComponent<NetworkView>().isMine) 
 		{
@@ -52,7 +52,7 @@ public class AttachTrash : MonoBehaviour {
 				FixedJoint joint;
 				joint = this.gameObject.AddComponent<FixedJoint>();
 				joint.connectedBody = other.rigidbody;
-				other.tag = "BodyPart";
+				tStats.setToBodyPart();
 				other.GetComponentInChildren<WildTurretControlScript>().active = true;
 			}
 		}
@@ -64,5 +64,7 @@ public class AttachTrash : MonoBehaviour {
 		view.viewID = id;
 		Debug.Log("AttachTrash SynchID CAlled!");
 	}
+
+	
 	                                  
 }

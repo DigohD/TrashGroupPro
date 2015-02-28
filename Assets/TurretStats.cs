@@ -14,19 +14,29 @@ public class TurretStats : MonoBehaviour {
 	public void damageTaken(float dmg){
 		health -= dmg;
 
-		if (health <= 0)
-			Destroy (gameObject);
+		if (health <= 0){
+			Network.Destroy (this.gameObject);
+		}
 	}
 
 	public void setTaken(string newOwnerID){
 		isTaken = true;
 		ownerID = newOwnerID;
-		networkView.RPC("rpcTaken", RPCMode.Others, 0, newOwnerID);
+		networkView.RPC("rpcWTurretTaken", RPCMode.Others, 0, newOwnerID);
+	}
+
+	public void setToBodyPart(){
+		networkView.RPC ("rpcSetTurretToBodyPart", RPCMode.All, 0);
 	}
 
 	[RPC]
-	void rpcTaken(int wasted, string newOwnerID){
+	void rpcWTurretTaken(int wasted, string newOwnerID){
 		isTaken = true;
 		ownerID = newOwnerID;
+	}
+
+	[RPC]
+	void rpcSetTurretToBodyPart(int wasted){
+		gameObject.tag = "BodyPart";
 	}
 }

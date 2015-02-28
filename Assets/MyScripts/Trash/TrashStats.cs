@@ -27,7 +27,7 @@ public class TrashStats : MonoBehaviour {
 	public void setTaken(string newOwnerID){
 		isTaken = true;
 		ownerID = newOwnerID;
-		networkView.RPC("rpcTaken", RPCMode.Others, 0, newOwnerID);
+		networkView.RPC("rpcSetTTaken", RPCMode.Others, 0, newOwnerID);
 	}
 
 	public void takeDamage ( float incDmg ) {
@@ -43,9 +43,19 @@ public class TrashStats : MonoBehaviour {
 		}
 		
 	}
+
+	public void setToBodyPart(){
+		networkView.RPC ("rpcSetBodyPart", RPCMode.All, 0);
+	}
+
 	[RPC]
-	void rpcTaken(int wasted, string newOwnerID){
+	void rpcSetTTaken(int wasted, string newOwnerID){
 		isTaken = true;
 		ownerID = newOwnerID;
+	}
+
+	[RPC]
+	void rpcSetBodyPart(int wasted){
+		gameObject.tag = "BodyPart";
 	}
 }
