@@ -14,6 +14,7 @@ public class NetworkHandler : MonoBehaviour {
 	public AudioSource aGetReady, aC1, aC2, aC3, aGo;
 
 	public UIHandler ui;
+	public EndGameScript egs;
 
 	string userName = "";
 	int phase = 0;
@@ -214,6 +215,7 @@ public class NetworkHandler : MonoBehaviour {
 				networkView.RPC("rpcSpawnPlayers", RPCMode.Others, 96, 14);
 				initSpawnPlayer(6, 3);
 				createGameController();
+				egs.activate();
 			}
 			phase = 8;
 		}
@@ -298,6 +300,7 @@ public class NetworkHandler : MonoBehaviour {
 	[RPC]
 	void rpcSpawnPlayers(int posX, int posY){
 		initSpawnPlayer(posX, posY);
+		egs.activate();
 	}
 
 	[RPC]
