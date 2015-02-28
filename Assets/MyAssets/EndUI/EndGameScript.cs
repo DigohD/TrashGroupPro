@@ -4,7 +4,7 @@ using System.Collections;
 public class EndGameScript : MonoBehaviour {
 
 	public UIHandler ui;
-	private bool active = false;
+	private bool active = false, twoConnected = false;
 
 	private GameObject[] players;
 
@@ -14,13 +14,18 @@ public class EndGameScript : MonoBehaviour {
 			return;
 
 		players = GameObject.FindGameObjectsWithTag("Player");
-		
-		GameObject myPlayer = null;
-		if(players.Length == 1)
-			if(!players[0].networkView.isMine)
-				ui.setDefeat();
+
+		if(players.Length > 1)
+			twoConnected = true;
+
+		if(twoConnected){
+			if(players.Length == 1)
+				if(!players[0].networkView.isMine)
+					ui.setDefeat();
 			else
 				ui.setVictory();
+		}
+
 	}
 
 	public void activate(){
