@@ -26,7 +26,6 @@ public class TrashStats : MonoBehaviour {
 
 	public void setTaken(string newOwnerID){
 		isTaken = true;
-		networkView.RPC("rpcTaken", RPCMode.Others, 0);
 		ownerID = newOwnerID;
 		networkView.RPC("rpcTaken", RPCMode.Others, 0, newOwnerID);
 	}
