@@ -841,6 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarR: {fileID: 191674, guid: c935ac63e211f6e43a32dc96ad7e7cbc, type: 2}
   stats: {fileID: 11468012}
+  mid: {fileID: 168008}
 --- !u!114 &11468002
 MonoBehaviour:
   m_ObjectHideFlags: 1
