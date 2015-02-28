@@ -11,12 +11,11 @@ public class Magnet : MonoBehaviour {
 	public ParticleSystem ps;
 
 	public void turnOn(){
-		ps.Play ();
+		networkView.RPC("rpcTurnPSOn", RPCMode.All, 0);
 		print ("turnon");
 	}
 	public void turnOff(){
-		ps.Stop ();
-		ps.Clear ();
+		networkView.RPC("rpcTurnPSOff", RPCMode.All, 0);
 	}
 
 	void FixedUpdate () {
@@ -38,14 +37,24 @@ public class Magnet : MonoBehaviour {
 					}
 				else if (magnetTrash [i].tag == "PassiveTurret" ) {
 					if(!magnetTrash[i].GetComponent<TurretStats>().isTaken){
-
 						float dist = Vector3.Distance(position.transform.position, magnetTrash[i].transform.position);
 						float vel = radius/ dist;				//make speed proportional to how far away the trash is
 						magnetTrash[i].transform.position = Vector3.MoveTowards(magnetTrash[i].transform.position, position.transform.position, vel * Time.deltaTime);
 			
 					}
 				}
+			}
 		}
 	}
-}
+
+	[RPC]
+	void rpcTurnPSOn(int wasted){
+		ps.Play();
+	}
+
+	[RPC]
+	void rpcTurnPSOff(int wasted){
+		ps.Stop();
+		ps.Clear();
+	}
 }

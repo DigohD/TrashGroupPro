@@ -381,7 +381,7 @@ NetworkView:
   m_GameObject: {fileID: 122988}
   m_Enabled: 1
   m_StateSynchronization: 1
-  m_Observed: {fileID: 5400000, guid: 058321f2c1e48d140b133a660251c5bb, type: 2}
+  m_Observed: {fileID: 5422990}
   m_ViewID:
     m_ID: 0
     m_Type: 0
