@@ -37,7 +37,13 @@ public class TrashStats : MonoBehaviour {
 			barrelAudio.Play ();
 
 		if (health <= 0) {
-		
+			foreach(Transform child in gameObject.transform){
+				try{
+					child.GetComponent<TrashStats>().takeDamage(100000);
+				}catch(MissingComponentException){
+					child.GetComponent<TurretStats>().damageTaken(100000);
+				}
+			}
 			Network.Destroy (this.gameObject);
 			Instantiate(explosion, transform.position, transform.rotation);	
 		}

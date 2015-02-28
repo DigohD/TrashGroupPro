@@ -52,7 +52,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 				networkView.RPC("synchTTID", RPCMode.Others, oldID, id);
 				
 				//Set the piece of thrash as a child to the player gameobject
-				other.transform.parent = this.transform.parent;
+				other.transform.parent = this.transform;
 				
 				//Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
