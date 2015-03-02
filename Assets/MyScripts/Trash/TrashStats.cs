@@ -47,6 +47,10 @@ public class TrashStats : MonoBehaviour {
 								foreach (NetworkViewID childID in banana) {
 										Debug.Log ("damaging: " + gameObject);
 										GameObject child = NetworkView.Find(childID).gameObject;
+
+										if(child == null)
+											return comboCount;
+
 										counter++;
 										if (child != null) {
 												if (child.GetComponent<TrashType> ().type.Equals("Trash"))
