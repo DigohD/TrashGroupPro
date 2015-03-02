@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TrashStats : MonoBehaviour {
 
@@ -37,11 +38,16 @@ public class TrashStats : MonoBehaviour {
 			barrelAudio.Play ();
 
 		if (health <= 0) {
-			foreach(Transform child in gameObject.transform){
+			print("health zero, time to delete");
+			List<GameObject> banana = gameObject.GetComponent<ChildList>().get();
+			foreach(GameObject child in banana ){
+				Debug.Log("damaging: "+ gameObject);
+				if(child != null){
 				try{
 					child.GetComponent<TrashStats>().takeDamage(100000);
 				}catch(MissingComponentException){
 					child.GetComponent<TurretStats>().damageTaken(100000);
+					}catch(MissingReferenceException){}
 				}
 			}
 			Network.Destroy (this.gameObject);

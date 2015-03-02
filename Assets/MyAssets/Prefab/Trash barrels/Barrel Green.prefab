@@ -36,6 +36,7 @@ GameObject:
   - 64: {fileID: 6434262}
   - 82: {fileID: 8234262}
   - 114: {fileID: 11483338}
+  - 114: {fileID: 11438960}
   m_Layer: 0
   m_Name: Barrel Green
   m_TagString: Trash
@@ -360,6 +361,17 @@ MonoBehaviour:
   ownerID: 
   explosion: {fileID: 100000, guid: 3349198dfac824d7190d4cd04d2a7305, type: 2}
   maxHealth: 0
+--- !u!114 &11438960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3f25db05397bf44bfd939a733509dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11483338
 MonoBehaviour:
   m_ObjectHideFlags: 1
