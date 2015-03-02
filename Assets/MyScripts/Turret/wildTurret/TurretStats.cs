@@ -29,8 +29,9 @@ public class TurretStats : MonoBehaviour {
 														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
 														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
+											banana.Remove(child.networkView.viewID);						
 										}
-				
+						
 								}
 								comboCount++;
 								Network.Destroy (this.gameObject);

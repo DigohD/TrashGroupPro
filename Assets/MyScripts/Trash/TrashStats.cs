@@ -48,15 +48,13 @@ public class TrashStats : MonoBehaviour {
 										Debug.Log ("damaging: " + gameObject);
 										GameObject child = NetworkView.Find(childID).gameObject;
 
-										if(child == null)
-											return comboCount;
-
 										counter++;
 										if (child != null) {
 												if (child.GetComponent<TrashType> ().type.Equals("Trash"))
 														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
 														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
+											banana.Remove(child.networkView.viewID);
 										}
 										if (counter > 100)
 												return -1;
