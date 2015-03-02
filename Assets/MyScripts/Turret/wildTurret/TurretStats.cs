@@ -15,7 +15,8 @@ public class TurretStats : MonoBehaviour {
 
 	public float speed;
 	public float rSpeed;
-	
+
+	private NetworkViewID parent;
 
 	public int damageTaken(float dmg, int comboCount){
 				//if (health > 0) {
@@ -34,6 +35,7 @@ public class TurretStats : MonoBehaviour {
 						
 								}
 								comboCount++;
+								NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);
 						}
@@ -41,10 +43,11 @@ public class TurretStats : MonoBehaviour {
 		return comboCount;
 	}
 
-	public void setTaken(string newOwnerID){
+	public void setTaken(string newOwnerID, NetworkViewID newParent){
 		isTaken = true;
+		parent = newParent;
 		ownerID = newOwnerID;
-		networkView.RPC("rpcWTurretTaken", RPCMode.Others, 0, newOwnerID);
+		networkView.RPC("rpcWTurretTaken", RPCMode.Others, 0, newOwnerID, newParent);
 	}
 
 	public void setToBodyPart(){
@@ -52,8 +55,9 @@ public class TurretStats : MonoBehaviour {
 	}
 
 	[RPC]
-	void rpcWTurretTaken(int wasted, string newOwnerID){
+	void rpcWTurretTaken(int wasted, string newOwnerID, NetworkViewID newParent){
 		isTaken = true;
+		parent = newParent;
 		ownerID = newOwnerID;
 	}
 

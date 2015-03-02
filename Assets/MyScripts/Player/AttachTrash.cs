@@ -26,7 +26,7 @@ public class AttachTrash : MonoBehaviour {
 				
 				
 				stats.addAttributes(tStats.speed, tStats.rSpeed);
-				tStats.setTaken(stats.ID);
+				tStats.setTaken(stats.ID, networkView.viewID);
 				//Set up the joint
 				FixedJoint joint;
 				joint = this.gameObject.AddComponent<FixedJoint>();
@@ -49,7 +49,7 @@ public class AttachTrash : MonoBehaviour {
 				
 				
 				stats.addAttributes(tStats.speed, tStats.rSpeed);
-				tStats.setTaken(stats.ID);
+				tStats.setTaken(stats.ID, networkView.viewID);
 				//Set up the joint
 				FixedJoint joint;
 				joint = this.gameObject.AddComponent<FixedJoint>();
