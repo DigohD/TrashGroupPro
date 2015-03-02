@@ -9,6 +9,11 @@ public class GameController : MonoBehaviour {
 	public GameObject barrelGreen;
 	public GameObject barrelBlack;
 	public GameObject laserTurret;
+
+	public GameObject WhaleClass;
+	public GameObject BlowfishClass;
+
+
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
 	public int trashCount;
@@ -19,7 +24,13 @@ public class GameController : MonoBehaviour {
 	
 	void Start()
 	{	
-		StartCoroutine (SpawnCont ());
+		StartCoroutine (SpawnCont());
+		spawnNPCs();
+	}
+
+	void spawnNPCs(){
+		Network.Instantiate (WhaleClass, new Vector3(80, 10, 80), Quaternion.identity, 0);
+		Network.Instantiate (BlowfishClass, new Vector3(37, 15, 2), Quaternion.identity, 0);
 	}
 
 	IEnumerator SpawnCont()
