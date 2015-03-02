@@ -32,7 +32,7 @@ public class TrashStats : MonoBehaviour {
 		networkView.RPC("rpcSetTTaken", RPCMode.Others, 0, newOwnerID);
 	}
 
-	public void takeDamage ( float incDmg ) {
+	public int takeDamage (float incDmg, int comboCount) {
 				if (health > 0) {
 						health -= incDmg;
 						gameObject.GetComponent<DamageBarrel> ().barrelHit ();
@@ -50,22 +50,20 @@ public class TrashStats : MonoBehaviour {
 										counter++;
 										if (child != null) {
 												if (child.GetComponent<TrashType> ().type.Equals("Trash"))
-														child.GetComponent<TrashStats> ().takeDamage (10000.0f);
+														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
-														child.GetComponent<TurretStats> ().damageTaken (10000.0f);
-
-
-
+														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
 										}
 										if (counter > 100)
-												return;
+												return -1;
 										Debug.Log ("Loop iteration: " + counter);
 								}
+								comboCount++;
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);	
 						}
-		
 				}
+				return comboCount;
 		}
 
 	public void setToBodyPart(){

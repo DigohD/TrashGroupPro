@@ -17,26 +17,27 @@ public class TurretStats : MonoBehaviour {
 	public float rSpeed;
 	
 
-	public void damageTaken(float dmg){
+	public int damageTaken(float dmg, int comboCount){
 				if (health > 0) {
 						health -= dmg;
-
 						if (health <= 0) {
 								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
 								foreach (NetworkViewID childID in banana) {
 										GameObject child = NetworkView.Find(childID).gameObject;
 										if (child != null){
 											if (child.GetComponent<TrashType> ().type.Equals("Trash"))
-														child.GetComponent<TrashStats> ().takeDamage (10000.0f);
+														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
-														child.GetComponent<TurretStats> ().damageTaken (10000.0f);
+														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
 										}
 				
 								}
+								comboCount++;
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);
 						}
 		}
+		return comboCount;
 	}
 
 	public void setTaken(string newOwnerID){

@@ -27,7 +27,12 @@ public class shotHit : MonoBehaviour {
 				if (!(sender.Length < 3) && tuStats.ownerID != null && !tuStats.ownerID.Equals(this.sender)) {
 					Debug.Log(sender + " hit BodyPArt Turret " + tuStats.ownerID);	
 					if(!damageDealt){
-						tuStats.damageTaken (dmg);
+						int comboCount = tuStats.damageTaken (dmg, 0);
+						if(comboCount >= 3){
+							GameObject[] go = GameObject.FindGameObjectsWithTag("mainControl");
+							UIHandler uih = go[0].GetComponent<UIHandler>();
+							uih.combo(comboCount);
+						}
 						networkView.RPC ("rpcExpendedShot", RPCMode.All, 0);
 					}
 					networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
@@ -37,7 +42,12 @@ public class shotHit : MonoBehaviour {
 			} else if (!(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals(this.sender)) {
 				Debug.Log(sender + " hit BodyPArt " + tStats.ownerID);	
 				if(!damageDealt){
-					tStats.takeDamage (dmg);
+					int comboCount = tStats.takeDamage (dmg, 0);
+					if(comboCount >= 3){
+						GameObject[] go = GameObject.FindGameObjectsWithTag("mainControl");
+						UIHandler uih = go[0].GetComponent<UIHandler>();
+						uih.combo(comboCount);
+					}
 					networkView.RPC ("rpcExpendedShot", RPCMode.All, 0);
 				}
 				networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
@@ -46,7 +56,7 @@ public class shotHit : MonoBehaviour {
 			TrashStats tStats = other.GetComponent<TrashStats> ();
 			Debug.Log(sender + " hit Trash " + tStats.ownerID);	
 			if(!damageDealt){
-				tStats.takeDamage (dmg);
+				tStats.takeDamage (dmg, 0);
 				networkView.RPC ("rpcExpendedShot", RPCMode.All, 0);
 			}
 			networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
