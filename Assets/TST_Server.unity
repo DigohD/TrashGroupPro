@@ -2242,7 +2242,7 @@ GameObject:
   - 137: {fileID: 169451657}
   m_Layer: 0
   m_Name: humpback_whale_exp1_0
-  m_TagString: Untagged
+  m_TagString: Whales
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9192,7 +9192,7 @@ GameObject:
   - 4: {fileID: 612097171}
   m_Layer: 0
   m_Name: Bone001
-  m_TagString: Untagged
+  m_TagString: Whales
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9415,6 +9415,122 @@ Prefab:
     - target: {fileID: 100050, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
       propertyPath: m_Name
       value: Whale
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100030, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100040, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100024, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100032, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100036, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100042, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100046, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100028, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100044, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100034, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100050, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100050, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_TagString
+      value: Whales
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_TagString
+      value: Whales
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
+      propertyPath: m_TagString
+      value: Whales
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 035a8130f4329504aaa80f75dc72628d, type: 3}
@@ -23918,7 +24034,7 @@ GameObject:
   - 136: {fileID: 1739503747}
   m_Layer: 0
   m_Name: Whale
-  m_TagString: Untagged
+  m_TagString: Whales
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24001,8 +24117,8 @@ Rigidbody:
   m_Mass: 1000
   m_Drag: Infinity
   m_AngularDrag: Infinity
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

@@ -9,6 +9,7 @@ public class NPCMovement : MonoBehaviour {
 	Rigidbody npc;              							// Reference to the nav mesh agent.
 	//float rotationSpeed = 2f;								// NPC rotation speed
 
+
 	public bool teleportWaypointCycle = false;				// When cycling waypoints (reaching the end), teleport to the 1st one
 	public float patrolSpeed = 2f;                          // The NPC patrol speed.
 	public float chaseSpeed = 5f;                           // The NPC chase speed.
@@ -26,7 +27,6 @@ public class NPCMovement : MonoBehaviour {
 
 	private float chaseTimer = 3f;                          // A timer for the chaseWaitTime.
 	private int wayPointIndex = 0;                          // A counter for the way point array.
-	
 	
 	void Awake ()
 	{
@@ -130,12 +130,13 @@ public class NPCMovement : MonoBehaviour {
 		float angleX = 0f;
 
 		//If The Z rotation is 'upside down' then flip X and Z
-		if (angleZ > 90) 
+		if (angleZ > 90 && gameObject.tag != "Whales") 
 		{
 			angleX = 180;
 			angleZ = -angleZ;
-		}
-		npc.rotation = Quaternion.Slerp(npc.rotation, Quaternion.Euler (new Vector3(angleX,0f,angleZ)), Time.deltaTime  * speed);
+
+			npc.rotation = Quaternion.Slerp (npc.rotation, Quaternion.Euler (new Vector3 (angleX, 0f, angleZ)), Time.deltaTime * speed);
+		} 
 
 
 	}
