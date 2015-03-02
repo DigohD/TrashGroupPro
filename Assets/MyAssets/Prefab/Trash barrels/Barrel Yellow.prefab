@@ -49,6 +49,7 @@ GameObject:
   - 82: {fileID: 8285964}
   - 114: {fileID: 11403914}
   - 114: {fileID: 11454600}
+  - 114: {fileID: 11436288}
   m_Layer: 0
   m_Name: Barrel Yellow
   m_TagString: Trash
@@ -344,6 +345,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenBarrel: {fileID: 4300000, guid: c880fa6a1e42b4a4f93042488204599b, type: 3}
   barrel: {fileID: 148978}
+--- !u!114 &11436288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1912f117334b15049beccb44779a2cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Trash
 --- !u!114 &11448976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -385,6 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3f25db05397bf44bfd939a733509dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childList: []
 --- !u!148 &14848978
 NetworkView:
   m_ObjectHideFlags: 1

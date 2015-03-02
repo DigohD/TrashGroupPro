@@ -23,11 +23,10 @@ public class TurretStats : MonoBehaviour {
 			List<GameObject> banana = gameObject.GetComponent<ChildList>().get();
 			foreach(GameObject child in banana ){
 				if(child != null){
-					try{
+					if(child.GetComponent<TrashType>().type == "Trash")
 						child.GetComponent<TrashStats>().takeDamage(100000);
-					}catch(MissingComponentException){
+					if(child.GetComponent<TrashType>().type == "Turret")	
 						child.GetComponent<TurretStats>().damageTaken(100000);
-					}
 				}
 		}
 			Network.Destroy (this.gameObject);

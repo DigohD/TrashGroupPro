@@ -46,13 +46,13 @@ public class TrashStats : MonoBehaviour {
 				Debug.Log("damaging: "+ gameObject);
 				counter++;
 				if(child != null){
-				try{
+					if(child.GetComponent<TrashType>().type == "Trash")
 					child.GetComponent<TrashStats>().takeDamage(100000);
-				}catch(MissingComponentException){
+					if(child.GetComponent<TrashType>().type == "Turret")	
 					child.GetComponent<TurretStats>().damageTaken(100000);
-					}catch(MissingReferenceException){
 
-					}
+
+
 				}
 				if(counter > 100)
 					return;

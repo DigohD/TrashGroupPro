@@ -37,6 +37,7 @@ GameObject:
   - 82: {fileID: 8234262}
   - 114: {fileID: 11483338}
   - 114: {fileID: 11438960}
+  - 114: {fileID: 11461568}
   m_Layer: 0
   m_Name: Barrel Green
   m_TagString: Trash
@@ -372,6 +373,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3f25db05397bf44bfd939a733509dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childList: []
+--- !u!114 &11461568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1912f117334b15049beccb44779a2cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: Trash
 --- !u!114 &11483338
 MonoBehaviour:
   m_ObjectHideFlags: 1
