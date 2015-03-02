@@ -45,14 +45,12 @@ public class TrashStats : MonoBehaviour {
 								barrelAudio.Play ();
 
 						if (health <= 0) {
+								comboCount++;
 								print ("health zero, time to delete");
 								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
-								int counter = 0;
 								foreach (NetworkViewID childID in banana) {
 										Debug.Log ("damaging: " + gameObject);
 										GameObject child = NetworkView.Find(childID).gameObject;
-
-										counter++;
 										if (child != null) {
 												if (child.GetComponent<TrashType> ().type.Equals("Trash"))
 														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
@@ -60,11 +58,8 @@ public class TrashStats : MonoBehaviour {
 														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
 											//banana.Remove(child.networkView.viewID);
 										}
-										if (counter > 100)
-												return -1;
-										Debug.Log ("Loop iteration: " + counter);
 								}
-								comboCount++;
+								
 								if(initComboCount == 0)
 									NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
 								Network.Destroy (this.gameObject);
