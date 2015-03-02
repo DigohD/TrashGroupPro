@@ -18,7 +18,7 @@ public class TurretStats : MonoBehaviour {
 	
 
 	public int damageTaken(float dmg, int comboCount){
-				if (health > 0) {
+				//if (health > 0) {
 						health -= dmg;
 						if (health <= 0) {
 								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
@@ -36,7 +36,7 @@ public class TurretStats : MonoBehaviour {
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);
 						}
-		}
+				//}
 		return comboCount;
 	}
 

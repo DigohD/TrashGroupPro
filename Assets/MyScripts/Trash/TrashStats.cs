@@ -33,7 +33,7 @@ public class TrashStats : MonoBehaviour {
 	}
 
 	public int takeDamage (float incDmg, int comboCount) {
-				if (health > 0) {
+				//if (health > 0) {
 						health -= incDmg;
 						gameObject.GetComponent<DamageBarrel> ().barrelHit ();
 
@@ -62,7 +62,7 @@ public class TrashStats : MonoBehaviour {
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);	
 						}
-				}
+				//}
 				return comboCount;
 		}
 
