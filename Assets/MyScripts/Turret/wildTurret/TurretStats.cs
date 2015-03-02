@@ -21,8 +21,9 @@ public class TurretStats : MonoBehaviour {
 						health -= dmg;
 
 						if (health <= 0) {
-								List<GameObject> banana = gameObject.GetComponent<ChildList> ().get ();
-								foreach (GameObject child in banana) {
+								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
+								foreach (NetworkViewID childID in banana) {
+										GameObject child = NetworkView.Find(childID).gameObject;
 										if (child == null)
 												return;
 										if (child.GetComponent<TrashType> ().type.Equals("Trash"))

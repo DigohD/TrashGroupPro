@@ -25,7 +25,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 
 				//Set the piece of thrash as a child to the player gameobject
 				other.transform.parent = this.transform.parent;
-				this.gameObject.GetComponent<ChildList>().addChild(other.gameObject);
+				this.gameObject.GetComponent<ChildList>().addChild(other.networkView.viewID);
 
 				//Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
@@ -54,7 +54,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 				
 				//Set the piece of thrash as a child to the player gameobject
 				other.transform.parent = this.transform.parent;
-				this.gameObject.GetComponent<ChildList>().addChild(other.gameObject);
+				this.gameObject.GetComponent<ChildList>().addChild(other.networkView.viewID);
 				
 				//Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();

@@ -41,10 +41,11 @@ public class TrashStats : MonoBehaviour {
 
 						if (health <= 0) {
 								print ("health zero, time to delete");
-								List<GameObject> banana = gameObject.GetComponent<ChildList> ().get ();
+								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
 								int counter = 0;
-								foreach (GameObject child in banana) {
+								foreach (NetworkViewID childID in banana) {
 										Debug.Log ("damaging: " + gameObject);
+										GameObject child = NetworkView.Find(childID).gameObject;
 										counter++;
 										if (child != null) {
 												if (child.GetComponent<TrashType> ().type.Equals("Trash"))

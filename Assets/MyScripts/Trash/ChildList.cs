@@ -4,23 +4,23 @@ using System.Collections.Generic;
 
 public class ChildList : MonoBehaviour {
 
-	public List<GameObject> childList;
+	public List<NetworkViewID> childList;
 
 	void Start(){
-		childList = new List<GameObject>();
+		childList = new List<NetworkViewID>();
 	}
 
-	public void addChild(GameObject go){
-		networkView.RPC("rpcAddChildTrash", RPCMode.All, networkView.viewID);
+	public void addChild(NetworkViewID id){
+		networkView.RPC("rpcAddChildTrash", RPCMode.All, id);
 	}
 
-	public List<GameObject> get(){
+	public List<NetworkViewID> get(){
 		Debug.Log ("returning childlist: " + childList.Count + " name" + childList);
 		return childList;
 	}
 
 	[RPC]
 	void rpcAddChildTrash(NetworkViewID id){
-		childList.Add (NetworkView.Find(id).gameObject);
+		childList.Add (id);
 	}
 }
