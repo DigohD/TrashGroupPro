@@ -31,7 +31,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 
 				pStats.addAttributes(tStats.speed, tStats.rSpeed);
-				tStats.setTaken(pStats.ID);
+				tStats.setTaken(pStats.ID, networkView.viewID);
 
 
 				//Set up the joint
@@ -60,7 +60,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 				
 				pStats.addAttributes(tStats.speed, tStats.rSpeed);
-				tStats.setTaken(pStats.ID);
+				tStats.setTaken(pStats.ID, networkView.viewID);
 				
 				
 				//Set up the joint

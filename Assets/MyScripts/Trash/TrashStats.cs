@@ -17,6 +17,8 @@ public class TrashStats : MonoBehaviour {
 	public GameObject explosion;
 	public float maxHealth;
 
+	private NetworkViewID parent;
+
 	void Start ()
 	{
 		if(type.Equals("Barrel")){
@@ -26,10 +28,11 @@ public class TrashStats : MonoBehaviour {
 	}
 
 
-	public void setTaken(string newOwnerID){
+	public void setTaken(string newOwnerID, NetworkViewID newParent){
 		isTaken = true;
 		ownerID = newOwnerID;
-		networkView.RPC("rpcSetTTaken", RPCMode.Others, 0, newOwnerID);
+		parent = newParent;
+		networkView.RPC("rpcSetTTaken", RPCMode.Others, 0, newOwnerID, newParent);
 	}
 
 	public int takeDamage (float incDmg, int comboCount) {
@@ -61,6 +64,7 @@ public class TrashStats : MonoBehaviour {
 										Debug.Log ("Loop iteration: " + counter);
 								}
 								comboCount++;
+								NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);	
 						}
@@ -73,8 +77,9 @@ public class TrashStats : MonoBehaviour {
 	}
 
 	[RPC]
-	void rpcSetTTaken(int wasted, string newOwnerID){
+	void rpcSetTTaken(int wasted, string newOwnerID, NetworkViewID newParent){
 		isTaken = true;
+		parent = newParent;
 		ownerID = newOwnerID;
 	}
 
