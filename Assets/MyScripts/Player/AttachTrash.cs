@@ -23,7 +23,7 @@ public class AttachTrash : MonoBehaviour {
 
 				//Set the piece of thrash as a child to the player gameobject
 				other.transform.parent = this.transform;
-				
+				this.gameObject.GetComponent<ChildList>().addChild(other.networkView.viewID);
 				
 				stats.addAttributes(tStats.speed, tStats.rSpeed);
 				tStats.setTaken(stats.ID, networkView.viewID);
@@ -46,7 +46,7 @@ public class AttachTrash : MonoBehaviour {
 				
 				//Set the piece of thrash as a child to the player gameobject
 				other.transform.parent = this.transform;
-				
+				this.gameObject.GetComponent<ChildList>().addChild(other.networkView.viewID);
 				
 				stats.addAttributes(tStats.speed, tStats.rSpeed);
 				tStats.setTaken(stats.ID, networkView.viewID);
