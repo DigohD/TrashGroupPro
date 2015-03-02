@@ -33,8 +33,7 @@ public class TurretStats : MonoBehaviour {
 				
 								}
 								Network.Destroy (this.gameObject);
-								networkView.RPC ("rpcTrashChainDestroy", RPCMode.Others, 0);
-								Network.Instantiate (explosion, transform.position, transform.rotation);
+								Network.Instantiate (explosion, transform.position, transform.rotation, 0);
 						}
 		}
 	}

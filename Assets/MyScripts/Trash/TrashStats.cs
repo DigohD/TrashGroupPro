@@ -61,7 +61,7 @@ public class TrashStats : MonoBehaviour {
 										Debug.Log ("Loop iteration: " + counter);
 								}
 								Network.Destroy (this.gameObject);
-								Network.Instantiate (explosion, transform.position, transform.rotation);	
+								Network.Instantiate (explosion, transform.position, transform.rotation, 0);	
 						}
 		
 				}
