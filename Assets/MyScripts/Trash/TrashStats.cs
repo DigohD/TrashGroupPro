@@ -57,7 +57,7 @@ public class TrashStats : MonoBehaviour {
 														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
 														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
-											banana.Remove(child.networkView.viewID);
+											//banana.Remove(child.networkView.viewID);
 										}
 										if (counter > 100)
 												return -1;
