@@ -60,9 +60,8 @@ public class TrashStats : MonoBehaviour {
 												return;
 										Debug.Log ("Loop iteration: " + counter);
 								}
-								Destroy (this.gameObject);
-								networkView.RPC ("rpcTrashChainDestroy", RPCMode.Others, 0);
-								Instantiate (explosion, transform.position, transform.rotation);	
+								Network.Destroy (this.gameObject);
+								Network.Instantiate (explosion, transform.position, transform.rotation);	
 						}
 		
 				}
@@ -82,9 +81,5 @@ public class TrashStats : MonoBehaviour {
 	void rpcSetBodyPart(int wasted){
 		gameObject.tag = "BodyPart";
 	}
-
-	[RPC]
-	void rpcTrashChainDestroy(int wasted){
-		Destroy(this.gameObject);
-	}
+	
 }
