@@ -24067,8 +24067,8 @@ MonoBehaviour:
   teleportWaypointCycle: 1
   patrolSpeed: 5
   chaseSpeed: 5
-  playerSighted: 1
-  doesItChasePlayers: 1
+  playerSighted: 0
+  doesItChasePlayers: 0
   chaseWaitTime: 8
   minChaseDistance: 0
   patrolWayPoints:
