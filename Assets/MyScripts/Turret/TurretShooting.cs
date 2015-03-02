@@ -7,33 +7,35 @@ public class TurretShooting : MonoBehaviour
     public float range = 100f;
 	public GameObject laserShot;
 
-
+	private bool hasShot;
     float timer;
     AudioSource gunAudio;
     Light gunLight;
     float effectsDisplayTime = 0.2f;
 
-
     void Awake ()
     {
-     
         gunAudio = GetComponent<AudioSource> ();
         gunLight = GetComponent<Light> ();
     }
-
 
     void Update ()
     {
         timer += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
+		if(!networkView.isMine)
+			return;
+
+		if(Input.GetMouseButton (0) && timer >= timeBetweenBullets && Time.timeScale != 0) // leave it for now, move it into inputscript laters
         {
             Shoot ();
+			hasShot = true;
         }
 
-        if(timer >= timeBetweenBullets * effectsDisplayTime)
+        if(timer >= timeBetweenBullets * effectsDisplayTime && hasShot)
         {
-            DisableEffects ();
+			networkView.RPC ("rpcDisableGunEffects", RPCMode.All, 0);
+			hasShot = false;
         }
     }
 
@@ -49,26 +51,29 @@ public class TurretShooting : MonoBehaviour
 	private float speed;
     void Shoot ()
     {
+		if(!networkView.isMine)
+			return;
 
 		PlayerStats stats = transform.GetComponentInParent<PlayerStats> ();
 
 		if (alternate){//alternate between the two cannons
 			cannon = transform.GetChild (2);
 			alternate = false;
-			}
+		}
 		else {
 			cannon = cannon = transform.GetChild (3);
 			alternate = true;
 		}
 		speed = 1;
-		GameObject laser =  Instantiate (laserShot, cannon.position, cannon.transform.rotation) as GameObject;
+		GameObject laser =  (GameObject) Network.Instantiate (laserShot, cannon.position, cannon.transform.rotation, 0);
 		laser.rigidbody.velocity = cannon.up * speed*10;
-		laser.GetComponent<shotHit> ().sender = stats.pName;
+		shotHit sh = (shotHit) laser.GetComponent("shotHit");
+		sh.setSender(stats.ID);
         timer = 0f;
 
-        gunAudio.Play ();
+		networkView.RPC("rpcShootTurretEffects", RPCMode.All, 0);
 
-        gunLight.enabled = true;
+
 		/*
         gunParticles.Stop ();
         gunParticles.Play ();
@@ -81,6 +86,17 @@ public class TurretShooting : MonoBehaviour
 
         gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
 */
-
     }
+
+	[RPC]
+	void rpcShootTurretEffects(int wasted){
+		gunAudio.Play ();
+		
+		gunLight.enabled = true;
+	}
+
+	[RPC]
+	void rpcDisableGunEffects(int wasted){
+		DisableEffects();
+	}
 }

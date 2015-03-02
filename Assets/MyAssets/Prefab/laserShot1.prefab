@@ -44,7 +44,7 @@ Transform:
   m_GameObject: {fileID: 133512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.74000001, z: 0}
-  m_LocalScale: {x: 1, y: 1.39999998, z: 1}
+  m_LocalScale: {x: .5, y: .699999988, z: .5}
   m_Children:
   - {fileID: 433514}
   m_Father: {fileID: 0}
@@ -141,10 +141,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trash: {fileID: 100000, guid: 058321f2c1e48d140b133a660251c5bb, type: 2}
   battery: {fileID: 125746, guid: 3e269c16d6d2c39428ae4e01ae260e15, type: 2}
-  spawnValues: {x: 10, y: 6, z: 0}
+  barrelYellow: {fileID: 0}
+  barrelGreen: {fileID: 0}
+  barrelBlack: {fileID: 0}
+  posSpawnValues: {x: 0, y: 0, z: 0}
+  negSpawnValues: {x: 0, y: 0, z: 0}
   trashCount: 10
   spawnWait: .100000001
   waveWait: 2
+  initialSpawning: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

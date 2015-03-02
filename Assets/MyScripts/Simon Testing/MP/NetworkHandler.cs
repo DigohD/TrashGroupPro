@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class NetworkHandler : MonoBehaviour {
 
 	string server_ID = "MP_TRASH_HEAP_SERVER_TEST_X01X";
@@ -8,17 +9,32 @@ public class NetworkHandler : MonoBehaviour {
 	float refreshRequestLength = 3.0f;
 	HostData[] hostData;
 	public GameObject playerClass;
-	
+	public GameObject gameControlClass;
+
+	public AudioSource aGetReady, aC1, aC2, aC3, aGo;
+
+	public UIHandler ui;
+	public EndGameScript egs;
+
+	string userName = "";
+	int phase = 0;
+
+	bool connected, playerSpawned, singleTesting;
+
 	void StartServer(){
 		Network.InitializeServer(16, 25002, false);
 		MasterServer.RegisterHost(server_ID, "Trash Heap MP", "Test for server code");
 	}
 	
 	void OnServerInitialized(){
-		Debug.Log("Server Initialized!");
-		SpawnPlayer(Network.player);
+		print("Server Initialized!");
+		connected = false;
+		if(!singleTesting)
+			setPhase(1);
+		else
+			setPhase(7);
 	}
-	
+
 	void OnMasterServerEvent(MasterServerEvent masterServerEvent){
 		if(masterServerEvent == MasterServerEvent.RegistrationSucceeded){
 			Debug.Log("Registration Successful");
@@ -58,12 +74,25 @@ public class NetworkHandler : MonoBehaviour {
 		playerNetworkView.RPC("PlayerSetupFunc", RPCMode.AllBuffered, newPlayer);
 	}*/
 
-	void SpawnPlayer(NetworkPlayer newPlayer){
-		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+	void createGameController(){
+		GameObject gameInstance = (GameObject) Network.Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+	}
+
+	void initSpawnPlayer(int posX, int posY){
+		if(!playerSpawned)
+			SpawnPlayer(Network.player, userName, posX, posY);
+	}
+
+	void SpawnPlayer(NetworkPlayer newPlayer, string newUserName, int posX, int posY){
+		playerSpawned = true;
+		GameObject playerInstance = (GameObject) Network.Instantiate(playerClass, new Vector3(posX, posY, 2f), Quaternion.identity, 0);
 		playerInstance.transform.rotation =  Quaternion.Euler(-90, 0, 0);
 
+		PlayerStats ps = (PlayerStats) playerInstance.GetComponent("PlayerStats");
+		ps.setID(newUserName);
+
 		PlayerSetupServer(playerInstance);
-		
+
 		//NetworkView playerNetworkView = playerInstance.networkView;
 		//playerNetworkView.RPC("PlayerSetupFunc", RPCMode.AllBuffered, newPlayer);
 	}
@@ -76,9 +105,10 @@ public class NetworkHandler : MonoBehaviour {
 			ot.tracked = player;
 		}
 	}
-	
-	void OnGUI() {
-		
+
+
+
+	void OnGUI(){
 		if(Network.isClient)
 			GUILayout.Label("Client");
 		if(Network.isServer)
@@ -86,23 +116,31 @@ public class NetworkHandler : MonoBehaviour {
 		
 		if(Network.isClient || Network.isServer)
 			return;
-		
-		if(GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
+
+
+		userName = GUI.TextField(new Rect (25f, 145f, 150f, 25f), userName, 25);
+
+		if(userName.Length > 4 && GUI.Button(new Rect(25f, 25f, 150f, 30f), "Start New Server")){
+			singleTesting = false;
 			StartServer();
 		}
 		
-		if(GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
+		if(userName.Length > 4 && GUI.Button(new Rect(25f, 65f, 150f, 30f), "Refresh Server List")){
 			StartCoroutine(RefreshHostList());
+		}
+
+		if(GUI.Button(new Rect(25f, 105f, 150f, 30f), "Single Player Testing")){
+			singleTesting = true;
+			StartServer();
 		}
 		
 		if(hostData != null){
 			for(var i = 0; i < hostData.Length; i++){
-				if(GUI.Button(new Rect(Screen.width/2, 65f * i, 300f, 30f), hostData[i].gameName)){
+				if(!userName.Equals("") && GUI.Button(new Rect(Screen.width/2, 65f * i, 300f, 30f), hostData[i].gameName)){
 					Network.Connect(hostData[i]);
 				}
 			}
 		}
-		
 	}
 	
 	void OnPlayerDisconnected(NetworkPlayer player){
@@ -111,12 +149,11 @@ public class NetworkHandler : MonoBehaviour {
 	}
 	
 	void OnPlayerConnected(NetworkPlayer player){
-		//SpawnPlayer(player);
+		connected = true;
 	}
 
 	void OnConnectedToServer(){
-		Debug.Log("CONNECTED!!!");
-		SpawnPlayer(Network.player);
+		connected = true;
 	}
 	
 	void OnApplicationQuit(){
@@ -128,8 +165,148 @@ public class NetworkHandler : MonoBehaviour {
 			Network.Disconnect(200);
 		}
 	}
-	
+
+	bool isTimed = false;
+
 	void Update () {
-		
+		if(phase == 1){
+			if(connected)
+				setPhase(2);
+			else
+				ui.setWaiting();
+		}else if(phase == 2){
+			ui.setGetReady();
+			if(!isTimed){
+				isTimed = true;
+				aGetReady.Play();
+				StartCoroutine(setCount3());
+			}
+		}else if(phase == 3){
+			ui.setCount3();
+			if(!isTimed){
+				isTimed = true;
+				aC3.Play();
+				StartCoroutine(setCount2());
+			}
+		}else if(phase == 4){
+			ui.setCount2();
+			if(!isTimed){
+				isTimed = true;
+				aC2.Play();
+				StartCoroutine(setCount1());
+			}
+		}else if(phase == 5){
+			ui.setCount1();
+			if(!isTimed){
+				isTimed = true;
+				aC1.Play();
+				StartCoroutine(setGo());
+			}
+		}else if(phase == 6){
+			ui.setGo();
+			if(!isTimed){
+				isTimed = true;
+				aGo.Play();
+				StartCoroutine(deleteGo());
+			}
+		}else if(phase == 7){
+			if(Network.isServer){
+				// Player 2 coords X: 96 Y: 14
+				networkView.RPC("rpcSpawnPlayers", RPCMode.Others, 96, 14);
+				initSpawnPlayer(6, 3);
+				createGameController();
+				egs.activate();
+			}
+			phase = 8;
+		}
 	}
+
+	IEnumerator setCount3(){
+		float timeStart = Time.time;
+		float timeEnd = Time.time + 2;
+		
+		while(timeStart < timeEnd){
+			hostData = MasterServer.PollHostList();
+			timeStart = Time.time;
+			yield return new WaitForEndOfFrame();
+		}
+		
+		setPhase(3);
+		isTimed = false;
+	}
+
+	IEnumerator setCount2(){
+		float timeStart = Time.time;
+		float timeEnd = Time.time + 1;
+		
+		while(timeStart < timeEnd){
+			hostData = MasterServer.PollHostList();
+			timeStart = Time.time;
+			yield return new WaitForEndOfFrame();
+		}
+		
+		setPhase(4);
+		isTimed = false;
+	}
+
+	IEnumerator setCount1(){
+		float timeStart = Time.time;
+		float timeEnd = Time.time + 1;
+		
+		while(timeStart < timeEnd){
+			hostData = MasterServer.PollHostList();
+			timeStart = Time.time;
+			yield return new WaitForEndOfFrame();
+		}
+		
+		setPhase(5);
+		isTimed = false;
+	}
+
+	IEnumerator setGo(){
+		float timeStart = Time.time;
+		float timeEnd = Time.time + 1;
+		
+		while(timeStart < timeEnd){
+			hostData = MasterServer.PollHostList();
+			timeStart = Time.time;
+			yield return new WaitForEndOfFrame();
+		}
+		
+		setPhase(6);
+		isTimed = false;
+	}
+
+	IEnumerator deleteGo(){
+		float timeStart = Time.time;
+		float timeEnd = Time.time + 1;
+		
+		while(timeStart < timeEnd){
+			hostData = MasterServer.PollHostList();
+			timeStart = Time.time;
+			yield return new WaitForEndOfFrame();
+		}
+		
+		ui.clearUI();
+		setPhase(7);
+		isTimed = false;
+	}
+
+	void setPhase(int newPhase){
+		phase = newPhase;
+		networkView.RPC("rpcSetPhase", RPCMode.Others, newPhase);
+	}
+
+	[RPC]
+	void rpcSpawnPlayers(int posX, int posY){
+		initSpawnPlayer(posX, posY);
+		egs.activate();
+	}
+
+	[RPC]
+	void rpcSetPhase(int newPhase){
+		phase = newPhase;
+	}
+
+
 }

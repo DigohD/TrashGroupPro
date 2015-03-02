@@ -7,7 +7,7 @@ public class EnemyCollision : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "Enemy") {
-			other.GetComponent<EnemyStats>().TakesDamage(pStats.dmg);
+			other.GetComponent<EnemyStats>().takeDamage(pStats.dmg);
 
 		}
 	}

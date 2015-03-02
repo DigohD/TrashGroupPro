@@ -8,21 +8,76 @@ public class TrashToTrashConnector : MonoBehaviour {
 	//public PlayerStats stats;
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Trash" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn) 
+		if(!networkView.isMine)
+			return;
+
+		if(other.tag == "Trash" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
+		   && networkView.isMine) 
 		{
-			//Set the piece of thrash as a child to the player gameobject
-			other.transform.parent = this.transform.parent;
 
-			//Add trash attributes to player
-			PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 			TrashStats tStats = other.GetComponent<TrashStats>(); 
-			pStats.addAttributes(tStats.speed);
+			if(!tStats.isTaken){
+				NetworkViewID id = Network.AllocateViewID();
+				NetworkViewID oldID = other.networkView.viewID;
+				other.networkView.viewID = id;
 
-			//Set up the joint
-			FixedJoint joint;
-			joint = this.gameObject.AddComponent<FixedJoint> ();
-			joint.connectedBody = other.rigidbody;
-			other.tag = "BodyPart";
+				networkView.RPC("synchTTID", RPCMode.Others, oldID, id);
+
+				//Set the piece of thrash as a child to the player gameobject
+				other.transform.parent = this.transform.parent;
+				this.gameObject.GetComponent<ChildList>().addChild(other.networkView.viewID);
+
+				//Add trash attributes to player
+				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
+
+				pStats.addAttributes(tStats.speed, tStats.rSpeed);
+				tStats.setTaken(pStats.ID, networkView.viewID);
+
+
+				//Set up the joint
+				FixedJoint joint;
+				joint = this.gameObject.AddComponent<FixedJoint> ();
+				joint.connectedBody = other.rigidbody;
+				tStats.setToBodyPart();
+			}
 		}
+		else if(other.tag == "PassiveTurret" && this.tag == "BodyPart" && transform.parent.GetComponent<PlayerStats>().magnetOn  
+		        && networkView.isMine) 
+		{
+			TurretStats tStats = other.GetComponent<TurretStats>(); 
+			if(!tStats.isTaken){
+				NetworkViewID id = Network.AllocateViewID();
+				NetworkViewID oldID = other.networkView.viewID;
+				other.networkView.viewID = id;
+				
+				networkView.RPC("synchTTID", RPCMode.Others, oldID, id);
+				
+				//Set the piece of thrash as a child to the player gameobject
+				other.transform.parent = this.transform.parent;
+				this.gameObject.GetComponent<ChildList>().addChild(other.networkView.viewID);
+				
+				//Add trash attributes to player
+				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
+				
+				pStats.addAttributes(tStats.speed, tStats.rSpeed);
+				tStats.setTaken(pStats.ID, networkView.viewID);
+				
+				
+				//Set up the joint
+				FixedJoint joint;
+				joint = this.gameObject.AddComponent<FixedJoint> ();
+				joint.connectedBody = other.rigidbody;
+				other.tag = "BodyPart";
+				tStats.setToBodyPart();
+				other.GetComponentInChildren<WildTurretControlScript>().activate();
+			}
+		}
+	}
+
+	[RPC]
+	void synchTTID(NetworkViewID oldID, NetworkViewID id){
+		NetworkView view = NetworkView.Find(oldID);
+		view.viewID = id;
+		Debug.Log("AttachTrash SynchID CAlled!");
 	}
 }
