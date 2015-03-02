@@ -633,7 +633,7 @@ MonoBehaviour:
   isTaken: 0
   ownerID: 
   speed: 0
-  rSpeed: 1
+  rSpeed: 2
 --- !u!114 &11440844
 MonoBehaviour:
   m_ObjectHideFlags: 1
