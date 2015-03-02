@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerStats : MonoBehaviour {
 
 	public float speed;
+	public float rSpeed;
 	public float dmg;
 	public bool magnetOn = false;
 	public float health;
@@ -35,10 +36,16 @@ public class PlayerStats : MonoBehaviour {
 	{
 		speed += nSpeed;
 	}
-	public void addAttributes(float nSpeed, float nDamage)
+	public void addAttributes(float nSpeed, float nRSpeed)
+	{
+		speed += nSpeed;
+		rSpeed += nRSpeed;
+	}
+	public void addAttributes(float nSpeed, float nDamage, float nRSpeed)
 	{
 		speed += nSpeed;
 		dmg += nDamage;
+		rSpeed += nRSpeed;
 	}
 	public void magnetSwitch(){
 		magnetOn = !magnetOn;

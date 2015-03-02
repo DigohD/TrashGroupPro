@@ -30,7 +30,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 				//Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 
-				pStats.addAttributes(tStats.speed);
+				pStats.addAttributes(tStats.speed, tStats.rSpeed);
 				tStats.setTaken(pStats.ID);
 
 
@@ -59,7 +59,7 @@ public class TrashToTrashConnector : MonoBehaviour {
 				//Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 				
-				pStats.addAttributes(tStats.speed);
+				pStats.addAttributes(tStats.speed, tStats.rSpeed);
 				tStats.setTaken(pStats.ID);
 				
 				

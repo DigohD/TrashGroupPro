@@ -30,11 +30,11 @@ public class MovementScript : MonoBehaviour {
 	}
 	public void RotateRight(){
 		if(networkView.isMine)
-			rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime);
+			rigidbody.AddTorque (0, 0, -rotation * Time.deltaTime * stats.rSpeed);
 	}
 	public void RotateLeft(){
 		if(networkView.isMine)
-			rigidbody.AddTorque (0, 0, rotation * Time.deltaTime);
+			rigidbody.AddTorque (0, 0, rotation * Time.deltaTime * stats.rSpeed);
 	}
 
 }

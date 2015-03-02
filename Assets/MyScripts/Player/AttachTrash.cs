@@ -25,7 +25,7 @@ public class AttachTrash : MonoBehaviour {
 				other.transform.parent = this.transform;
 				
 				
-				stats.addAttributes(tStats.speed);
+				stats.addAttributes(tStats.speed, tStats.rSpeed);
 				tStats.setTaken(stats.ID);
 				//Set up the joint
 				FixedJoint joint;
@@ -48,7 +48,7 @@ public class AttachTrash : MonoBehaviour {
 				other.transform.parent = this.transform;
 				
 				
-				stats.addAttributes(tStats.speed);
+				stats.addAttributes(tStats.speed, tStats.rSpeed);
 				tStats.setTaken(stats.ID);
 				//Set up the joint
 				FixedJoint joint;

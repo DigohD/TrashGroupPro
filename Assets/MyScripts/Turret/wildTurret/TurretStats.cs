@@ -14,7 +14,8 @@ public class TurretStats : MonoBehaviour {
 	public string ownerID;
 
 	public float speed;
-
+	public float rSpeed;
+	
 
 	public void damageTaken(float dmg){
 				if (health > 0) {

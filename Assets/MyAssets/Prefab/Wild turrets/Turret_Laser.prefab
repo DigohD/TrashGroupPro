@@ -633,6 +633,7 @@ MonoBehaviour:
   isTaken: 0
   ownerID: 
   speed: 0
+  rSpeed: .5
 --- !u!114 &11440844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,7 +696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3f25db05397bf44bfd939a733509dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childList: []
 --- !u!148 &14840840
 NetworkView:
   m_ObjectHideFlags: 1
