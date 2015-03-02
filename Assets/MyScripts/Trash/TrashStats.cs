@@ -41,17 +41,25 @@ public class TrashStats : MonoBehaviour {
 		if (health <= 0){
 			print("health zero, time to delete");
 			List<GameObject> banana = gameObject.GetComponent<ChildList>().get();
+			int counter = 0;
 			foreach(GameObject child in banana ){
 				Debug.Log("damaging: "+ gameObject);
+				counter++;
 				if(child != null){
 				try{
 					child.GetComponent<TrashStats>().takeDamage(100000);
 				}catch(MissingComponentException){
 					child.GetComponent<TurretStats>().damageTaken(100000);
-					}catch(MissingReferenceException){}
+					}catch(MissingReferenceException){
+
+					}
 				}
+				if(counter > 100)
+					return;
+				Debug.Log("Loop iteration: " + counter);
 			}
-			Network.Destroy (this.gameObject);
+			Destroy(this.gameObject);
+			networkView.RPC("rpcTrashChainDestroy", RPCMode.Others, 0);
 			Instantiate(explosion, transform.position, transform.rotation);	
 		}
 		
@@ -70,5 +78,10 @@ public class TrashStats : MonoBehaviour {
 	[RPC]
 	void rpcSetBodyPart(int wasted){
 		gameObject.tag = "BodyPart";
+	}
+
+	[RPC]
+	void rpcTrashChainDestroy(int wasted){
+		Destroy(this.gameObject);
 	}
 }
