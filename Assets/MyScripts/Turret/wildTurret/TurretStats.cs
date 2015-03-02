@@ -21,6 +21,7 @@ public class TurretStats : MonoBehaviour {
 	public int damageTaken(float dmg, int comboCount){
 				//if (health > 0) {
 						health -= dmg;
+						int initComboCount = comboCount;
 						if (health <= 0) {
 								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
 								foreach (NetworkViewID childID in banana) {
@@ -35,7 +36,8 @@ public class TurretStats : MonoBehaviour {
 						
 								}
 								comboCount++;
-								NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
+								if(initComboCount == 0)
+									NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);
 						}
