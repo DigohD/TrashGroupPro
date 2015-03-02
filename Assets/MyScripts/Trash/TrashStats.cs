@@ -34,10 +34,11 @@ public class TrashStats : MonoBehaviour {
 	public void takeDamage ( float incDmg ) {
 		health -= incDmg;
 		gameObject.GetComponent<DamageBarrel> ().barrelHit ();
+
 		if(type.Equals("Barrel"))
 			barrelAudio.Play ();
 
-		if (health <= 0) {
+		if (health <= 0){
 			print("health zero, time to delete");
 			List<GameObject> banana = gameObject.GetComponent<ChildList>().get();
 			foreach(GameObject child in banana ){
