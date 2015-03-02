@@ -24,12 +24,12 @@ public class TurretStats : MonoBehaviour {
 								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
 								foreach (NetworkViewID childID in banana) {
 										GameObject child = NetworkView.Find(childID).gameObject;
-										if (child == null)
-												return;
-										if (child.GetComponent<TrashType> ().type.Equals("Trash"))
+										if (child != null){
+											if (child.GetComponent<TrashType> ().type.Equals("Trash"))
 														child.GetComponent<TrashStats> ().takeDamage (10000.0f);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
 														child.GetComponent<TurretStats> ().damageTaken (10000.0f);
+										}
 				
 								}
 								Network.Destroy (this.gameObject);
