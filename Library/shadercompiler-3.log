@@ -1,33 +1,47 @@
 Base path: C:/Program Files (x86)/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-3-5192
+Pipe name: \\.\pipe\UnityShaderCompiler-3-9704
 Cmd: getPlatforms
 Cmd: compileSnippet
-  api=0 type=0 insize=4871 outsize=436 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=0 insize=5223 outsize=6078 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=4871 outsize=1883 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
+  api=8 type=1 insize=5223 outsize=4355 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=1 type=0 insize=4871 outsize=1146 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF VERTEXLIGHT_ON ok=1
+  api=1 type=1 insize=5223 outsize=513 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_OFF ok=1
 Cmd: compileSnippet
-  api=0 type=1 insize=4871 outsize=445 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+  api=4 type=1 insize=5223 outsize=4264 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_ON DIRLIGHTMAP_ON ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=4871 outsize=1770 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF ok=1
+  api=1 type=0 insize=2833 outsize=834 kw=SPOT ok=1
 Cmd: compileSnippet
-  api=0 type=0 insize=2847 outsize=854 kw=SPOT ok=1
+  api=4 type=0 insize=2833 outsize=3720 kw=POINT_COOKIE ok=1
 Cmd: compileSnippet
-  api=0 type=0 insize=2847 outsize=775 kw=DIRECTIONAL_COOKIE ok=1
+  api=0 type=1 insize=2833 outsize=1378 kw=SPOT ok=1
 Cmd: compileSnippet
-  api=0 type=1 insize=2847 outsize=428 kw=DIRECTIONAL ok=1
+  api=0 type=1 insize=2833 outsize=1246 kw=POINT_COOKIE ok=1
 Cmd: compileSnippet
-  api=0 type=1 insize=2847 outsize=734 kw=POINT_COOKIE ok=1
+  api=8 type=1 insize=2833 outsize=5046 kw=POINT_COOKIE ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=2847 outsize=2422 kw=DIRECTIONAL_COOKIE ok=1
+  api=0 type=0 insize=4672 outsize=926 kw=LIGHTMAP_ON DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
 Cmd: compileSnippet
-  api=8 type=1 insize=867 outsize=675 kw= ok=1
+  api=0 type=0 insize=4672 outsize=976 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=4672 outsize=1055 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4672 outsize=507 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4672 outsize=1530 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_OFF ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=4672 outsize=1615 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF HDR_LIGHT_PREPASS_ON ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=4672 outsize=1457 kw=LIGHTMAP_ON DIRLIGHTMAP_ON HDR_LIGHT_PREPASS_ON ok=1
 Cmd: compileSnippet
   api=8 type=0 insize=1612 outsize=2982 kw= ok=1
 Cmd: compileSnippet
-  api=1 type=1 insize=1135 outsize=192 kw= ok=1
-Unhandled exception: Readfile from pipe failed. GLE=The pipe has been ended.
-
-
-Quitting shader compiler process
+  api=8 type=0 insize=1088 outsize=2316 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=1088 outsize=185 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=636 outsize=52 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=3540 outsize=2163 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=1941 outsize=2707 kw= ok=1
