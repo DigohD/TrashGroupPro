@@ -32,38 +32,40 @@ public class TrashStats : MonoBehaviour {
 	}
 
 	public void takeDamage ( float incDmg ) {
-		health -= incDmg;
-		gameObject.GetComponent<DamageBarrel> ().barrelHit ();
+				if (health > 0) {
+						health -= incDmg;
+						gameObject.GetComponent<DamageBarrel> ().barrelHit ();
 
-		if(type.Equals("Barrel"))
-			barrelAudio.Play ();
+						if (type.Equals ("Barrel"))
+								barrelAudio.Play ();
 
-		if (health <= 0){
-			print("health zero, time to delete");
-			List<GameObject> banana = gameObject.GetComponent<ChildList>().get();
-			int counter = 0;
-			foreach(GameObject child in banana ){
-				Debug.Log("damaging: "+ gameObject);
-				counter++;
-				if(child != null){
-					if(child.GetComponent<TrashType>().type == "Trash")
-					child.GetComponent<TrashStats>().takeDamage(100000);
-					if(child.GetComponent<TrashType>().type == "Turret")	
-					child.GetComponent<TurretStats>().damageTaken(100000);
+						if (health <= 0) {
+								print ("health zero, time to delete");
+								List<GameObject> banana = gameObject.GetComponent<ChildList> ().get ();
+								int counter = 0;
+								foreach (GameObject child in banana) {
+										Debug.Log ("damaging: " + gameObject);
+										counter++;
+										if (child != null) {
+												if (child.GetComponent<TrashType> ().type.Equals("Trash"))
+														child.GetComponent<TrashStats> ().takeDamage (10000.0f);
+												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
+														child.GetComponent<TurretStats> ().damageTaken (10000.0f);
 
 
 
-				}
-				if(counter > 100)
-					return;
-				Debug.Log("Loop iteration: " + counter);
-			}
-			Destroy(this.gameObject);
-			networkView.RPC("rpcTrashChainDestroy", RPCMode.Others, 0);
-			Instantiate(explosion, transform.position, transform.rotation);	
-		}
+										}
+										if (counter > 100)
+												return;
+										Debug.Log ("Loop iteration: " + counter);
+								}
+								Destroy (this.gameObject);
+								networkView.RPC ("rpcTrashChainDestroy", RPCMode.Others, 0);
+								Instantiate (explosion, transform.position, transform.rotation);	
+						}
 		
-	}
+				}
+		}
 
 	public void setToBodyPart(){
 		networkView.RPC ("rpcSetBodyPart", RPCMode.All, 0);

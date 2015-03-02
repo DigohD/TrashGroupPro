@@ -17,20 +17,27 @@ public class TurretStats : MonoBehaviour {
 
 
 	public void damageTaken(float dmg){
-		health -= dmg;
+				if (health > 0) {
+						health -= dmg;
 
-		if (health <= 0){
-			List<GameObject> banana = gameObject.GetComponent<ChildList>().get();
-			foreach(GameObject child in banana ){
-				if(child != null){
-					if(child.GetComponent<TrashType>().type == "Trash")
-						child.GetComponent<TrashStats>().takeDamage(100000);
-					if(child.GetComponent<TrashType>().type == "Turret")	
-						child.GetComponent<TurretStats>().damageTaken(100000);
-				}
-		}
-			Network.Destroy (this.gameObject);
-			Instantiate(explosion, transform.position, transform.rotation);
+						if (health <= 0) {
+								List<GameObject> banana = gameObject.GetComponent<ChildList> ().get ();
+								foreach (GameObject child in banana) {
+										if (child == null)
+												return;
+										if (child.GetComponent<TrashType> ().type.Equals("Trash"))
+														child.GetComponent<TrashStats> ().takeDamage (10000.0f);
+												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
+														child.GetComponent<TurretStats> ().damageTaken (10000.0f);
+				
+								}
+								Network.Destroy (this.gameObject);
+								Instantiate (explosion, transform.position, transform.rotation);
+						}
+		}else {
+			Destroy (this.gameObject);
+			networkView.RPC ("rpcTrashChainDestroy", RPCMode.Others, 0);
+			Instantiate (explosion, transform.position, transform.rotation);
 		}
 	}
 
