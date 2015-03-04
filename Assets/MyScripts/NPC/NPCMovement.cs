@@ -51,14 +51,10 @@ public class NPCMovement : MonoBehaviour {
 	
 	private void MakeFSM()
 	{
+
 		Patrolling patrol = new Patrolling(this);
-
-
 		ChasePlayerState chase = new ChasePlayerState(this);
-		chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
-
 		RunAwayFromPlayer run = new RunAwayFromPlayer(this);
-		run.AddTransition(Transition.LostPlayer, StateID.Patrolling);
 
 		fsm = new FSMSystem();
 
@@ -69,17 +65,22 @@ public class NPCMovement : MonoBehaviour {
 			case npcTypes.standard:
 				patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
 				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
+				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
 				break;
 			case npcTypes.aggressive:
 				patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
 				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
+				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+				chase.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
 				break;
 			case npcTypes.shy:
 				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
-			
+				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+				run.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+
 				break;
 			case npcTypes.ignoring:
-				
+				//Ignoring never goes into any states!
 				break;
 			default:
 				
@@ -135,27 +136,8 @@ public class NPCMovement : MonoBehaviour {
 
 			// If the Player passes less than 15 meters away in front of the NPC
 
-			RaycastHit hit;
-			if (Physics.Raycast(npclass.npc.transform.position, npclass.direction, out hit, 5f))
-			{
+			npclass.checkForPlayersInSight ();
 
-				if (hit.transform.gameObject.tag == "Player"){
-					npclass.targetPlayer = hit.transform.gameObject;
-					npclass.chaseTimer = 3f;
-
-
-					if(npclass.npcType == npcTypes.shy)
-					{
-						npclass.SetTransition(Transition.ScaredOfPlayer);
-					}
-					else
-					{
-						npclass.SetTransition(Transition.SawPlayer);
-					}
-
-				}
-					
-			}
 		}
 		
 		public override void Act()
@@ -205,6 +187,9 @@ public class NPCMovement : MonoBehaviour {
 			// If the player has gone 30 meters away from the NPC, fire LostPlayer transition
 			if (npclass.chaseTimer < 0)
 				npclass.SetTransition(Transition.LostPlayer);
+
+			//Agressive NPCs can continue chasing
+			npclass.checkForPlayersInSight ();
 		}
 		
 		public override void Act()
@@ -256,6 +241,30 @@ public class NPCMovement : MonoBehaviour {
 	//Helped Functions
 	//--------------------------------------------------
 
+	void checkForPlayersInSight()
+	{
+		RaycastHit hit;
+		if (Physics.Raycast(npc.transform.position, direction, out hit, 5f))
+		{
+			
+			if (hit.transform.gameObject.tag == "Player"){
+				targetPlayer = hit.transform.gameObject;
+				chaseTimer = 3f;
+				
+				
+				if(npcType == npcTypes.shy)
+				{
+					SetTransition(Transition.ScaredOfPlayer);
+				}
+				else
+				{
+					SetTransition(Transition.SawPlayer);
+				}
+				
+			}
+			
+		}
+	}
 
 	//Move towards or away from target position with the rigid body's specified speed
 	void Move(Transform targetTransform, float speed, bool towards)
