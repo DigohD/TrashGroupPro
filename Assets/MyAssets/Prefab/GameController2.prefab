@@ -45,6 +45,8 @@ MonoBehaviour:
   barrelGreen: {fileID: 134262, guid: c121c2ea1ad2e9a4d908b4d6c0ce2d66, type: 2}
   barrelBlack: {fileID: 122988, guid: 3137a69d42d66b3489b846311c3cc2c4, type: 2}
   laserTurret: {fileID: 140854, guid: 78714796ef5b764429a97213fc7bb053, type: 2}
+  WhaleClass: {fileID: 153724, guid: 479c7c3bae930334d96cba979c453272, type: 2}
+  BlowfishClass: {fileID: 182068, guid: b4b8aa407b00cf74c926e72c86e18c10, type: 2}
   posSpawnValues: {x: 95, y: 10, z: 2}
   negSpawnValues: {x: 15, y: 3, z: 2}
   trashCount: 35
