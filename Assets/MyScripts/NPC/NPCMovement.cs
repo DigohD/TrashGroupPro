@@ -5,7 +5,7 @@ public class NPCMovement : MonoBehaviour {
 
 
 	GameObject[] players;
-	GameObject playerToChase;
+	GameObject targetPlayer;								// The current targetted player, ie to chase or run away from
 	Rigidbody npc;              							// Reference to the nav mesh agent.
 	//float rotationSpeed = 2f;								// NPC rotation speed
 
@@ -15,7 +15,6 @@ public class NPCMovement : MonoBehaviour {
 	public float patrolSpeed = 3f;                          // The NPC patrol speed.
 	public float chaseSpeed = 6f;                           // The NPC chase speed.
 
-	public bool doesItChasePlayers = true;
 	public float chaseWaitTime = 8f;                        // The amount of time to wait when the last sighting is reached.
 	public int minChaseDistance = 10;						// The distance before the NPC chases after the (nearest) player
 	public Transform[] waypoints;                     // An array of transforms for the patrol route.
@@ -27,6 +26,17 @@ public class NPCMovement : MonoBehaviour {
 
 	private float chaseTimer = 3f;                          // A timer for the chaseWaitTime.
 
+
+	public enum npcTypes
+	{
+		standard,
+	 	aggressive,
+		shy,
+		ignoring
+
+	}
+
+	public npcTypes npcType = npcTypes.standard;			//Allow a number of differnt types of NPCs
 
 	//FSM Build 
 
@@ -42,29 +52,57 @@ public class NPCMovement : MonoBehaviour {
 	private void MakeFSM()
 	{
 		Patrolling patrol = new Patrolling(this);
-		patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
-		
+
+
 		ChasePlayerState chase = new ChasePlayerState(this);
 		chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
-		
+
+		RunAwayFromPlayer run = new RunAwayFromPlayer(this);
+		run.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+
 		fsm = new FSMSystem();
+
+
+		//Set up transitions for different types of NPCs
+		switch (npcType)
+		{
+			case npcTypes.standard:
+				patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
+				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
+				break;
+			case npcTypes.aggressive:
+				patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
+				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
+				break;
+			case npcTypes.shy:
+				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
+			
+				break;
+			case npcTypes.ignoring:
+				
+				break;
+			default:
+				
+				break;
+		}
+
+
 		fsm.AddState(patrol);
 		fsm.AddState(chase);
+		fsm.AddState(run); 
+		
+		
 	}
 
 
 	void Awake ()
 	{
 		npc = GetComponent <Rigidbody> ();
-
-		//TODO Move getplayer here after switching to spawning NPC
-
 	}
 	
 
 
 	void FixedUpdate () {
-
 
 		fsm.CurrentState.Reason();
 		fsm.CurrentState.Act();
@@ -72,7 +110,9 @@ public class NPCMovement : MonoBehaviour {
 	}
 
 
-
+	
+	//Patrolling State
+	//--------------------------------------------------
 	public class Patrolling : FSMState
 	{
 		private NPCMovement npclass;
@@ -94,14 +134,25 @@ public class NPCMovement : MonoBehaviour {
 		{
 
 			// If the Player passes less than 15 meters away in front of the NPC
+
 			RaycastHit hit;
-			if (Physics.Raycast(npclass.npc.transform.position, npclass.direction, out hit, 15F))
+			if (Physics.Raycast(npclass.npc.transform.position, npclass.direction, out hit, 5f))
 			{
 
 				if (hit.transform.gameObject.tag == "Player"){
-					npclass.playerToChase = hit.transform.gameObject;
+					npclass.targetPlayer = hit.transform.gameObject;
 					npclass.chaseTimer = 3f;
-					npclass.SetTransition(Transition.SawPlayer);
+
+
+					if(npclass.npcType == npcTypes.shy)
+					{
+						npclass.SetTransition(Transition.ScaredOfPlayer);
+					}
+					else
+					{
+						npclass.SetTransition(Transition.SawPlayer);
+					}
+
 				}
 					
 			}
@@ -124,14 +175,15 @@ public class NPCMovement : MonoBehaviour {
 				
 			}else
 			{
-				npclass.MoveTowards (npclass.waypoints [wayPointIndex], npclass.patrolSpeed);
+				npclass.Move (npclass.waypoints [wayPointIndex], npclass.patrolSpeed, true);
 			}
 		}
 		
 	} 
 
 
-
+	//Chase Player State
+	//--------------------------------------------------
 	public class ChasePlayerState : FSMState
 	{
 		private NPCMovement npclass;
@@ -147,7 +199,7 @@ public class NPCMovement : MonoBehaviour {
 		public override void Reason()
 		{
 			// If the player has gone 30 meters away from the NPC, fire LostPlayer transition
-			if (Vector3.Distance(npclass.npc.transform.position, npclass.playerToChase.transform.position) >= 30)
+			if (Vector3.Distance(npclass.npc.transform.position, npclass.targetPlayer.transform.position) >= 30)
 				npclass.SetTransition(Transition.LostPlayer);
 
 			// If the player has gone 30 meters away from the NPC, fire LostPlayer transition
@@ -159,10 +211,103 @@ public class NPCMovement : MonoBehaviour {
 		{
 			npclass.chaseTimer -= Time.deltaTime;
 
-			npclass.MoveTowards (npclass.playerToChase.transform, npclass.chaseSpeed);
+			npclass.Move (npclass.targetPlayer.transform, npclass.chaseSpeed, true);
 		}
 		
 	} // ChasePlayerState
+
+
+
+	
+	//Run Away from Player State
+	//--------------------------------------------------
+	public class RunAwayFromPlayer : FSMState
+	{
+		private NPCMovement npclass;
+		
+		public RunAwayFromPlayer(NPCMovement o)
+		{
+			//access to outer class members
+			npclass = o;
+			
+			stateID = StateID.Running;
+		}
+		
+		public override void Reason()
+		{
+
+			// If the player has gone 30 meters away from the NPC, fire LostPlayer transition
+			if (npclass.chaseTimer < 0)
+				npclass.SetTransition(Transition.LostPlayer);
+		}
+		
+		public override void Act()
+		{
+			npclass.chaseTimer -= Time.deltaTime;
+			
+			npclass.Move (npclass.targetPlayer.transform, npclass.chaseSpeed, false);
+		}
+		
+	} 
+
+
+
+	
+	//Helped Functions
+	//--------------------------------------------------
+
+
+	//Move towards or away from target position with the rigid body's specified speed
+	void Move(Transform targetTransform, float speed, bool towards)
+	{
+
+		float angleZ = 0f;
+		float angleX = 0f;
+
+
+		//Move in specified direction 
+		if (towards) 
+		{
+			direction = (targetTransform.position - npc.position).normalized;
+			angleZ = AngleBetweenPoints(npc.position, targetTransform.position);
+
+		}
+		else
+		{
+			direction = (npc.position - targetTransform.position).normalized;
+			angleZ = AngleBetweenPoints(targetTransform.position, npc.position);
+
+		}
+		
+		npc.MovePosition(npc.position + direction * Time.deltaTime * speed );
+
+
+
+		//Keep things positive!
+		//If The Z rotation is 'upside down' then flip X and Z
+		if (angleZ > 90 || angleZ < -90 ) 
+		{
+			angleX = 180;
+			angleZ = (-1)*angleZ;
+		} 
+
+		if (travelsOnX) {
+			//Rotate towards direction over time
+			npc.rotation = Quaternion.Slerp (npc.rotation, Quaternion.Euler (new Vector3 (angleX, 0f, angleZ)), Time.deltaTime * speed * 2);
+		}
+
+	}
+
+
+	void TeleportTo(Transform targetTransform)
+	{
+		npc.transform.position = targetTransform.position;
+	}
+
+
+	float AngleBetweenPoints(Vector2 a, Vector2 b) {
+		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+	}
 
 
 	/*
@@ -179,7 +324,7 @@ public class NPCMovement : MonoBehaviour {
 				
 				if(distanceToPlayer < minChaseDistance)
 				{
-					playerToChase = players[i];
+					targetPlayer = players[i];
 					chaseTimer = 3f;	
 					break;
 				}
@@ -190,50 +335,6 @@ public class NPCMovement : MonoBehaviour {
 	}
 	
 
-
-	void Chasing()
-	{
-		chaseTimer -= Time.deltaTime;
-
-		MoveTowards (playerToChase.transform, chaseSpeed);
-
-	}*/
-
-	
-	//Move towards target position with the rigid body's specified speed
-	void MoveTowards(Transform targetTransform, float speed)
-	{
-
-		//Move in direction
-		direction = (targetTransform.position - npc.position).normalized;
-		npc.MovePosition(npc.position + direction * Time.deltaTime * speed );
-
-		//Rotate towards direction over time
-		float angleZ = AngleBetweenPoints(npc.position, targetTransform.position);
-		float angleX = 0f;
-
-		//Keep things positive!
-		//If The Z rotation is 'upside down' then flip X and Z
-		if (angleZ > 90 || angleZ < -90 ) 
-		{
-			angleX = 180;
-			angleZ = (-1)*angleZ;
-		} 
-
-		if (travelsOnX) {
-			npc.rotation = Quaternion.Slerp (npc.rotation, Quaternion.Euler (new Vector3 (angleX, 0f, angleZ)), Time.deltaTime * speed * 2);
-		}
-
-	}
-
-	void TeleportTo(Transform targetTransform)
-	{
-		npc.transform.position = targetTransform.position;
-	}
-
-
-	float AngleBetweenPoints(Vector2 a, Vector2 b) {
-		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
-	}
+*/
 
 }

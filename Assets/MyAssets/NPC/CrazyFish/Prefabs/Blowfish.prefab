@@ -218,13 +218,13 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   serializedVersion: 2
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Mass: 2
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 40
   m_CollisionDetection: 0
 --- !u!111 &11100000
 Animation:
@@ -261,12 +261,12 @@ MonoBehaviour:
   teleportWaypointCycle: 0
   patrolSpeed: 2
   chaseSpeed: 5
-  doesItChasePlayers: 0
   chaseWaitTime: 5
   minChaseDistance: 10
-  patrolWayPoints:
+  waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  npcType: 2
 --- !u!114 &11495464
 MonoBehaviour:
   m_ObjectHideFlags: 1
