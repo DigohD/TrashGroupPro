@@ -313,7 +313,6 @@ GameObject:
   - 114: {fileID: 11484776}
   - 54: {fileID: 5484776}
   - 136: {fileID: 13684776}
-  - 64: {fileID: 6484776}
   m_Layer: 0
   m_Name: Whale
   m_TagString: Untagged
@@ -748,19 +747,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6484776
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 184816}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 087a2ac1c75bbc34aa1d66d7766c1d5b, type: 3}
 --- !u!111 &11184776
 Animation:
   m_ObjectHideFlags: 1
@@ -791,11 +777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef3b19ccd34c45e38b6b963320f5055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  travelsOnX: 0
   teleportWaypointCycle: 1
   patrolSpeed: 5
   chaseSpeed: 5
-  playerSighted: 1
-  doesItChasePlayers: 1
+  doesItChasePlayers: 0
   chaseWaitTime: 8
   minChaseDistance: 0
   patrolWayPoints:
@@ -809,7 +795,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 184816}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: .519999981
   m_Height: 4
   m_Direction: 2
