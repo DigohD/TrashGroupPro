@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour {
 	public GameObject WhaleClass;
 	public GameObject BlowfishClass;
 
-
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
 	public int trashCount;

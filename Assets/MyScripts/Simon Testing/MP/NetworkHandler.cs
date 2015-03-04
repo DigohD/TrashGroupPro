@@ -16,6 +16,8 @@ public class NetworkHandler : MonoBehaviour {
 	public UIHandler ui;
 	public EndGameScript egs;
 
+	public GameObject whaleClass;
+
 	string userName = "";
 	int phase = 0;
 
@@ -96,7 +98,7 @@ public class NetworkHandler : MonoBehaviour {
 		//NetworkView playerNetworkView = playerInstance.networkView;
 		//playerNetworkView.RPC("PlayerSetupFunc", RPCMode.AllBuffered, newPlayer);
 	}
-	
+
 	void PlayerSetupServer(GameObject player){
 		if (player.networkView.isMine)
 		{
