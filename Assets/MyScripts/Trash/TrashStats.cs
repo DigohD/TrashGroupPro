@@ -62,7 +62,7 @@ public class TrashStats : MonoBehaviour {
 										}
 								}
 								
-								if(initComboCount == 0)
+								if(isTaken && initComboCount == 0)
 									NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
 								Network.Destroy (this.gameObject);
 								Network.Instantiate (explosion, transform.position, transform.rotation, 0);	

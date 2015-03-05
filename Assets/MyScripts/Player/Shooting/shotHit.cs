@@ -5,11 +5,13 @@ public class shotHit : MonoBehaviour {
 
 	public string sender = "BigDaddy";
 	public float dmg;
-	private bool damageDealt = false;
+	private bool damageDealt = false, playingPFX;
 	// Use this for initialization
 
 
 	void OnTriggerEnter (Collider other){
+		if(playingPFX)
+			return;
 		if (networkView.isMine && other.tag == "Player"){
 			PlayerStats EnemyStats = other.GetComponent<PlayerStats> ();
 			if (!(sender.Length < 3) && !(EnemyStats.ID.Length < 3) && !EnemyStats.ID.Equals (this.sender)) {
@@ -81,6 +83,12 @@ public class shotHit : MonoBehaviour {
 		networkView.RPC ("rpcSetSender", RPCMode.All, newSender);
 	}
 
+	void Update(){
+		if(playingPFX)
+			if(!transform.GetComponentInChildren<ParticleSystem>().isPlaying)
+				Destroy(gameObject);
+	}
+
 	[RPC]
 	void rpcSetSender(string newSender){
 		sender = newSender;
@@ -93,7 +101,10 @@ public class shotHit : MonoBehaviour {
 
 	[RPC]
 	void rpcDestroyShot(int wasted){
-		Destroy (this.gameObject);
+		ParticleSystem ps = transform.GetComponentInChildren<ParticleSystem>();
+		transform.GetComponentInChildren<MeshRenderer>().enabled = false;
+		ps.Play();
+		playingPFX = true;
 	}
 
 
