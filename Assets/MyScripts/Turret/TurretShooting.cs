@@ -72,9 +72,7 @@ public class TurretShooting : MonoBehaviour
         timer = 0f;
 
 		networkView.RPC("rpcShootTurretEffects", RPCMode.All, 0);
-		Transform LaserFlashT = cannon.GetChild(0);
-		ParticleSystem ps = LaserFlashT.gameObject.GetComponent<ParticleSystem>();
-		ps.Play();
+
 
 		/*
         gunParticles.Stop ();
@@ -93,7 +91,9 @@ public class TurretShooting : MonoBehaviour
 	[RPC]
 	void rpcShootTurretEffects(int wasted){
 		gunAudio.Play ();
-		
+		Transform LaserFlashT = cannon.GetChild(0);
+		ParticleSystem ps = LaserFlashT.gameObject.GetComponent<ParticleSystem>();
+		ps.Play();
 		gunLight.enabled = true;
 	}
 
