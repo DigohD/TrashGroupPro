@@ -18,6 +18,8 @@ public class TrashStats : MonoBehaviour {
 	public float maxHealth;
 
 	private NetworkViewID parent;
+	private float timer;
+	private bool destruct;
 
 	void Start ()
 	{
@@ -53,9 +55,9 @@ public class TrashStats : MonoBehaviour {
 										GameObject child = NetworkView.Find(childID).gameObject;
 										if (child != null) {
 												if (child.GetComponent<TrashType> ().type.Equals("Trash"))
-														comboCount = child.GetComponent<TrashStats> ().takeDamage (10000.0f, comboCount);
+														comboCount = child.GetComponent<TrashStats> ().delayedDestruction (0.5f, comboCount);
 												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
-														comboCount = child.GetComponent<TurretStats> ().damageTaken (10000.0f, comboCount);
+														comboCount = child.GetComponent<TurretStats> ().delayedDestruction (0.5f, comboCount);
 											//banana.Remove(child.networkView.viewID);
 										}
 								}
@@ -68,6 +70,37 @@ public class TrashStats : MonoBehaviour {
 				//}
 				return comboCount;
 		}
+
+	public void Update(){
+		if (destruct) {
+			timer-=Time.deltaTime;
+			if(timer <=0){
+				Network.Destroy (this.gameObject);
+				Network.Instantiate (explosion, transform.position, transform.rotation, 0);
+				
+			}
+		}
+		
+	}
+	
+	
+	public int delayedDestruction(float time, int combo){
+		destruct = true;
+		timer = time;
+		combo ++;
+		List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
+		foreach (NetworkViewID childID in banana) {
+			GameObject child = NetworkView.Find(childID).gameObject;
+			if (child != null){
+				if (child.GetComponent<TrashType> ().type.Equals("Trash"))
+					combo = child.GetComponent<TrashStats> ().delayedDestruction (time + 0.5f, combo);
+				if (child.GetComponent<TrashType> ().type.Equals("Turret"))
+					combo = child.GetComponent<TurretStats> ().delayedDestruction (time + 0.5f, combo);
+				//banana.Remove(child.networkView.viewID);						
+			}
+		}
+		return combo;
+	}
 
 	public void setToBodyPart(){
 		networkView.RPC ("rpcSetBodyPart", RPCMode.All, 0);
