@@ -44,7 +44,8 @@ public class TrashStats : MonoBehaviour {
 						gameObject.GetComponent<DamageBarrel> ().barrelHit ();
 						
 						if (type.Equals ("Barrel"))
-								barrelAudio.Play ();
+							networkView.RPC("rpcBarrelAudio", RPCMode.All, 0);
+								
 
 						if (health <= 0) {
 								comboCount++;
@@ -104,6 +105,11 @@ public class TrashStats : MonoBehaviour {
 
 	public void setToBodyPart(){
 		networkView.RPC ("rpcSetBodyPart", RPCMode.All, 0);
+	}
+
+	[RPC]
+	void rpcBarrelAudio(int wasted){
+		barrelAudio.Play();
 	}
 
 	[RPC]
