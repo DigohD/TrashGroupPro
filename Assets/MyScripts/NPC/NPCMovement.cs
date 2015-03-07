@@ -46,6 +46,9 @@ public class NPCMovement : MonoBehaviour {
 
 	public void Start()
 	{
+		if(!networkView.isMine)
+			return;
+
 		MakeFSM();
 		SetWaypoints ();
 
@@ -102,13 +105,13 @@ public class NPCMovement : MonoBehaviour {
 	void Awake ()
 	{
 		npc = GetComponent <Rigidbody> ();
-
 	}
 	
 
 
 	void FixedUpdate () {
-
+		if(!networkView.isMine)
+			return;
 		fsm.CurrentState.Reason();
 		fsm.CurrentState.Act();
 

@@ -77,7 +77,7 @@ public class NetworkHandler : MonoBehaviour {
 	}*/
 
 	void createGameController(){
-		GameObject gameInstance = (GameObject) Network.Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity, 0);
+		GameObject gameInstance = (GameObject) Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity);
 	}
 
 	void initSpawnPlayer(int posX, int posY){
