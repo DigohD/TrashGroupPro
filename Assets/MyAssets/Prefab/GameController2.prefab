@@ -47,6 +47,7 @@ MonoBehaviour:
   laserTurret: {fileID: 131302, guid: bc694e5dcc0d63844abdee78dd647f08, type: 2}
   WhaleClass: {fileID: 153724, guid: 479c7c3bae930334d96cba979c453272, type: 2}
   BlowfishClass: {fileID: 182068, guid: b4b8aa407b00cf74c926e72c86e18c10, type: 2}
+  PinkyClass: {fileID: 142328, guid: 7e3caba86f5f84aba94c51c383b9dfbe, type: 2}
   posSpawnValues: {x: 95, y: 10, z: 2}
   negSpawnValues: {x: 15, y: 3, z: 2}
   trashCount: 35
