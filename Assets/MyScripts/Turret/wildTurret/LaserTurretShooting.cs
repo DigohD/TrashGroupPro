@@ -89,9 +89,14 @@ public class LaserTurretShooting : MonoBehaviour {
 	[RPC]
 	void rpcShootTurretEffects(int wasted){
 		gunAudio.Play ();
-		Transform LaserFlashT = cannon.GetChild(0);
-		ParticleSystem ps = LaserFlashT.gameObject.GetComponent<ParticleSystem>();
-		ps.Play();
+		try{
+			Transform LaserFlashT = cannon.GetChild(0);
+			ParticleSystem ps = LaserFlashT.gameObject.GetComponent<ParticleSystem>();
+			ps.Play();
+		}
+		catch(MissingReferenceException e){
+
+		}
 		gunLight.enabled = true;
 	}
 	

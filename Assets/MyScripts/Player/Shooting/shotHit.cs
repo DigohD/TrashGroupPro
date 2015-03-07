@@ -101,9 +101,13 @@ public class shotHit : MonoBehaviour {
 
 	[RPC]
 	void rpcDestroyShot(int wasted){
-		ParticleSystem ps = transform.GetComponentInChildren<ParticleSystem>();
-		transform.GetComponentInChildren<MeshRenderer>().enabled = false;
-		ps.Play();
+		try{
+			ParticleSystem ps = transform.GetComponentInChildren<ParticleSystem>();
+			transform.GetComponentInChildren<MeshRenderer>().enabled = false;
+			ps.Play();
+		}catch(MissingReferenceException e){
+			
+		}
 		playingPFX = true;
 	}
 
