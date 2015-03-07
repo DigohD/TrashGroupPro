@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	void spawnNPCs(){
-
 		GameObject Whale = (GameObject) Network.Instantiate (WhaleClass, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
 		GameObject Blowfish = (GameObject) Network.Instantiate (BlowfishClass, GameObject.Find ("Waypoints/Blowfish/1").transform.position, Quaternion.identity, 0);
 		GameObject Pinky = (GameObject) Network.Instantiate (PinkyClass, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
@@ -39,7 +38,6 @@ public class GameController : MonoBehaviour {
 		Whale.name = WhaleClass.name;
 		Blowfish.name = BlowfishClass.name;
 		Pinky.name = PinkyClass.name;
-
 	}
 
 	IEnumerator SpawnCont()

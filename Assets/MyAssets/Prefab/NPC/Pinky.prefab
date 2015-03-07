@@ -13,6 +13,7 @@ GameObject:
   - 54: {fileID: 5442340}
   - 114: {fileID: 11442340}
   - 114: {fileID: 11439658}
+  - 148: {fileID: 14845686}
   m_Layer: 0
   m_Name: Pinky
   m_TagString: Untagged
@@ -313,6 +314,18 @@ SkinnedMeshRenderer:
     m_Center: {x: .268493652, y: -1.28223944, z: -.464228392}
     m_Extent: {x: 3.67646646, y: 6.17755938, z: 3.74502444}
   m_DirtyAABB: 0
+--- !u!148 &14845686
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142328}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 5442340}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

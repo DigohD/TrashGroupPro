@@ -76,8 +76,13 @@ public class NetworkHandler : MonoBehaviour {
 		playerNetworkView.RPC("PlayerSetupFunc", RPCMode.AllBuffered, newPlayer);
 	}*/
 
+	private bool isControllerSpawned = false;
+
 	void createGameController(){
-		GameObject gameInstance = (GameObject) Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity);
+		if(!isControllerSpawned){
+			GameObject gameInstance = (GameObject) Instantiate(gameControlClass, new Vector3(0f, 0f, 0f), Quaternion.identity);
+			isControllerSpawned = true;
+		}
 	}
 
 	void initSpawnPlayer(int posX, int posY){
