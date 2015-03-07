@@ -12,7 +12,8 @@ public class GameController : MonoBehaviour {
 
 	public GameObject WhaleClass;
 	public GameObject BlowfishClass;
-	
+	public GameObject PinkyClass;
+
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
 	public int trashCount;
@@ -33,9 +34,11 @@ public class GameController : MonoBehaviour {
 
 		GameObject Whale = (GameObject) Network.Instantiate (WhaleClass, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
 		GameObject Blowfish = (GameObject) Network.Instantiate (BlowfishClass, GameObject.Find ("Waypoints/Blowfish/1").transform.position, Quaternion.identity, 0);
+		GameObject Pinky = (GameObject) Network.Instantiate (PinkyClass, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
 
 		Whale.name = WhaleClass.name;
 		Blowfish.name = BlowfishClass.name;
+		Pinky.name = PinkyClass.name;
 
 	}
 
