@@ -781,12 +781,12 @@ MonoBehaviour:
   teleportWaypointCycle: 1
   patrolSpeed: 5
   chaseSpeed: 5
-  doesItChasePlayers: 0
   chaseWaitTime: 8
   minChaseDistance: 0
-  patrolWayPoints:
+  waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  npcType: 3
 --- !u!136 &13684776
 CapsuleCollider:
   m_ObjectHideFlags: 1

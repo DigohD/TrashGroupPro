@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject WhaleClass;
 	public GameObject BlowfishClass;
-
+	
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
 	public int trashCount;
@@ -20,7 +20,9 @@ public class GameController : MonoBehaviour {
 	//public float startWait;
 	public float waveWait;
 	public bool initialSpawning;
-	
+
+
+
 	void Start()
 	{	
 		StartCoroutine (SpawnCont());
@@ -28,8 +30,13 @@ public class GameController : MonoBehaviour {
 	}
 
 	void spawnNPCs(){
-		Network.Instantiate (WhaleClass, new Vector3(80, 10, 80), Quaternion.identity, 0);
-		Network.Instantiate (BlowfishClass, new Vector3(37, 15, 2), Quaternion.identity, 0);
+
+		GameObject Whale = (GameObject) Network.Instantiate (WhaleClass, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
+		GameObject Blowfish = (GameObject) Network.Instantiate (BlowfishClass, GameObject.Find ("Waypoints/Blowfish/1").transform.position, Quaternion.identity, 0);
+
+		Whale.name = WhaleClass.name;
+		Blowfish.name = BlowfishClass.name;
+
 	}
 
 	IEnumerator SpawnCont()

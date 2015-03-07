@@ -17,7 +17,7 @@ public class NPCMovement : MonoBehaviour {
 
 	public float chaseWaitTime = 8f;                        // The amount of time to wait when the last sighting is reached.
 	public int minChaseDistance = 10;						// The distance before the NPC chases after the (nearest) player
-	public Transform[] waypoints;                     // An array of transforms for the patrol route.
+	public Transform[] waypoints;                     		// An array of transforms for the patrol route.
 
 
 	private Vector3 direction;								// The direction the NPC is travelling in
@@ -47,8 +47,11 @@ public class NPCMovement : MonoBehaviour {
 	public void Start()
 	{
 		MakeFSM();
+		SetWaypoints ();
+
 	}
 	
+
 	private void MakeFSM()
 	{
 
@@ -99,6 +102,7 @@ public class NPCMovement : MonoBehaviour {
 	void Awake ()
 	{
 		npc = GetComponent <Rigidbody> ();
+
 	}
 	
 
@@ -317,6 +321,24 @@ public class NPCMovement : MonoBehaviour {
 	float AngleBetweenPoints(Vector2 a, Vector2 b) {
 		return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
 	}
+
+
+	private void SetWaypoints()
+	{
+		
+		//Get waypoint data by looking up the name of the current NPC in the waypoints object
+		Transform waypointsObj = GameObject.Find ("Waypoints/" + this.gameObject.name).transform;
+		int children = waypointsObj.childCount;
+		
+		//Set waypoint array size
+		waypoints = new Transform[children];
+		
+		//Add waypoints
+		for (int i = 0; i < children; ++i)
+			waypoints[i] = waypointsObj.GetChild(i);
+		
+	}
+
 
 
 	/*
