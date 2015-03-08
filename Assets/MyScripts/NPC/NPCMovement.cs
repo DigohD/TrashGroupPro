@@ -27,6 +27,11 @@ public class NPCMovement : MonoBehaviour {
 	private float chaseTimer = 3f;                          // A timer for the chaseWaitTime.
 
 
+	//create some randomness in the movement of NPCs
+	private float randomTimer = 3f;
+	private float randomVelocityMultiplier = 1f;
+	private Vector3 randomOffsetDirection;
+
 	public enum npcTypes
 	{
 		standard,
@@ -294,8 +299,14 @@ public class NPCMovement : MonoBehaviour {
 			angleZ = AngleBetweenPoints(targetTransform.position, npc.position);
 
 		}
-		
-		npc.MovePosition(npc.position + direction * Time.deltaTime * speed );
+
+		//Add some randomness to movement direction and movement speed
+		if (randomTimer < 0 && travelsOnX) 
+		{
+			randomOffsetDirection =  new Vector3 (0f, Random.Range (-0.2f,0.2f), Random.Range (-0.2f,0.2f));
+		}
+
+		npc.MovePosition(npc.position + (direction + randomOffsetDirection) * Time.deltaTime * speed * randomVelocityMultiplier);
 
 
 
@@ -311,6 +322,9 @@ public class NPCMovement : MonoBehaviour {
 			//Rotate towards direction over time
 			npc.rotation = Quaternion.Slerp (npc.rotation, Quaternion.Euler (new Vector3 (angleX, 0f, angleZ)), Time.deltaTime * speed * 2);
 		}
+
+		//Update the velocity multiplier
+		setRandomVelocityMultiplier ();
 
 	}
 
@@ -328,6 +342,7 @@ public class NPCMovement : MonoBehaviour {
 
 	private void SetWaypoints()
 	{
+
 		
 		//Get waypoint data by looking up the name of the current NPC in the waypoints object
 		Transform waypointsObj = GameObject.Find ("Waypoints/" + this.gameObject.name).transform;
@@ -342,6 +357,17 @@ public class NPCMovement : MonoBehaviour {
 		
 	}
 
+	private void setRandomVelocityMultiplier()
+	{
+		if(randomTimer < 0)
+		{
+			randomTimer = Random.Range(0.5f, 2.0f);
+			randomVelocityMultiplier = Random.Range(1.0f, 2.0f);
+		}
+		
+		randomTimer -= Time.deltaTime;
+		
+	}
 
 
 	/*
