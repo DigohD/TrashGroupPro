@@ -11,7 +11,8 @@ public class TurretControlScript : MonoBehaviour {
 
 
 	public void Update(){//just rotate towards mouse..
-		if (networkView != null) // test purposes only						
+		// If this turret is not owned by the local player, return
+		if (networkView != null)					
 			if(!networkView.isMine)
 				return;
 

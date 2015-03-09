@@ -10,15 +10,13 @@ public class DamageBarrel : MonoBehaviour {
 
 	void Start(){
 		stats = gameObject.GetComponent<TrashStats> ();
-
 	}
 
+	// Set barrel model to the broken version if health percent is below 40%
 	public void barrelHit(){
 		healthPercent = stats.health / stats.maxHealth;
 
 		if(healthPercent<0.40f)
 		barrel.GetComponent<MeshFilter> ().mesh = brokenBarrel;
-
-		
 	}
 }

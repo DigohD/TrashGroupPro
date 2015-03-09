@@ -11,12 +11,7 @@ public class WildTurretControlScript : MonoBehaviour {
 	public bool active;
 	
 	public void Update(){//just rotate towards mouse..
-		/*if (networkView != null) // test purposes only						
-			if(!networkView.isMine){
-				if(active)
-					Debug.Log("NetworkView is not mine, but Turret is active!");
-				return;
-			}*/
+		// If turret is not owned by the local player, return
 		if(networkView == null)
 			return;
 
@@ -37,7 +32,6 @@ public class WildTurretControlScript : MonoBehaviour {
 	}
 
 	public void activate(){
-		Debug.Log("TURRET SCRIPT NOT ACTIVATED");
 		active = true;
 	}
 	

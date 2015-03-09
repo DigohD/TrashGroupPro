@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 	public bool initialSpawning;
 
 
-
+	// Start the trash spawner and spawn NPCs
 	void Start()
 	{	
 		StartCoroutine (SpawnCont());
@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour {
 		Pinky.name = PinkyClass.name;
 	}
 
+	// Spawns trash on the map
 	IEnumerator SpawnCont()
 	{
 		//yield return new WaitForSeconds (startWait);
@@ -62,13 +63,12 @@ public class GameController : MonoBehaviour {
 		}
 		
 	}
+
 	private Vector3 spawnPosition;
 	Collider[] spawnZone;
+
 	void SpawnTrash()
 	{
-		/*if(!Network.isMessageQueueRunning)
-			return;*/
-
 		int i = 0;
 		while (true && i<=5) {						
 			spawnPosition = new Vector3 (Random.Range (negSpawnValues.x, posSpawnValues.x), Random.Range (negSpawnValues.y, posSpawnValues.y), posSpawnValues.z);

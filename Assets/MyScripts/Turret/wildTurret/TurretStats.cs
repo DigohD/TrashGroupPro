@@ -20,31 +20,47 @@ public class TurretStats : MonoBehaviour {
 	private float timer;
 	private bool destruct;
 
+	/*
+	 * Called when a turret has taken damage.
+	 * 
+	 * If a turret is destroyed, this function is used recursively to destroy
+	 * all children of that turret. The resulting return value is the total number of trash
+	 * pieces destroyed. That number is then used to announce combos.
+	 */ 
 	public int damageTaken(float dmg, int comboCount){
-				//if (health > 0) {
-						health -= dmg;
-						int initComboCount = comboCount;
-						if (health <= 0) {
-								comboCount++;
-								List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
-								foreach (NetworkViewID childID in banana) {
-										GameObject child = NetworkView.Find(childID).gameObject;
-										if (child != null){
-											if (child.GetComponent<TrashType> ().type.Equals("Trash"))
-														comboCount = child.GetComponent<TrashStats> ().delayedDestruction (0.5f, comboCount);
-												if (child.GetComponent<TrashType> ().type.Equals("Turret"))
-														comboCount = child.GetComponent<TurretStats> ().delayedDestruction ( 0.5f, comboCount);
-											//banana.Remove(child.networkView.viewID);						
-										}
-						
-								}
-								
-								if(initComboCount == 0)
-									NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
-								Network.Destroy (this.gameObject);
-								Network.Instantiate (explosion, transform.position, transform.rotation, 0);
-						}
-				//}
+		health -= dmg;
+		// initComboCount = the number of pieces already destroyed in the chain reaction
+		int initComboCount = comboCount;
+
+		// If this turret is destroyed due to damage taken
+		if (health <= 0) {
+			comboCount++;
+
+			// Fetch list of children attached to this turret
+			List<NetworkViewID> banana = gameObject.GetComponent<ChildList> ().get ();
+
+			// For each child in list
+			foreach (NetworkViewID childID in banana) {
+				// Fetch the GameObject of the child
+				GameObject child = NetworkView.Find(childID).gameObject;
+				// If child still exists, destroy it and update comboCount
+				if (child != null){
+					if (child.GetComponent<TrashType> ().type.Equals("Trash"))
+						comboCount = child.GetComponent<TrashStats> ().delayedDestruction (0.5f, comboCount);
+					if (child.GetComponent<TrashType> ().type.Equals("Turret"))
+						comboCount = child.GetComponent<TurretStats> ().delayedDestruction ( 0.5f, comboCount);
+					//banana.Remove(child.networkView.viewID);						
+				}
+			}
+
+			// Remove this turret from its parent's child list
+			if(initComboCount == 0)
+				NetworkView.Find(parent).gameObject.GetComponent<ChildList>().removeChild(networkView.viewID);
+
+			// Destroy turret
+			Network.Destroy (this.gameObject);
+			Network.Instantiate (explosion, transform.position, transform.rotation, 0);
+		}
 		return comboCount;
 	}
 
@@ -86,10 +102,12 @@ public class TurretStats : MonoBehaviour {
 		networkView.RPC("rpcWTurretTaken", RPCMode.Others, 0, newOwnerID, newParent);
 	}
 
+	// Set this turret as a body part, update all clients over the network
 	public void setToBodyPart(){
 		networkView.RPC ("rpcSetTurretToBodyPart", RPCMode.All, 0);
 	}
 
+	// Used to update turret ownership changes on connected clients
 	[RPC]
 	void rpcWTurretTaken(int wasted, string newOwnerID, NetworkViewID newParent){
 		isTaken = true;
@@ -97,6 +115,7 @@ public class TurretStats : MonoBehaviour {
 		ownerID = newOwnerID;
 	}
 
+	// Used to update bodyPart tag on connected clients
 	[RPC]
 	void rpcSetTurretToBodyPart(int wasted){
 		gameObject.tag = "BodyPart";

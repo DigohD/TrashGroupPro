@@ -23,6 +23,7 @@ public class TurretShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+		// If this turret is not owned by the local player, return
 		if(!networkView.isMine)
 			return;
 
@@ -34,6 +35,7 @@ public class TurretShooting : MonoBehaviour
 
         if(timer >= timeBetweenBullets * effectsDisplayTime && hasShot)
         {
+			// Disable visual gun effects on all connected clients
 			networkView.RPC ("rpcDisableGunEffects", RPCMode.All, 0);
 			hasShot = false;
         }
@@ -54,6 +56,7 @@ public class TurretShooting : MonoBehaviour
 
     void Shoot ()
     {
+		// If this turret is not owned by the local player, return
 		if(!networkView.isMine)
 			return;
 
@@ -69,6 +72,7 @@ public class TurretShooting : MonoBehaviour
 			cannonNumber = 3;
 			alternate = true;
 		}
+		// Create a new projectile
 		speed = 1;
 		GameObject laser =  (GameObject) Network.Instantiate (laserShot, cannon.position, cannon.transform.rotation, 0);
 		laser.rigidbody.velocity = cannon.up * speed*10;
@@ -76,6 +80,7 @@ public class TurretShooting : MonoBehaviour
 		sh.setSender(stats.ID);
         timer = 0f;
 
+		// Enable turret visual effects on all clients over the network
 		networkView.RPC("rpcShootTurretEffects", RPCMode.All, cannonNumber);
 
 
@@ -93,16 +98,20 @@ public class TurretShooting : MonoBehaviour
 */
     }
 
+	// Used to activate turret visual effects over the network
 	[RPC]
 	void rpcShootTurretEffects(int newCannonNumber){
 		gunAudio.Play ();
+
 		cannon = transform.GetChild (newCannonNumber);
 		Transform LaserFlashT = cannon.GetChild(0);
 		ParticleSystem ps = LaserFlashT.gameObject.GetComponent<ParticleSystem>();
 		ps.Play();
+
 		gunLight.enabled = true;
 	}
 
+	// Used to disable turret visual effects over the network
 	[RPC]
 	void rpcDisableGunEffects(int wasted){
 		DisableEffects();
