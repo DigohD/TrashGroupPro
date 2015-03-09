@@ -49,6 +49,9 @@ public class TurretShooting : MonoBehaviour
 	private bool alternate = true;
 	private Transform cannon;
 	private float speed;
+
+	private int cannonNumber;
+
     void Shoot ()
     {
 		if(!networkView.isMine)
@@ -58,10 +61,12 @@ public class TurretShooting : MonoBehaviour
 
 		if (alternate){//alternate between the two cannons
 			cannon = transform.GetChild (2);
+			cannonNumber = 2;
 			alternate = false;
 		}
 		else {
-			cannon = cannon = transform.GetChild (3);
+			cannon = transform.GetChild (3);
+			cannonNumber = 3;
 			alternate = true;
 		}
 		speed = 1;
@@ -71,7 +76,7 @@ public class TurretShooting : MonoBehaviour
 		sh.setSender(stats.ID);
         timer = 0f;
 
-		networkView.RPC("rpcShootTurretEffects", RPCMode.All, 0);
+		networkView.RPC("rpcShootTurretEffects", RPCMode.All, cannonNumber);
 
 
 		/*
@@ -89,8 +94,9 @@ public class TurretShooting : MonoBehaviour
     }
 
 	[RPC]
-	void rpcShootTurretEffects(int wasted){
+	void rpcShootTurretEffects(int newCannonNumber){
 		gunAudio.Play ();
+		cannon = transform.GetChild (newCannonNumber);
 		Transform LaserFlashT = cannon.GetChild(0);
 		ParticleSystem ps = LaserFlashT.gameObject.GetComponent<ParticleSystem>();
 		ps.Play();

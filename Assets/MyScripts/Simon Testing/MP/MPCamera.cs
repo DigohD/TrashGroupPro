@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MPCamera : MonoBehaviour {
 
-	// Use this for initialization
+	// Use this for initialization, make sure I control the camera, not the other clients
 	void Start(){
 		Camera cam = GetComponent<Camera>();
 		if(networkView.isMine){

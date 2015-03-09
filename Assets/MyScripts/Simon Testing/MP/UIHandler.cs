@@ -5,17 +5,25 @@ using UnityEngine.UI;
 public class UIHandler : MonoBehaviour {
 
 	public Canvas serverUI;
+	// Images on the canvas
 	public RawImage count1, count2, count3, waiting, go, getReady, victory, defeat;
 
+	// Text object for displaying combos
 	public Text comboText;
+	// Is a combo currently being displayed?
 	private bool isComboActive;
+	// For how long has the combo been displayed?
 	private int comboTimer;
+
+	// textSize -1 means no text, sizemultiplier is the real size of combo text
 	private float textSize = -1, sizeMultiplier = 1;
 
+	// Combo announcer audio files
 	public AudioSource c1, c2, c3, c4;
 
 	// Use this for initialization
 	void Start (){
+		// Set all images to not displayed
 		defeat.enabled = false;
 		victory.enabled = false;
 		count1.enabled = false;
@@ -24,23 +32,36 @@ public class UIHandler : MonoBehaviour {
 		waiting.enabled = false;
 		go.enabled = false;
 		getReady.enabled = false;
-		
-		comboText.text = "asdasd";
+
+		// Hide the combo display text
+		comboText.text = "none";
 		textSize = -1;
 		comboText.fontSize = (int) textSize;
 	}
 
+	/* Updates the combo message. 
+	 * 
+	 *  comboTimer < 12: 				The combo text comes in fast 
+	 *  comboTimer between 12 and 60: 	The combo text lingers in place
+	 *  comboTimer > 60:				The combo text slowly diminishes
+	 * 	comboTimer > 140:				The combo is set to inactive and is no longer shown
+	 */
 	public void Update(){
+		// If a combo is currently being displayed
 		if(isComboActive){
+			// increase the displayed time of the combo
 			comboTimer++;
+			// if the combo has been displayed for less than 12 ticks, increase the size
 			if(comboTimer < 12){
 				textSize += 3.5f * sizeMultiplier;
 				comboText.fontSize = (int) textSize;
 			}
+			// if the combo has been displayed for more than 60 ticks, decrease the size
 			if(comboTimer > 60){
 				textSize -= 1.2f * sizeMultiplier;
 				comboText.fontSize = (int) textSize;
 			}
+			// if the combo has been displayed for more than 140 ticks, set it to inactive
 			if(comboTimer > 140){
 				comboText.text = "";
 				textSize = 0;
@@ -50,17 +71,23 @@ public class UIHandler : MonoBehaviour {
 		}
 	}
 
+	// Initiate a combo display text
 	public void combo(int comboCount){
+		// comboType determines what grade of combo was achieved
 		string comboType = null;
+
+		// if more than 3 pieces of trash were destroyed, a combo occured
 		if(comboCount >= 3){
+			// Set default combo text values
 			comboText.color = new Color(0, 255, 0);
 			comboType = "Combo! x";
 			sizeMultiplier = 1;
-			if(comboCount >= 6){
+			// For each combo grade, make the combo text bigger and more red, also give new name
+			if(comboCount >= 5){
 				comboText.color = new Color(100, 200, 0);
 				comboType = "Destruction! x";
 				sizeMultiplier = 1.2f;
-			}if(comboCount >= 9){
+			}if(comboCount >= 7){
 				comboText.color = new Color(200, 100, 0);
 				comboType = "Carnage! x";
 				sizeMultiplier = 1.5f;
@@ -70,10 +97,12 @@ public class UIHandler : MonoBehaviour {
 				sizeMultiplier = 2f;
 			}
 
+			// Set the final combo text string and start displaying it in Update()
 			comboText.text = comboType + comboCount;
 			isComboActive = true;
 			comboTimer = 0;
 
+			// Play announcer voice according to combo grade
 			if(comboType.Equals("Combo! x"))
 				c1.Play();
 			if(comboType.Equals("Destruction! x"))
@@ -84,6 +113,10 @@ public class UIHandler : MonoBehaviour {
 				c4.Play();
 		}
 	}
+
+
+
+	// The following functions simply displays an image
 
 	public void setWaiting(){
 		clearAll ();
@@ -125,6 +158,7 @@ public class UIHandler : MonoBehaviour {
 		defeat.enabled = true;
 	}
 
+	// Clear the UI from all images
 	public void clearUI(){
 		clearAll();
 	}

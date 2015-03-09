@@ -8,6 +8,10 @@ public class MovementScript : MonoBehaviour {
 	public PlayerStats stats;
 	public float maxSpeed;
 
+	/*
+	 * These functions all apply forces due to player input.
+	 * They also make sure that forces can only be applied on the local client.
+	 */ 
 	public void MoveUp(){
 		if(networkView.isMine)
 			if (rigidbody.velocity.magnitude < maxSpeed)
