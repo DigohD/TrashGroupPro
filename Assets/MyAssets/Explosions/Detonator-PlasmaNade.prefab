@@ -9,17 +9,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400012}
-  - 114: {fileID: 11400014}
   - 114: {fileID: 11400016}
   - 114: {fileID: 11485266}
   m_Layer: 0
-  m_Name: Detonator-Insanity-Custom
+  m_Name: Detonator-PlasmaNade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 8
-  color: {r: .543298721, g: .721568644, b: .597921848, a: .388235301}
+  color: {r: 0, g: 1, b: .958620548, a: .388235301}
   explodeOnStart: 1
   duration: 5.35797834
   detail: 1
@@ -72,9 +70,9 @@ MonoBehaviour:
   glowMaterial: {fileID: 0}
   heatwaveMaterial: {fileID: 0}
   autoCreateFireball: 1
-  autoCreateSparks: 1
+  autoCreateSparks: 0
   autoCreateShockwave: 1
-  autoCreateSmoke: 1
+  autoCreateSmoke: 0
   autoCreateGlow: 1
   autoCreateLight: 1
   autoCreateForce: 0
@@ -82,42 +80,6 @@ MonoBehaviour:
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7134859da924a14b9de2f13721402b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 1
-  detonatorControlled: 1
-  startSize: 1
-  size: .600000024
-  explodeDelayMin: 0
-  explodeDelayMax: 0
-  startDuration: 2
-  duration: 3
-  timeScale: 1
-  startDetail: 1
-  detail: 1
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: 1, b: 1, a: 1}
-  startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 0, y: 0, z: 0}
-  startForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  velocity: {x: 100, y: 100, z: 100}
-  detailThreshold: 0
-  sprayObject: {fileID: 100004, guid: 5cae1a02f5362443284e452c3020967f, type: 2}
-  count: 33
-  startingRadius: 5
-  minScale: .150000006
-  maxScale: .400000006
 --- !u!1002 &11400003
 EditorExtensionImpl:
   serializedVersion: 6
@@ -172,16 +134,16 @@ MonoBehaviour:
   on: 1
   detonatorControlled: 1
   startSize: 1
-  size: 1
+  size: .5
   explodeDelayMin: 0
   explodeDelayMax: 0
   startDuration: 2
   duration: 1
   timeScale: 1
   startDetail: 1
-  detail: 14.7874298
+  detail: 2
   startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: .930769205, g: .713143289, b: .713143289, a: 1}
+  color: {r: 0, g: .917241335, b: 1, a: 1}
   startLocalPosition: {x: 0, y: 0, z: 0}
   localPosition: {x: 0, y: 0, z: 0}
   startForce: {x: 0, y: 0, z: 0}
@@ -204,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745312967000e3c449713c45a6a516f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  on: 0
+  on: 1
   detonatorControlled: 1
   startSize: 1
-  size: 4.98109627
+  size: 1
   explodeDelayMin: 0
   explodeDelayMax: 0
   startDuration: 2
@@ -225,7 +187,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   detailThreshold: 0
   shockwaveMaterial: {fileID: 0}
-  renderMode: 4
+  renderMode: 5
 --- !u!1002 &11400009
 EditorExtensionImpl:
   serializedVersion: 6
@@ -252,7 +214,7 @@ MonoBehaviour:
   startDetail: 1
   detail: 1.2099998
   startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: .889996409, b: .809352517, a: .219607845}
+  color: {r: 0, g: .952941179, b: 1, a: .219607845}
   startLocalPosition: {x: 0, y: 0, z: 0}
   localPosition: {x: 0, y: 0, z: 0}
   startForce: {x: 0, y: 0, z: 0}
@@ -292,7 +254,7 @@ MonoBehaviour:
   startDetail: 1
   detail: 1
   startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: .423000008, b: 0, a: .5}
+  color: {r: 0, g: 1, b: .917241335, a: .501960814}
   startLocalPosition: {x: 0, y: 0, z: 0}
   localPosition: {x: 0, y: 0, z: 0}
   startForce: {x: 0, y: 0, z: 0}
@@ -309,42 +271,6 @@ MonoBehaviour:
 --- !u!1002 &11400013
 EditorExtensionImpl:
   serializedVersion: 6
---- !u!114 &11400014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7134859da924a14b9de2f13721402b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 1
-  detonatorControlled: 1
-  startSize: 1
-  size: 1.01489055
-  explodeDelayMin: .0599999949
-  explodeDelayMax: .114655629
-  startDuration: 2
-  duration: 2.8129859
-  timeScale: 1
-  startDetail: 1
-  detail: 1
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  color: {r: 1, g: 1, b: 1, a: 1}
-  startLocalPosition: {x: 0, y: 0, z: 0}
-  localPosition: {x: 0, y: 0, z: 0}
-  startForce: {x: 0, y: 0, z: 0}
-  force: {x: 0, y: 0, z: 0}
-  startVelocity: {x: 0, y: 0, z: 0}
-  velocity: {x: 300, y: 300, z: 300}
-  detailThreshold: 0
-  sprayObject: {fileID: 100000, guid: abdc837d9a07acd409959e581ef68e61, type: 2}
-  count: 8
-  startingRadius: 4.24103928
-  minScale: 1
-  maxScale: 1
 --- !u!1002 &11400015
 EditorExtensionImpl:
   serializedVersion: 6
