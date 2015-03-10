@@ -22,15 +22,26 @@ public class GameController : MonoBehaviour {
 	public float waveWait;
 	public bool initialSpawning;
 
+	public Texture cursorTexture;
 
 	// Start the trash spawner and spawn NPCs
 	void Start()
 	{	
 		StartCoroutine (SpawnCont());
 		spawnNPCs();
+		Screen.showCursor = false;
 	}
 
-	void spawnNPCs(){
+	private int cursorWidth = 46;
+	private int cursorHeight = 46;
+	
+	void OnGUI()
+	{
+		GUI.DrawTexture(new Rect(Input.mousePosition.x - cursorWidth/2, Screen.height - Input.mousePosition.y - cursorHeight/2, cursorWidth, cursorHeight), cursorTexture);
+	}
+
+	void spawnNPCs()
+	{
 		GameObject Whale = (GameObject) Network.Instantiate (WhaleClass, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
 		GameObject Blowfish = (GameObject) Network.Instantiate (BlowfishClass, GameObject.Find ("Waypoints/Blowfish/1").transform.position, Quaternion.identity, 0);
 		GameObject Pinky = (GameObject) Network.Instantiate (PinkyClass, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
