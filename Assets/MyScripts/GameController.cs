@@ -10,9 +10,11 @@ public class GameController : MonoBehaviour {
 	public GameObject barrelBlack;
 	public GameObject laserTurret;
 
-	public GameObject WhaleClass;
-	public GameObject BlowfishClass;
-	public GameObject PinkyClass;
+	public GameObject WhaleObj;
+	public GameObject BlinkyObj;
+	public GameObject PinkyObj;
+	public GameObject InkyObj;
+	public GameObject ClydeObj;
 
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
@@ -42,13 +44,17 @@ public class GameController : MonoBehaviour {
 
 	void spawnNPCs()
 	{
-		GameObject Whale = (GameObject) Network.Instantiate (WhaleClass, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
-		GameObject Blowfish = (GameObject) Network.Instantiate (BlowfishClass, GameObject.Find ("Waypoints/Blowfish/1").transform.position, Quaternion.identity, 0);
-		GameObject Pinky = (GameObject) Network.Instantiate (PinkyClass, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
+		GameObject Whale = (GameObject) Network.Instantiate (WhaleObj, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
+		GameObject Blinky = (GameObject) Network.Instantiate (BlinkyObj, GameObject.Find ("Waypoints/Blinky/1").transform.position, Quaternion.identity, 0);
+		GameObject Pinky = (GameObject) Network.Instantiate (PinkyObj, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
+		GameObject Inky = (GameObject) Network.Instantiate (InkyObj, GameObject.Find ("Waypoints/Inky/1").transform.position, Quaternion.identity, 0);
+		GameObject Clyde = (GameObject) Network.Instantiate (ClydeObj, GameObject.Find ("Waypoints/Clyde/1").transform.position, Quaternion.identity, 0);
 
-		Whale.name = WhaleClass.name;
-		Blowfish.name = BlowfishClass.name;
-		Pinky.name = PinkyClass.name;
+		Whale.name = WhaleObj.name;
+		Blinky.name = BlinkyObj.name;
+		Pinky.name = PinkyObj.name;
+		Clyde.name = ClydeObj.name;
+		Inky.name = InkyObj.name;
 	}
 
 	// Spawns trash on the map
