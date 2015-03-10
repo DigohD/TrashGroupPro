@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 100000, guid: 2d55b4262ffe12f4da8c0c9c5b1036df, type: 2}
-  damage: 200
+  damage: 500
   health: 100
   type: laser
   timeBetweenBullets: 1.5
