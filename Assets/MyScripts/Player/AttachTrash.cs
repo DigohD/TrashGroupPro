@@ -39,6 +39,11 @@ public class AttachTrash : MonoBehaviour {
 
 				// Add trash stats to player stats
 				stats.addAttributes(tStats.speed, tStats.rSpeed);
+
+				GameObject[] go = GameObject.FindGameObjectsWithTag("mainControl");
+				UIHandler uih = go[0].GetComponent<UIHandler>();
+				uih.powerUp(tStats.speed, tStats.gameObject.GetComponent<Rigidbody>().mass, false);
+
 				// Mark the trash as picked up
 				tStats.setTaken(stats.ID, networkView.viewID);
 
@@ -75,6 +80,11 @@ public class AttachTrash : MonoBehaviour {
 
 				// Add trash stats to player stats
 				stats.addAttributes(tStats.speed, tStats.rSpeed);
+
+				GameObject[] go = GameObject.FindGameObjectsWithTag("mainControl");
+				UIHandler uih = go[0].GetComponent<UIHandler>();
+				uih.powerUp(tStats.speed, tStats.gameObject.GetComponent<Rigidbody>().mass, true);
+
 				// Mark the trash as picked up
 				tStats.setTaken(stats.ID, networkView.viewID);
 

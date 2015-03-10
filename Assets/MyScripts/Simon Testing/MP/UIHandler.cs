@@ -21,6 +21,13 @@ public class UIHandler : MonoBehaviour {
 	// Combo announcer audio files
 	public AudioSource c1, c2, c3, c4;
 
+	public Text powerText;
+	private bool isPowerUpActive;
+	private int powerTimer;
+	private float textSize2 = -1, sizeMultiplier2 = 1;
+
+	public AudioSource TrashCon;
+
 	// Use this for initialization
 	void Start (){
 		// Set all images to not displayed
@@ -37,9 +44,13 @@ public class UIHandler : MonoBehaviour {
 		comboText.text = "none";
 		textSize = -1;
 		comboText.fontSize = (int) textSize;
+
+		powerText.text = "none";
+		textSize2 = -1;
+		powerText.fontSize = (int) textSize2;
 	}
 
-	/* Updates the combo message. 
+	/* Updates the combo and powerup message. (they work the same)
 	 * 
 	 *  comboTimer < 12: 				The combo text comes in fast 
 	 *  comboTimer between 12 and 60: 	The combo text lingers in place
@@ -69,6 +80,28 @@ public class UIHandler : MonoBehaviour {
 				isComboActive = false;
 			}
 		}
+		
+		if(isPowerUpActive){
+			// increase the displayed time of the combo
+			powerTimer++;
+			// if the combo has been displayed for less than 12 ticks, increase the size
+			if(powerTimer < 12){
+				textSize2 += 3.5f * sizeMultiplier2;
+				powerText.fontSize = (int) textSize2;
+			}
+			// if the combo has been displayed for more than 60 ticks, decrease the size
+			if(powerTimer > 60){
+				textSize2 -= 1.2f * sizeMultiplier2;
+				powerText.fontSize = (int) textSize2;
+			}
+			// if the combo has been displayed for more than 140 ticks, set it to inactive
+			if(powerTimer > 140){
+				powerText.text = "";
+				textSize2 = 0;
+				sizeMultiplier2 = 1;
+				isPowerUpActive = false;
+			}
+		}
 	}
 
 	// Initiate a combo display text
@@ -82,6 +115,7 @@ public class UIHandler : MonoBehaviour {
 			comboText.color = new Color(0, 255, 0);
 			comboType = "Combo! x";
 			sizeMultiplier = 1;
+			textSize = 0;
 			// For each combo grade, make the combo text bigger and more red, also give new name
 			if(comboCount >= 5){
 				comboText.color = new Color(100, 200, 0);
@@ -114,7 +148,24 @@ public class UIHandler : MonoBehaviour {
 		}
 	}
 
+	public void powerUp(float speed, float weight, bool turret){
+		powerText.color = new Color(255, 175, 0);
+		powerText.text = "";
 
+		TrashCon.pitch = Random.Range(0.5f, 1.1f);
+		TrashCon.Play();
+
+		if(turret)
+			powerText.text = powerText.text + "Weapon Added!" + '\n';
+		if(speed > 0)
+			powerText.text = powerText.text + "Speed Up: " + speed + '\n';
+		if(weight > 0)
+			powerText.text = powerText.text + "Weight Up: " + weight + '\n';
+		sizeMultiplier2 = 1f;
+		isPowerUpActive = true;
+		powerTimer = 0;
+		textSize2 = 0;
+	}
 
 	// The following functions simply displays an image
 

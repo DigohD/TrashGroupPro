@@ -32,6 +32,11 @@ public class TrashToTrashConnector : MonoBehaviour {
 				// Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 				pStats.addAttributes(tStats.speed, tStats.rSpeed);
+
+				GameObject[] go = GameObject.FindGameObjectsWithTag("mainControl");
+				UIHandler uih = go[0].GetComponent<UIHandler>();
+				uih.powerUp(tStats.speed, tStats.gameObject.GetComponent<Rigidbody>().mass, false);
+
 				// Update picked up trash's ownership
 				tStats.setTaken(pStats.ID, networkView.viewID);
 
@@ -65,6 +70,13 @@ public class TrashToTrashConnector : MonoBehaviour {
 				// Add trash attributes to player
 				PlayerStats pStats = transform.parent.GetComponent<PlayerStats>();
 				pStats.addAttributes(tStats.speed, tStats.rSpeed);
+
+
+				GameObject[] go = GameObject.FindGameObjectsWithTag("mainControl");
+				UIHandler uih = go[0].GetComponent<UIHandler>();
+				uih.powerUp(tStats.speed, tStats.gameObject.GetComponent<Rigidbody>().mass, true);
+
+
 				// Update picked up turret's ownership
 				tStats.setTaken(pStats.ID, networkView.viewID);
 				
