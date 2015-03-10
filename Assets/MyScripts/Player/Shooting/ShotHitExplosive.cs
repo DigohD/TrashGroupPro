@@ -5,6 +5,7 @@ public class ShotHitExplosive : MonoBehaviour {
 
 	public string sender = "BigDaddy";
 	public float dmg;
+	public float explosionRadius;
 	private bool damageDealt = false, playingPFX;
 	// Use this for initialization
 
@@ -22,6 +23,36 @@ public class ShotHitExplosive : MonoBehaviour {
 				if(!damageDealt){
 					// Deal damage to the enemy player
 					EnemyStats.takeDamage (dmg);
+					Collider[] explosionAOE = Physics.OverlapSphere (transform.position, explosionRadius);
+					
+					// For every piece of trash within vicinity
+					for (int i = 0; i < explosionAOE.Length; i++) {
+						// Do this with trash inside the danger zone
+						if (explosionAOE [i].tag == "BodyPart" ) {	
+							TrashType tType = explosionAOE [i].GetComponent<TrashType> ();
+							if(tType.type == "Turret" && tType != null){
+								Transform trash = explosionAOE[i].transform;
+								float dist = Vector3.Distance(transform.position, trash.position);
+								//adjust dmg depending on distance to center of expl.
+								
+								explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+							}
+							if(tType.type == "Trash" && tType != null){
+								Transform trash = explosionAOE[i].transform;
+								float dist = Vector3.Distance(transform.position, trash.position);
+								//adjust dmg depending on distance to center of expl.
+								print ("damage: " + (dmg/2 -dist*200));
+								explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+							}
+							
+						}
+						if(explosionAOE [i].tag == "Player"){
+							PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
+							Transform player = explosionAOE[i].transform;
+							float dist = Vector3.Distance(transform.position, player.position);
+							pStats.takeDamage(40);
+						}
+					}
 				}
 				// Destroy the projectile on all clients
 				networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
@@ -43,6 +74,37 @@ public class ShotHitExplosive : MonoBehaviour {
 					if(!damageDealt){
 						// Combocount is the number of trash pieces destroyed this hit
 						int comboCount = tuStats.damageTaken (dmg, 0);
+
+						Collider[] explosionAOE = Physics.OverlapSphere (transform.position, explosionRadius);
+						
+						// For every piece of trash within vicinity
+						for (int i = 0; i < explosionAOE.Length; i++) {
+							// Do this with trash inside the danger zone
+							if (explosionAOE [i].tag == "BodyPart" ) {	
+								TrashType tType = explosionAOE [i].GetComponent<TrashType> ();
+								if(tType.type == "Turret" && tType != null){
+									Transform trash = explosionAOE[i].transform;
+									float dist = Vector3.Distance(transform.position, trash.position);
+									//adjust dmg depending on distance to center of expl.
+									
+									comboCount += explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+								}
+								if(tType.type == "Trash" && tType != null){
+									Transform trash = explosionAOE[i].transform;
+									float dist = Vector3.Distance(transform.position, trash.position);
+									//adjust dmg depending on distance to center of expl.
+									print ("damage: " + (dmg/2 -dist*200));
+									comboCount += explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+								}
+								
+							}
+							if(explosionAOE [i].tag == "Player"){
+								PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
+								Transform player = explosionAOE[i].transform;
+								float dist = Vector3.Distance(transform.position, player.position);
+								pStats.takeDamage(40);
+							}
+						}
 						
 						// If enough pieces were destroyed in one hit
 						if(comboCount >= 3){
@@ -83,6 +145,36 @@ public class ShotHitExplosive : MonoBehaviour {
 			TrashStats tStats = other.GetComponent<TrashStats> ();
 			if(!damageDealt){
 				tStats.takeDamage (dmg, 0);
+				Collider[] explosionAOE = Physics.OverlapSphere (transform.position, explosionRadius);
+				
+				// For every piece of trash within vicinity
+				for (int i = 0; i < explosionAOE.Length; i++) {
+					// Do this with trash inside the danger zone
+					if (explosionAOE [i].tag == "BodyPart" ) {	
+						TrashType tType = explosionAOE [i].GetComponent<TrashType> ();
+						if(tType.type == "Turret" && tType != null){
+							Transform trash = explosionAOE[i].transform;
+							float dist = Vector3.Distance(transform.position, trash.position);
+							//adjust dmg depending on distance to center of expl.
+							
+							explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+						}
+						if(tType.type == "Trash" && tType != null){
+							Transform trash = explosionAOE[i].transform;
+							float dist = Vector3.Distance(transform.position, trash.position);
+							//adjust dmg depending on distance to center of expl.
+							print ("damage: " + (dmg/2 -dist*200));
+							explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+						}
+						
+					}
+					if(explosionAOE [i].tag == "Player"){
+						PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
+						Transform player = explosionAOE[i].transform;
+						float dist = Vector3.Distance(transform.position, player.position);
+						pStats.takeDamage(40);
+					}
+				}
 			}
 			// Destroy the projectile on all clients
 			networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);
@@ -93,6 +185,36 @@ public class ShotHitExplosive : MonoBehaviour {
 			EnemyStats eStats = other.GetComponent<EnemyStats> ();
 			if(!damageDealt){
 				eStats.takeDamage (dmg);
+				Collider[] explosionAOE = Physics.OverlapSphere (transform.position, explosionRadius);
+				
+				// For every piece of trash within vicinity
+				for (int i = 0; i < explosionAOE.Length; i++) {
+					// Do this with trash inside the danger zone
+					if (explosionAOE [i].tag == "BodyPart" ) {	
+						TrashType tType = explosionAOE [i].GetComponent<TrashType> ();
+						if(tType.type == "Turret" && tType != null){
+							Transform trash = explosionAOE[i].transform;
+							float dist = Vector3.Distance(transform.position, trash.position);
+							//adjust dmg depending on distance to center of expl.
+							
+							explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+						}
+						if(tType.type == "Trash" && tType != null){
+							Transform trash = explosionAOE[i].transform;
+							float dist = Vector3.Distance(transform.position, trash.position);
+							//adjust dmg depending on distance to center of expl.
+							print ("damage: " + (dmg/2 -dist*200));
+							explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+						}
+						
+					}
+					if(explosionAOE [i].tag == "Player"){
+						PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
+						Transform player = explosionAOE[i].transform;
+						float dist = Vector3.Distance(transform.position, player.position);
+						pStats.takeDamage(40);
+					}
+				}
 			}
 			// Destroy the projectile on all clients
 			networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);

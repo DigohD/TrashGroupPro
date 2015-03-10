@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sender: BigDaddy
   dmg: 250
+  explosionRadius: 1.5
   explosion: {fileID: 100000, guid: afed24873fa27994dbd19b79098534bf, type: 2}
 --- !u!148 &14891780
 NetworkView:
