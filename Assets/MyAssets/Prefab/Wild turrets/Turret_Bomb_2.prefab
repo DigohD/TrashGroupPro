@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenBullets: 2
-  bombShot: {fileID: 187574, guid: b34ea967d2698af4887bb847c7e21d69, type: 2}
+  bombShot: {fileID: 191778, guid: 3f563a06aef7edd4985da02ecac38ef6, type: 2}
   turret: {fileID: 11485750}
   stats: {fileID: 11485758}
 --- !u!148 &14885748
