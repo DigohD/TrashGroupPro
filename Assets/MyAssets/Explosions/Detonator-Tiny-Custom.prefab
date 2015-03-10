@@ -107,7 +107,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   detailThreshold: 0
   radius: 103.470421
-  power: 350.029999
+  power: 400
   fireObject: {fileID: 0}
   fireObjectLife: 0
 --- !u!1002 &11400003
