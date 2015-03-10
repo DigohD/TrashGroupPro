@@ -999,7 +999,7 @@ MonoBehaviour:
   health: 300
   pName: Player1
   ID: 
-  explosion: {fileID: 100000, guid: 2d55b4262ffe12f4da8c0c9c5b1036df, type: 2}
+  explosion: {fileID: 100000, guid: 6e87fa81e9f75a04e9a419296b3e1b63, type: 2}
   goList:
   - {fileID: 140394}
 --- !u!114 &11440400
