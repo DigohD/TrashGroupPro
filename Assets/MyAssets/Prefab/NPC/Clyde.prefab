@@ -248,7 +248,7 @@ MonoBehaviour:
   health: 150
   dmg: 40
   drop: {fileID: 148976, guid: 2deb0f51fd97d7a4b96fbd7b024b9afc, type: 2}
-  blood: {fileID: 182292, guid: 6644c3fc8b899d848a7e74cb7843c50f, type: 2}
+  blood: {fileID: 131424, guid: d104f4dce6c0f4df595e3b7ba40c7e4e, type: 2}
 --- !u!114 &11468050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef3b19ccd34c45e38b6b963320f5055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: 3
+  behaviour: 4
   patrolSpeed: 3
   chaseSpeed: 4
   chaseWaitTime: 8

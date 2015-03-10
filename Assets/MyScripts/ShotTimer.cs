@@ -6,14 +6,15 @@ public class ShotTimer : MonoBehaviour {
 	public float timer = 0;
 	void Start () {
 	 if (timer == 0)
-						timer = 1.5f;
+						timer = 2f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timer -= Time.deltaTime;
 		if (timer <= 0)
-						Destroy (this.gameObject);
+			networkView.RPC ("rpcDestroyShot", RPCMode.All, 0);//Destroy (this.gameObject);
+
 	
 	}
 }

@@ -21,6 +21,7 @@ public class EnemyStats : MonoBehaviour {
 		Network.Instantiate (blood, gameObject.transform.position, blood.transform.rotation, 0);
 		if (health <= 0){
 			Vector3 pos = this.gameObject.transform.position;
+			pos.z = 2f;
 			Destroy (this.gameObject);
 			if(drop != null);
 			GameObject t = (GameObject) Network.Instantiate (drop, pos, drop.transform.rotation, 0);

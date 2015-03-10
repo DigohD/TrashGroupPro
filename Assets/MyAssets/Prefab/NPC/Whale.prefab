@@ -318,7 +318,7 @@ GameObject:
   - 136: {fileID: 13641464}
   m_Layer: 0
   m_Name: Whale
-  m_TagString: Whales
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -748,7 +748,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 6
   m_CollisionDetection: 0
 --- !u!111 &11153684
 Animation:
@@ -780,10 +780,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a80bd2c7e0595e48a003ebcf45d0021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 2000
   dmg: 100
-  drop: {fileID: 0}
-  blood: {fileID: 0}
+  drop: {fileID: 185756, guid: 34999c458364f444c96ccb295dc85cf9, type: 2}
+  blood: {fileID: 188788, guid: f7139e6d905e54486b2cda701edde221, type: 2}
 --- !u!114 &11453684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef3b19ccd34c45e38b6b963320f5055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: 0
+  behaviour: 4
   patrolSpeed: 5
   chaseSpeed: 5
   chaseWaitTime: 8

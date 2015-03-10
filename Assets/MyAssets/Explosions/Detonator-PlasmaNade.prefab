@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 8
+  size: 4
   color: {r: 0, g: 1, b: .958620548, a: .388235301}
   explodeOnStart: 1
   duration: 5.35797834
@@ -205,7 +205,7 @@ MonoBehaviour:
   on: 1
   detonatorControlled: 1
   startSize: 1
-  size: 1
+  size: .800000012
   explodeDelayMin: .0299999882
   explodeDelayMax: .119999975
   startDuration: 2
@@ -245,7 +245,7 @@ MonoBehaviour:
   on: 1
   detonatorControlled: 1
   startSize: 1
-  size: 1
+  size: .800000012
   explodeDelayMin: 0
   explodeDelayMax: 0
   startDuration: 2
@@ -349,7 +349,7 @@ MonoBehaviour:
   startVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   detailThreshold: 0
-  radius: 80
+  radius: 40
   power: 500
   fireObject: {fileID: 0}
   fireObjectLife: 0

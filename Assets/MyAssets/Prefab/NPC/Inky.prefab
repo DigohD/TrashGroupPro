@@ -4870,7 +4870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef3b19ccd34c45e38b6b963320f5055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: 2
+  behaviour: 4
   patrolSpeed: 3
   chaseSpeed: 6
   chaseWaitTime: 8
@@ -4891,8 +4891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 300
   dmg: 40
-  drop: {fileID: 0}
-  blood: {fileID: 0}
+  drop: {fileID: 122988, guid: 3137a69d42d66b3489b846311c3cc2c4, type: 2}
+  blood: {fileID: 139640, guid: c03596237f6134bce826b8df9ca944ca, type: 2}
 --- !u!136 &13633742
 CapsuleCollider:
   m_ObjectHideFlags: 1
