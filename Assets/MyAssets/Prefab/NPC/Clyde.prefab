@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef3b19ccd34c45e38b6b963320f5055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviour: 3
+  behaviour: 4
   patrolSpeed: 3
   chaseSpeed: 4
   chaseWaitTime: 8
