@@ -349,7 +349,7 @@ MonoBehaviour:
   startVelocity: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   detailThreshold: 0
-  radius: 80
+  radius: 40
   power: 500
   fireObject: {fileID: 0}
   fireObjectLife: 0
