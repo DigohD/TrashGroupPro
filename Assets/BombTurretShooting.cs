@@ -63,8 +63,9 @@ public class BombTurretShooting : MonoBehaviour {
 		// Create a new projectile
 		speed = 1;
 		GameObject bomb =  (GameObject) Network.Instantiate (bombShot, transform.position, transform.rotation, 0);
-		bomb.rigidbody.velocity = transform.up * speed*10;
-		shotHit sh = (shotHit) bomb.GetComponent("shotHit");
+		bomb.rigidbody.velocity = transform.forward * speed*10;
+		//bomb.rigidbody.AddForce (transform.up*speed);
+		ShotHitExplosive sh = (ShotHitExplosive) bomb.GetComponent("ShotHitExplosive");
 		sh.setSender(stats.ID);
 		sh.dmg = stats.dmg;
 		timer = 0f;

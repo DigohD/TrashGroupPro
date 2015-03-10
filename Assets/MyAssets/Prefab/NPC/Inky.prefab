@@ -690,6 +690,7 @@ GameObject:
   - 136: {fileID: 13677516}
   - 148: {fileID: 14877516}
   - 114: {fileID: 11477516}
+  - 136: {fileID: 13633742}
   m_Layer: 0
   m_Name: Inky
   m_TagString: Enemy
@@ -4892,6 +4893,19 @@ MonoBehaviour:
   dmg: 40
   drop: {fileID: 0}
   blood: {fileID: 0}
+--- !u!136 &13633742
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: .469999999
+  m_Height: 7.53000021
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13677516
 CapsuleCollider:
   m_ObjectHideFlags: 1
