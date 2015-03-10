@@ -25,7 +25,7 @@ public class BombTurretShooting : MonoBehaviour {
 	{
 		timer += Time.deltaTime;
 		
-		if(Input.GetMouseButton (0) && timer >= stats.timeBetweenBullets && Time.timeScale != 0 && turret.active) // leave it for now, move it into inputscript laters
+		if(Input.GetMouseButton (1) && timer >= stats.timeBetweenBullets && Time.timeScale != 0 && turret.active) // leave it for now, move it into inputscript laters
 		{
 			Shoot ();
 			hasShot = true;
@@ -64,6 +64,7 @@ public class BombTurretShooting : MonoBehaviour {
 		speed = 1;
 		GameObject bomb =  (GameObject) Network.Instantiate (bombShot, transform.position, transform.rotation, 0);
 		bomb.rigidbody.velocity = transform.forward * speed*10;
+
 		//bomb.rigidbody.AddForce (transform.up*speed);
 		ShotHitExplosive sh = (ShotHitExplosive) bomb.GetComponent("ShotHitExplosive");
 		sh.setSender(stats.ID);

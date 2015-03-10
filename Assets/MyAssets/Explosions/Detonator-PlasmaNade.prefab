@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 8
+  size: 4
   color: {r: 0, g: 1, b: .958620548, a: .388235301}
   explodeOnStart: 1
   duration: 5.35797834
