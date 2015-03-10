@@ -52,7 +52,7 @@ MonoBehaviour:
   ClydeObj: {fileID: 168048, guid: 01eb512c8dd94428aa41dfdcbf1a4bef, type: 2}
   posSpawnValues: {x: 95, y: 10, z: 2}
   negSpawnValues: {x: 15, y: 3, z: 2}
-  trashCount: 35
+  trashCount: 22
   spawnWait: 0
   waveWait: 2
   initialSpawning: 1

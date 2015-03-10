@@ -35,14 +35,14 @@ public class ShotHitExplosive : MonoBehaviour {
 								float dist = Vector3.Distance(transform.position, trash.position);
 								//adjust dmg depending on distance to center of expl.
 								
-								explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+								explosionAOE [i].GetComponent<TurretStats>().damageTaken(20, 0);
 							}
 							if(tType.type == "Trash" && tType != null){
 								Transform trash = explosionAOE[i].transform;
 								float dist = Vector3.Distance(transform.position, trash.position);
 								//adjust dmg depending on distance to center of expl.
 								print ("damage: " + (dmg/2 -dist*200));
-								explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+								explosionAOE [i].GetComponent<TrashStats>().takeDamage(20, 0);
 							}
 							
 						}
@@ -50,7 +50,7 @@ public class ShotHitExplosive : MonoBehaviour {
 							PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
 							Transform player = explosionAOE[i].transform;
 							float dist = Vector3.Distance(transform.position, player.position);
-							pStats.takeDamage(40);
+							pStats.takeDamage(20);
 						}
 					}
 				}
@@ -87,14 +87,14 @@ public class ShotHitExplosive : MonoBehaviour {
 									float dist = Vector3.Distance(transform.position, trash.position);
 									//adjust dmg depending on distance to center of expl.
 									
-									comboCount += explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+									comboCount += explosionAOE [i].GetComponent<TurretStats>().damageTaken(20, 0);
 								}
 								if(tType.type == "Trash" && tType != null){
 									Transform trash = explosionAOE[i].transform;
 									float dist = Vector3.Distance(transform.position, trash.position);
 									//adjust dmg depending on distance to center of expl.
 									print ("damage: " + (dmg/2 -dist*200));
-									comboCount += explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+									comboCount += explosionAOE [i].GetComponent<TrashStats>().takeDamage(20, 0);
 								}
 								
 							}
@@ -102,7 +102,7 @@ public class ShotHitExplosive : MonoBehaviour {
 								PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
 								Transform player = explosionAOE[i].transform;
 								float dist = Vector3.Distance(transform.position, player.position);
-								pStats.takeDamage(40);
+								pStats.takeDamage(20);
 							}
 						}
 						
@@ -157,14 +157,14 @@ public class ShotHitExplosive : MonoBehaviour {
 							float dist = Vector3.Distance(transform.position, trash.position);
 							//adjust dmg depending on distance to center of expl.
 							
-							explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+							explosionAOE [i].GetComponent<TurretStats>().damageTaken(20, 0);
 						}
 						if(tType.type == "Trash" && tType != null){
 							Transform trash = explosionAOE[i].transform;
 							float dist = Vector3.Distance(transform.position, trash.position);
 							//adjust dmg depending on distance to center of expl.
 							print ("damage: " + (dmg/2 -dist*200));
-							explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+							explosionAOE [i].GetComponent<TrashStats>().takeDamage(20, 0);
 						}
 						
 					}
@@ -172,7 +172,7 @@ public class ShotHitExplosive : MonoBehaviour {
 						PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
 						Transform player = explosionAOE[i].transform;
 						float dist = Vector3.Distance(transform.position, player.position);
-						pStats.takeDamage(40);
+						pStats.takeDamage(20);
 					}
 				}
 			}
@@ -197,14 +197,14 @@ public class ShotHitExplosive : MonoBehaviour {
 							float dist = Vector3.Distance(transform.position, trash.position);
 							//adjust dmg depending on distance to center of expl.
 							
-							explosionAOE [i].GetComponent<TurretStats>().damageTaken(40, 0);
+							explosionAOE [i].GetComponent<TurretStats>().damageTaken(20, 0);
 						}
 						if(tType.type == "Trash" && tType != null){
 							Transform trash = explosionAOE[i].transform;
 							float dist = Vector3.Distance(transform.position, trash.position);
 							//adjust dmg depending on distance to center of expl.
 							print ("damage: " + (dmg/2 -dist*200));
-							explosionAOE [i].GetComponent<TrashStats>().takeDamage(40, 0);
+							explosionAOE [i].GetComponent<TrashStats>().takeDamage(20, 0);
 						}
 						
 					}
@@ -212,7 +212,7 @@ public class ShotHitExplosive : MonoBehaviour {
 						PlayerStats pStats = explosionAOE[i].GetComponent<PlayerStats>();
 						Transform player = explosionAOE[i].transform;
 						float dist = Vector3.Distance(transform.position, player.position);
-						pStats.takeDamage(40);
+						pStats.takeDamage(20);
 					}
 				}
 			}

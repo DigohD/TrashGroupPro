@@ -102,7 +102,7 @@ public class GameController : MonoBehaviour {
 					t.name="Barrel Yellow";
 				}
 				else if (rnd < 2) {
-				GameObject t = (GameObject) Network.Instantiate (laserTurret, spawnPosition, laserTurret.transform.rotation, 0);
+				GameObject t = (GameObject) Network.Instantiate (barrelGreen, spawnPosition, spawnRotation, 0);
 					t.name="Barrel Green";
 				}
 			else if (rnd > 1) {
