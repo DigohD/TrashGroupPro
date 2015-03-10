@@ -260,8 +260,8 @@ public class NetworkHandler : MonoBehaviour {
 		}
 		// Phase 7: Start the game
 		else if(phase == 7){
+			ui.clearUI();
 			if(Network.isServer){
-				ui.clearUI();
 				// Player 2 coords X: 96 Y: 14
 				networkView.RPC("rpcSpawnPlayers", RPCMode.Others, 96, 14);
 				initSpawnPlayer(6, 3);
