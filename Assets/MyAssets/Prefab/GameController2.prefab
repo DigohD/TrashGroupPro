@@ -44,7 +44,7 @@ MonoBehaviour:
   barrelYellow: {fileID: 148976, guid: 2deb0f51fd97d7a4b96fbd7b024b9afc, type: 2}
   barrelGreen: {fileID: 134262, guid: c121c2ea1ad2e9a4d908b4d6c0ce2d66, type: 2}
   barrelBlack: {fileID: 122988, guid: 3137a69d42d66b3489b846311c3cc2c4, type: 2}
-  laserTurret: {fileID: 131302, guid: bc694e5dcc0d63844abdee78dd647f08, type: 2}
+  laserTurret: {fileID: 160896, guid: 0ade57f29780e104b925ce6675fc2a02, type: 2}
   WhaleClass: {fileID: 153724, guid: 479c7c3bae930334d96cba979c453272, type: 2}
   BlowfishClass: {fileID: 182068, guid: b4b8aa407b00cf74c926e72c86e18c10, type: 2}
   PinkyClass: {fileID: 142328, guid: 7e3caba86f5f84aba94c51c383b9dfbe, type: 2}
