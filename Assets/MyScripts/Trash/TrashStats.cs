@@ -69,9 +69,9 @@ public class TrashStats : MonoBehaviour {
 				// If child still exists, destroy it and update comboCount
 				if (child != null) {
 					if (child.GetComponent<TrashType> ().type.Equals("Trash"))
-						comboCount = child.GetComponent<TrashStats> ().delayedDestruction (0.5f, comboCount);
+						comboCount = child.GetComponent<TrashStats> ().delayedDestruction (0.2f, comboCount);
 					if (child.GetComponent<TrashType> ().type.Equals("Turret"))
-						comboCount = child.GetComponent<TurretStats> ().delayedDestruction (0.5f, comboCount);
+						comboCount = child.GetComponent<TurretStats> ().delayedDestruction (0.2f, comboCount);
 					//banana.Remove(child.networkView.viewID);
 				}
 			}

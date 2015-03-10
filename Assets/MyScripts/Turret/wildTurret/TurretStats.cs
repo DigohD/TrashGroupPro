@@ -86,9 +86,9 @@ public class TurretStats : MonoBehaviour {
 			GameObject child = NetworkView.Find(childID).gameObject;
 			if (child != null){
 				if (child.GetComponent<TrashType> ().type.Equals("Trash"))
-					combo = child.GetComponent<TrashStats> ().delayedDestruction (time + 0.5f, combo);
+					combo = child.GetComponent<TrashStats> ().delayedDestruction (time + 0.2f, combo);
 				if (child.GetComponent<TrashType> ().type.Equals("Turret"))
-					combo = child.GetComponent<TurretStats> ().delayedDestruction (time + 0.5f, combo);
+					combo = child.GetComponent<TurretStats> ().delayedDestruction (time + 0.2f, combo);
 				//banana.Remove(child.networkView.viewID);						
 			}
 		}
