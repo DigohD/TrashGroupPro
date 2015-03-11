@@ -130,13 +130,13 @@ public class shotHit : MonoBehaviour {
 		damageDealt = true;
 		// Enable particle effects for the destroyed shot.
 		// NOTE: This does not work over the network for some reason...
-		try{
-			ParticleSystem ps = transform.GetComponentInChildren<ParticleSystem>();
+		//try{
+			//ParticleSystem ps = transform.GetComponentInChildren<ParticleSystem>();
 			transform.GetComponentInChildren<MeshRenderer>().enabled = false;
-			ps.Play();
-		}catch(MissingReferenceException e){
+			//ps.Play();
+		//}catch(MissingReferenceException e){
 			
-		}
+		//}
 		// Set the playing particles to true
 		playingPFX = true;
 	}

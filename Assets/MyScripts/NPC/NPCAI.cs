@@ -203,7 +203,7 @@ public class NPCAI : MonoBehaviour {
 	{
 
 		
-		RaycastHit hit;
+		RaycastHit hit = new RaycastHit();
 		bool isHit = false;
 
 		//if(this.gameObject.name == "Blowfish")
