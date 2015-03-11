@@ -50,6 +50,7 @@ MonoBehaviour:
   PinkyObj: {fileID: 165798, guid: 7e3caba86f5f84aba94c51c383b9dfbe, type: 2}
   InkyObj: {fileID: 181068, guid: 4ce62c8b20ca74775a60df86d35df557, type: 2}
   ClydeObj: {fileID: 168048, guid: 01eb512c8dd94428aa41dfdcbf1a4bef, type: 2}
+  CoralFishObj: {fileID: 199532, guid: 071a7eb3656d149cd8a7914bf769bd90, type: 2}
   posSpawnValues: {x: 95, y: 10, z: 2}
   negSpawnValues: {x: 15, y: 3, z: 2}
   trashCount: 22

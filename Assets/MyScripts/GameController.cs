@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 	public GameObject PinkyObj;
 	public GameObject InkyObj;
 	public GameObject ClydeObj;
+	public GameObject CoralFishObj;
 
 	public Vector3 posSpawnValues;
 	public Vector3 negSpawnValues;
@@ -74,6 +75,11 @@ public class GameController : MonoBehaviour {
 
 		}
 
+		/*if (!GameObject.Find("/CoralFish")){
+			GameObject CoralFish = (GameObject) Network.Instantiate (CoralFishObj, GameObject.Find ("Waypoints/CoralFish/1").transform.position, Quaternion.identity, 0);
+			CoralFish.name = CoralFishObj.name;
+			
+		}*/
 
 
 	}
