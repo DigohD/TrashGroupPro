@@ -60,7 +60,7 @@ public class shotHit : MonoBehaviour {
 				return;
 			}
 			// If tStats does exist, see if it is owned by another player
-			else if (!(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals(this.sender)) {
+			else if (networkView.isMine && !(sender.Length < 3) && tStats.ownerID != null && !tStats.ownerID.Equals(this.sender)) {
 				// If the projectile has not already dealt damage
 				if(!damageDealt){
 					// Combocount is the number of trash pieces destroyed this hit
