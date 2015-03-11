@@ -7,7 +7,7 @@ public class EnemyStats : MonoBehaviour {
 	public float dmg;
 	private float speed;
 	private float happiness;
-	public GameObject drop;
+	public GameObject[] drops = new GameObject[2];
 	public GameObject blood;
 
 	// Use this for initialization
@@ -23,8 +23,12 @@ public class EnemyStats : MonoBehaviour {
 			Vector3 pos = this.gameObject.transform.position;
 			pos.z = 2f;
 			Destroy (this.gameObject);
-			if(drop != null);
-			GameObject t = (GameObject) Network.Instantiate (drop, pos, drop.transform.rotation, 0);
+			if(Random.value > 0.66){
+				GameObject t = (GameObject) Network.Instantiate (drops[0], pos, drops[0].transform.rotation, 0);
+			}else{
+				GameObject t = (GameObject) Network.Instantiate (drops[1], pos, drops[1].transform.rotation, 0);
+			}
+
 		}
 	}
 }

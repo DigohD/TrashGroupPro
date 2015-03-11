@@ -782,7 +782,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 500
   dmg: 100
-  drop: {fileID: 185756, guid: 34999c458364f444c96ccb295dc85cf9, type: 2}
+  drops:
+  - {fileID: 185756, guid: 34999c458364f444c96ccb295dc85cf9, type: 2}
+  - {fileID: 185756, guid: 34999c458364f444c96ccb295dc85cf9, type: 2}
   blood: {fileID: 188788, guid: f7139e6d905e54486b2cda701edde221, type: 2}
 --- !u!114 &11453684
 MonoBehaviour:

@@ -247,7 +247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 150
   dmg: 40
-  drop: {fileID: 148976, guid: 2deb0f51fd97d7a4b96fbd7b024b9afc, type: 2}
+  drops:
+  - {fileID: 148976, guid: 2deb0f51fd97d7a4b96fbd7b024b9afc, type: 2}
+  - {fileID: 131302, guid: bc694e5dcc0d63844abdee78dd647f08, type: 2}
   blood: {fileID: 131424, guid: d104f4dce6c0f4df595e3b7ba40c7e4e, type: 2}
 --- !u!114 &11468050
 MonoBehaviour:
