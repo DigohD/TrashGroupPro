@@ -112,9 +112,9 @@ public class shotHit : MonoBehaviour {
 
 	// Destroy the projectile when it has played its death particles
 	void Update(){
-		if(playingPFX)
-			if(!transform.GetComponentInChildren<ParticleSystem>().isPlaying)
-				Destroy(gameObject);
+		//if(playingPFX)
+			//if(!transform.GetComponentInChildren<ParticleSystem>().isPlaying)
+				
 	}
 
 	// Used to synchronize projectile ownership over the network
@@ -128,6 +128,7 @@ public class shotHit : MonoBehaviour {
 	void rpcDestroyShot(int wasted){
 		// This projectile has dealt its damage
 		damageDealt = true;
+		Destroy(gameObject);
 		// Enable particle effects for the destroyed shot.
 		// NOTE: This does not work over the network for some reason...
 		//try{
@@ -138,7 +139,7 @@ public class shotHit : MonoBehaviour {
 			
 		//}
 		// Set the playing particles to true
-		playingPFX = true;
+		//playingPFX = true;
 	}
 
 
