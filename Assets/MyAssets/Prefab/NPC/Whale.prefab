@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a80bd2c7e0595e48a003ebcf45d0021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 500
   dmg: 100
   drop: {fileID: 185756, guid: 34999c458364f444c96ccb295dc85cf9, type: 2}
   blood: {fileID: 188788, guid: f7139e6d905e54486b2cda701edde221, type: 2}
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviour: 4
-  baseSpeed: 3
+  baseSpeed: 2
   waypoints: []
   travelsOnX: 0
   teleportWaypointCycle: 1
