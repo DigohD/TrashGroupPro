@@ -24,8 +24,6 @@ public class StateFeign : FSMState
 
 		float distanceToPlayer = Vector3.Distance (npcClass.getNPC ().transform.position, npcClass.getTargetPlayer ().transform.position);
 
-		Debug.Log (distanceToPlayer);
-
 		// If the player has gone 15 meters away from the NPC, fire LostPlayer transition or If the feign timer is up
 		if (distanceToPlayer >= 10f || feignTimer < 0)
 		{

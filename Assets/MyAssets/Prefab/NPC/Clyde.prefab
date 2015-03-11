@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a80bd2c7e0595e48a003ebcf45d0021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
+  health: 300
   dmg: 40
   drops:
   - {fileID: 148976, guid: 2deb0f51fd97d7a4b96fbd7b024b9afc, type: 2}
