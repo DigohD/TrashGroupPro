@@ -16,17 +16,20 @@ public class StatePatrolling : FSMState
 		npcClass = o;
 		
 		wayPointIndex = 0;
-		stateID = StateID.Patrolling;
+		stateID = StateID.Patrol;
 		
 	}
 	
 	
 	public override void Reason()
 	{
-		
-		// If the Player passes less than 15 meters away in front of the NPC
-		
-		npcClass.checkForPlayersInSight ();
+	
+		if(npcClass.playerInSight ())
+			npcClass.SetTransition(Transition.SawPlayer);
+
+		if(npcClass.nearbyPlayers ())
+			npcClass.SetTransition(Transition.SmellPlayer);
+
 		
 	}
 	
@@ -47,7 +50,7 @@ public class StatePatrolling : FSMState
 			
 		}else
 		{
-			npcClass.Move (npcClass.waypoints [wayPointIndex], npcClass.patrolSpeed, true);
+			npcClass.Move (npcClass.waypoints [wayPointIndex], 1, true);
 		}
 	}
 	

@@ -7,28 +7,35 @@ using System.Collections;
 public class StateRunAwayFromPlayer : FSMState
 {
 	private NPCAI npcClass;
-	
+	private float runAwayTimer = 3f;					//Run away for 3 seconds
+	private float runSpeedMultiplier = 1.2f;			//20% speed boost when running away
+
 	public StateRunAwayFromPlayer(NPCAI o)
 	{
 		//access to outer class members
 		npcClass = o;
 		
-		stateID = StateID.Running;
+		stateID = StateID.Run;
 	}
 	
 	public override void Reason()
 	{
 		
-		// If the player has gone 30 meters away from the NPC, fire LostPlayer transition
-		if (npcClass.getChaseTimer() < 0)
+		if (runAwayTimer < 0)
+		{
 			npcClass.SetTransition(Transition.LostPlayer);
+			runAwayTimer = 3f;
+		}
+
+		if(npcClass.playerInSight ())
+			npcClass.SetTransition(Transition.SawPlayer);
 	}
 	
 	public override void Act()
 	{
-		npcClass.decrementChaseTimer ();
+		runAwayTimer -= Time.deltaTime;
 		
-		npcClass.Move (npcClass.getTargetPlayer().transform, npcClass.chaseSpeed, false);
+		npcClass.Move (npcClass.getTargetPlayer().transform, runSpeedMultiplier, false);
 	}
 	
 } 

@@ -30,6 +30,10 @@ public class GameController : MonoBehaviour {
 	void Start()
 	{	
 		StartCoroutine (SpawnCont());
+
+		//Try to spawn NPCs every 30 seconds
+		InvokeRepeating("spawnNPCs", 30, 30);
+
 		spawnNPCs();
 		Screen.showCursor = false;
 	}
@@ -44,17 +48,34 @@ public class GameController : MonoBehaviour {
 
 	void spawnNPCs()
 	{
-		GameObject Whale = (GameObject) Network.Instantiate (WhaleObj, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
-		GameObject Blinky = (GameObject) Network.Instantiate (BlinkyObj, GameObject.Find ("Waypoints/Blinky/1").transform.position, Quaternion.identity, 0);
-		GameObject Pinky = (GameObject) Network.Instantiate (PinkyObj, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
-		GameObject Inky = (GameObject) Network.Instantiate (InkyObj, GameObject.Find ("Waypoints/Inky/1").transform.position, Quaternion.identity, 0);
-		GameObject Clyde = (GameObject) Network.Instantiate (ClydeObj, GameObject.Find ("Waypoints/Clyde/1").transform.position, Quaternion.identity, 0);
+		if (!GameObject.Find("/Whale") ){
+			GameObject Whale = (GameObject) Network.Instantiate (WhaleObj, GameObject.Find ("Waypoints/Whale/1").transform.position, Quaternion.identity, 0);
+			Whale.name = WhaleObj.name;
+		}
 
-		Whale.name = WhaleObj.name;
-		Blinky.name = BlinkyObj.name;
-		Pinky.name = PinkyObj.name;
-		Clyde.name = ClydeObj.name;
-		Inky.name = InkyObj.name;
+		if (!GameObject.Find("/Blinky")){
+			GameObject Blinky = (GameObject) Network.Instantiate (BlinkyObj, GameObject.Find ("Waypoints/Blinky/1").transform.position, Quaternion.identity, 0);
+			Blinky.name = BlinkyObj.name;
+		}
+
+		if (!GameObject.Find("/Pinky")){
+			GameObject Pinky = (GameObject) Network.Instantiate (PinkyObj, GameObject.Find ("Waypoints/Pinky/1").transform.position, Quaternion.identity, 0);
+			Pinky.name = PinkyObj.name;
+		}
+
+		if (!GameObject.Find("/Inky")){
+			GameObject Inky = (GameObject) Network.Instantiate (InkyObj, GameObject.Find ("Waypoints/Inky/1").transform.position, Quaternion.identity, 0);
+			Inky.name = InkyObj.name;
+		}
+
+		if (!GameObject.Find("/Clyde")){
+			GameObject Clyde = (GameObject) Network.Instantiate (ClydeObj, GameObject.Find ("Waypoints/Clyde/1").transform.position, Quaternion.identity, 0);
+			Clyde.name = ClydeObj.name;
+
+		}
+
+
+
 	}
 
 	// Spawns trash on the map

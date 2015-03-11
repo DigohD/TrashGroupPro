@@ -66,6 +66,7 @@ ModelImporter:
     4300004: pMorena_Dientes_Inf
     4300006: pMorena_Dientes_Sup
     7400000: Take 001 //// Jnt_Morena
+    7400002: Take 001
     11100000: //RootNode
     11100002: pMorena_Cuerpo
     11100004: pMorena_Dientes_Inf
@@ -92,7 +93,7 @@ ModelImporter:
     materialName: 0
     materialSearch: 1
   animations:
-    legacyGenerateAnimations: 1
+    legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 

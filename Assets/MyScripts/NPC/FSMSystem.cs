@@ -53,8 +53,11 @@ public enum Transition
 {
 	NullTransition = 0, // Use this transition to represent a non-existing transition in your system
 	SawPlayer = 1,
-	LostPlayer = 2,
-	ScaredOfPlayer = 3
+	SmellPlayer = 2,
+	LostPlayer = 3,
+	ScaredOfPlayer = 4,
+	Scatter = 5
+
 
 }
 
@@ -65,10 +68,12 @@ public enum Transition
 public enum StateID
 {
 	NullStateID = 0, // Use this ID to represent a non-existing State in your system,
-	ChasingPlayer = 1,
-	Patrolling = 2,
-	Running = 3,
-	FollowingPlayer = 4
+	Chase = 1,
+	Patrol = 2,
+	Run = 3,
+	Follow = 4,
+	Feign = 5,
+	Scatter = 6
 }
 
 /// <summary>

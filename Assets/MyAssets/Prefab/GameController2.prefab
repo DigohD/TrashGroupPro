@@ -48,7 +48,7 @@ MonoBehaviour:
   WhaleObj: {fileID: 153724, guid: 479c7c3bae930334d96cba979c453272, type: 2}
   BlinkyObj: {fileID: 110382, guid: a12b736f6553a4c0d85a03a9b64366c5, type: 2}
   PinkyObj: {fileID: 165798, guid: 7e3caba86f5f84aba94c51c383b9dfbe, type: 2}
-  InkyObj: {fileID: 177264, guid: 4ce62c8b20ca74775a60df86d35df557, type: 2}
+  InkyObj: {fileID: 181068, guid: 4ce62c8b20ca74775a60df86d35df557, type: 2}
   ClydeObj: {fileID: 168048, guid: 01eb512c8dd94428aa41dfdcbf1a4bef, type: 2}
   posSpawnValues: {x: 95, y: 10, z: 2}
   negSpawnValues: {x: 15, y: 3, z: 2}

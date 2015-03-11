@@ -742,7 +742,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153724}
   serializedVersion: 2
-  m_Mass: 1000
+  m_Mass: 10000
   m_Drag: Infinity
   m_AngularDrag: Infinity
   m_UseGravity: 0
@@ -796,10 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviour: 4
-  patrolSpeed: 5
-  chaseSpeed: 5
-  chaseWaitTime: 8
-  minChaseDistance: 0
+  baseSpeed: 3
   waypoints: []
   travelsOnX: 0
   teleportWaypointCycle: 1

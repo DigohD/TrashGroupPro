@@ -5,30 +5,24 @@ using System.Collections;
 public class NPCAI : MonoBehaviour {
 
 
-	private GameObject[] players;							// All players on the map
-	private GameObject targetPlayer;						// The current targetted player, ie to chase or run away from
-	private Rigidbody npc;              					// Reference to the player .
-
-	public behaviours behaviour = behaviours.aggressive;	//Allow a number of differnt types of AIs
-
-
-	public float patrolSpeed = 3f;                          // The NPC patrol speed.
-	public float chaseSpeed = 6f;                           // The NPC chase speed.
-
-	public float chaseWaitTime = 8f;                        // The amount of time to wait when the last sighting is reached.
-	public int minChaseDistance = 10;						// The distance before the NPC chases after the (nearest) player
+	public behaviours behaviour = behaviours.ignoring;		//Allow a number of differnt types of AIs
+	public float baseSpeed = 3f;                          	// The NPC patrol speed.
 	public Transform[] waypoints;                     		// An array of transforms for the patrol route.
 	public bool travelsOnX = true;							// Turn off specifically for NPCs which traverse non X directions									
 	public bool teleportWaypointCycle = false;				// When cycling waypoints (reaching the end), teleport to the 1st one
 
-	
+
+	private GameObject[] players;							// All players on the map
+	private GameObject targetPlayer;						// The current targetted player, ie to chase or run away from
+	private Rigidbody npc;              					// Reference to the player .
+
+
 	private Vector3 direction;								// The direction the NPC is travelling in
 	private Quaternion lookRotation;						// The rotation angle the NPC is spinning in
 
 
 	private Vector3[] searchDirections = new Vector3[5];     // An array of transforms for the patrol route.
-	private float chaseTimer = 3f;                          // A timer for the chaseWaitTime.
-	
+
 
 	//create some randomness in the movement of NPCs
 	private float randomTimer = 3f;
@@ -42,7 +36,6 @@ public class NPCAI : MonoBehaviour {
 		whimsical,
 		feigning,
 		ignoring
-
 	}
 
 
@@ -52,7 +45,9 @@ public class NPCAI : MonoBehaviour {
 	private StatePatrolling patrol;
 	private StateChasePlayer chase;
 	private StateRunAwayFromPlayer run;
-	private StateFollowPlayer follow;
+	private StateFollow follow;
+	private StateScatter scatter;
+	private StateFeign feign;
 
 	public void SetTransition(Transition t) { fsm.PerformTransition(t); }
 
@@ -64,8 +59,12 @@ public class NPCAI : MonoBehaviour {
 		MakeFSM();
 		SetWaypoints();
 
+		//Scatter every 20 seconds after 30 seconds
+		InvokeRepeating("Scatter", 30, 20);
+
 	}
 	
+
 
 	private void MakeFSM()
 	{
@@ -73,48 +72,71 @@ public class NPCAI : MonoBehaviour {
 		patrol = new StatePatrolling(this);
 		chase = new StateChasePlayer(this);
 		run = new StateRunAwayFromPlayer(this);
-		follow = new StateFollowPlayer(this);
+		follow = new StateFollow(this);
+		scatter = new StateScatter (this);
+		feign = new StateFeign (this);
 
 		fsm = new FSMSystem();
+	
+		//get back to patrolling after the scatter event
+		scatter.AddTransition(Transition.LostPlayer, StateID.Patrol);
 
+		//Scatter always triggers scatter state for all states
+		patrol.AddTransition(Transition.Scatter, StateID.Scatter);
+		chase.AddTransition(Transition.Scatter, StateID.Scatter);
+		run.AddTransition(Transition.Scatter, StateID.Scatter);
+		follow.AddTransition(Transition.Scatter, StateID.Scatter);
+
+
+		//Running always resets back to patrol
+		run.AddTransition(Transition.LostPlayer, StateID.Patrol);
+
+		//Chasing always scatters after it's done
+		chase.AddTransition(Transition.LostPlayer, StateID.Scatter);
 
 		//Set up transitions for different types of NPCs
 		switch (behaviour)
 		{
 
 			case behaviours.aggressive:
-				patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
-				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
-				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
-				chase.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
+				patrol.AddTransition(Transition.SawPlayer, StateID.Chase);
+				patrol.AddTransition(Transition.SmellPlayer, StateID.Patrol);
 				break;
 			case behaviours.ambush:
-				patrol.AddTransition(Transition.SawPlayer, StateID.ChasingPlayer);
-				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
-				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+				patrol.AddTransition(Transition.SawPlayer, StateID.Patrol);
+				patrol.AddTransition(Transition.SmellPlayer, StateID.Follow);
+				follow.AddTransition(Transition.LostPlayer, StateID.Patrol);
+				follow.AddTransition(Transition.SawPlayer, StateID.Chase);
 				break;
 			case behaviours.whimsical:
-				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
-				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
-				run.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+				patrol.AddTransition(Transition.SawPlayer, StateID.Chase);
+				patrol.AddTransition(Transition.SmellPlayer, StateID.Run);
+				run.AddTransition(Transition.SawPlayer, StateID.Chase);
 				break;
 			case behaviours.feigning:
-				patrol.AddTransition(Transition.ScaredOfPlayer, StateID.Running);
-				chase.AddTransition(Transition.LostPlayer, StateID.Patrolling);
-				run.AddTransition(Transition.LostPlayer, StateID.Patrolling);
+				patrol.AddTransition(Transition.SawPlayer, StateID.Patrol);
+				patrol.AddTransition(Transition.SmellPlayer, StateID.Feign);
+				feign.AddTransition(Transition.LostPlayer, StateID.Patrol);
+				feign.AddTransition(Transition.ScaredOfPlayer, StateID.Run);
+				feign.AddTransition(Transition.SawPlayer, StateID.Chase);
 				break;
 			case behaviours.ignoring:
 				//Ignoring never goes into any states!
+				patrol.AddTransition(Transition.SmellPlayer, StateID.Patrol);
+				patrol.AddTransition(Transition.SawPlayer, StateID.Patrol);
 				break;
 			default:
 				
 				break;
 		}
 
-
+		//Don't forget to add the state! Or else you lose 5 hours debugging nonsense.
 		fsm.AddState(patrol);
 		fsm.AddState(chase);
 		fsm.AddState(run); 
+		fsm.AddState(follow); 
+		fsm.AddState(scatter); 
+		fsm.AddState(feign);
 		
 		
 	}
@@ -130,8 +152,12 @@ public class NPCAI : MonoBehaviour {
 	void FixedUpdate () {
 		if(!networkView.isMine)
 			return;
+
 		fsm.CurrentState.Reason();
 		fsm.CurrentState.Act();
+
+		//if(npc.gameObject.name == "Clyde")
+		//print (fsm.CurrentState.ID);
 
 	}
 
@@ -143,8 +169,40 @@ public class NPCAI : MonoBehaviour {
 	//Helped Functions
 	//--------------------------------------------------
 
-	public void checkForPlayersInSight()
+
+	public bool nearbyPlayers()
 	{
+		players = GameObject.FindGameObjectsWithTag ("Player");
+		
+		
+		if(players.Length > 0)
+		{
+			for(int i = 0; i < players.Length; i++){
+
+
+				float distanceToPlayer = Vector3.Distance(npc.transform.position, players[i].transform.position);
+				
+				if(distanceToPlayer < 5f)
+				{
+
+					targetPlayer = players[i];
+
+					//print (npc.gameObject.name + "smelled" + targetPlayer.gameObject.name);
+
+					return true;
+				}
+				
+			}
+		}
+
+		return false;
+
+	}
+	
+	public bool playerInSight()
+	{
+
+		
 		RaycastHit hit;
 		bool isHit = false;
 
@@ -162,7 +220,7 @@ public class NPCAI : MonoBehaviour {
 		// Search for hits
 		for (int i = 0; i < searchDirections.Length; i++)
 		{
-			if (Physics.Raycast(npc.transform.position, searchDirections[i], out hit, 5f))
+			if (Physics.Raycast(npc.transform.position, searchDirections[i], out hit, 3f))
 			{
 				if (hit.transform.gameObject.tag == "Player")
 				{
@@ -178,23 +236,16 @@ public class NPCAI : MonoBehaviour {
 		{
 			
 			targetPlayer = hit.transform.gameObject;
-			chaseTimer = 3f;
-			
-			
-			if(behaviour == behaviours.whimsical)
-			{
-				SetTransition(Transition.ScaredOfPlayer);
-			}
-			else
-			{
-				SetTransition(Transition.SawPlayer);
-			}
+			return true;
+
 		}
+
+		return false;
 
 	}
 
 	//Move towards or away from target position with the rigid body's specified speed
-	public void Move(Transform targetTransform, float speed, bool towards)
+	public void Move(Transform targetTransform, float speedMultiplier, bool towards)
 	{
 
 		float angleZ = 0f;
@@ -218,10 +269,10 @@ public class NPCAI : MonoBehaviour {
 		//Add some randomness to movement direction and movement speed
 		if (randomTimer < 0 && travelsOnX) 
 		{
-			randomOffsetDirection =  new Vector3 (0f, Random.Range (-0.2f,0.2f), Random.Range (-0.2f,0.2f));
+			randomOffsetDirection =  new Vector3 (0f, Random.Range (-0.2f,0.2f), 0f);
 		}
 
-		npc.MovePosition(npc.position + (direction + randomOffsetDirection) * Time.deltaTime * speed * randomVelocityMultiplier);
+		npc.MovePosition(npc.position + (direction + randomOffsetDirection) * Time.deltaTime * baseSpeed *speedMultiplier * randomVelocityMultiplier);
 
 
 
@@ -235,7 +286,7 @@ public class NPCAI : MonoBehaviour {
 
 		if (travelsOnX) {
 			//Rotate towards direction over time
-			npc.rotation = Quaternion.Slerp (npc.rotation, Quaternion.Euler (new Vector3 (angleX, 0f, angleZ)), Time.deltaTime * speed * 2);
+			npc.rotation = Quaternion.Slerp (npc.rotation, Quaternion.Euler (new Vector3 (angleX, 0f, angleZ)), Time.deltaTime * baseSpeed * 5);
 		}
 
 		//Update the velocity multiplier
@@ -285,6 +336,11 @@ public class NPCAI : MonoBehaviour {
 	}
 
 
+	private void Scatter () 
+	{
+		if(behaviour.ToString() != "ignoring")
+			SetTransition(Transition.Scatter);
+	}
 	
 	//Getter Setter Functions
 	//--------------------------------------------------
@@ -294,48 +350,14 @@ public class NPCAI : MonoBehaviour {
 		return this.npc;
 	}
 
-
-	public float getChaseTimer()
-	{
-		return this.chaseTimer;
-	}
-
-	public void decrementChaseTimer()
-	{
-		this.chaseTimer -= Time.deltaTime;
-	}
-
+	
 	public GameObject getTargetPlayer ()
 	{
 		return this.targetPlayer;
 	}
 
-
-	/*
-	void checkForNearbyPlayers()
-	{
-		players = GameObject.FindGameObjectsWithTag ("Player");
-		
-		
-		if(players.Length > 0)
-		{
-			for(int i = 0; i < players.Length; i++){
-				
-				float distanceToPlayer = (players[i].transform.position - patrolWayPoints[wayPointIndex].transform.position).sqrMagnitude;
-				
-				if(distanceToPlayer < minChaseDistance)
-				{
-					targetPlayer = players[i];
-					chaseTimer = 3f;	
-					break;
-				}
-				
-			}
-		}
-
-	}
 	
 
-*/
+
 
 }
